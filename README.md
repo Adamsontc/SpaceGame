@@ -18,7 +18,7 @@ To clone this repository run the following command:
 
 This will create a directory on your computer called **typescript_game** which will contain the contents of this game.
 
-3. Next, you will need to setup all the libraries the game depends on.  Run the following command to install these libraries in the **node_modules** sub-directory.
+3. Next, you will need to setup all the libraries the game depends on.  Go to the **typescript_game** directory and run the following command to create a **node_modules** directory and install the needed libraries into it.
 
 `npm install`
 
