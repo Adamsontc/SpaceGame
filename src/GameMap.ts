@@ -3,6 +3,7 @@ import { Player } from "./Player.js";
 import { ResourceManager } from "./ResourceManager.js";
 import { Sprite, SpriteState } from "./Sprite.js";
 import { GRAVITY } from './GameManager.js';
+import { hasUncaughtExceptionCaptureCallback } from "process";
 
 export class GameMap {
 
@@ -163,9 +164,14 @@ export class GameMap {
         console.log("delta",deltaTime);
         console.log("old",oldPos);
         console.log("new",newPos);
-        
         //see if there was a collision with a tile at the new location
         let point = this.getTileCollision(s,newPos);
+        if (deltaTime>120) {
+            throw new Error("big delta");
+        }
+        if (p5.Vector.sub(oldPos,newPos).mag()>32  ) { //moving by more than 32 pixels
+            throw new Error("Too big of a change");
+        }
         if (point) {
             //move sprite to be next to the tile instead of over it
             if (oldVel.x > 0) { //moving to the right
@@ -201,7 +207,10 @@ export class GameMap {
             this.checkPlayerCollision(s as Player,oldPos.y < newPos.y);
             //console.log("Player pos:",newPos.y,"vel:",s.getVelocity().y);
         }
-        
+        if (newPos.x<0 || newPos.x>500 || newPos.y<0 || newPos.y>515) {
+            console.log(newPos);
+            throw new Error("off screen");
+        }
     }
 
     update() {
