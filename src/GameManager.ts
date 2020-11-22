@@ -74,6 +74,7 @@ export class GameManager {
                 if (this.resources.isLoaded()) {
                     //now setup the first map
                     this.map=new GameMap(this.level,this.resources);
+                    //this.map.player.setVelocity(1,1);
                     console.log("Everything is loaded!");
                     this.gameState=STATE.Running;
                     this.inputManager.setGameAction(this.moveRight,RIGHT_ARROW);

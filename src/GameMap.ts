@@ -152,28 +152,27 @@ export class GameMap {
     updateSprite(s:Sprite) {
         //update velocity due to gravity
         let oldVel = s.getVelocity();
-        if (s instanceof Player) console.log("at beginning:",oldVel.y,"deltaT",deltaTime);
+        let oldPos = s.getPosition();
+
         if (!s.isFlying()) {
             oldVel.y=oldVel.y+GRAVITY*deltaTime;
-            //s.setVelocity(oldVel.x,oldVel.y);
         }
-        if (s instanceof Player) console.log("after 1:",oldVel.y);
-        //update x position first
-        //so any sideways collisions will happen first
-        let oldPos = s.getPosition();
-        if (s instanceof Player) console.log("after 2: ---pos",oldPos.y);
-        let newPos = oldPos.copy();
-        newPos.x +=  oldVel.x*deltaTime;
+
+        let newPos = p5.Vector.add(oldPos,p5.Vector.mult(oldVel,deltaTime));
+        console.log("vel",oldVel);
+        console.log("delta",deltaTime);
+        console.log("old",oldPos);
+        console.log("new",newPos);
         
+        //see if there was a collision with a tile at the new location
         let point = this.getTileCollision(s,newPos);
-        if (s instanceof Player) console.log("XXXXXXX: point.y:",(point==null?"null":point.y));
-        if (point) { //there was a collision with a tile when changing the x part of position
-            //move sprite to be right next to the tile instead of over it
+        if (point) {
+            //move sprite to be next to the tile instead of over it
             if (oldVel.x > 0) { //moving to the right
-                console.log("MOVING BACK FROM BUMP");
+                //console.log("MOVING BACK FROM BUMP");
                 newPos.x = this.tilesToPixels(point.x) - s.getImage().width;
             } else if (oldVel.x < 0) { //moving to the left
-                console.log("MOVING AHEAD FROM BUMP");
+                //console.log("MOVING AHEAD FROM BUMP");
                 newPos.x = this.tilesToPixels(point.x+1);
             }
             s.collideHorizontal();
@@ -184,9 +183,9 @@ export class GameMap {
 
         //update y position
         newPos.y += oldVel.y*deltaTime;
-        if (s instanceof Player) console.log("after 3: ---newPos",newPos.y);
+        //if (s instanceof Player) console.log("after 3: ---newPos",newPos.y);
         point = this.getTileCollision(s,newPos);
-        if (s instanceof Player) console.log("after 4: point.y:",(point==null?"null":point.y));
+        //if (s instanceof Player) console.log("after 4: point.y:",(point==null?"null":point.y));
         if (point) { //collision when changing y part of position
             if (oldVel.y > 0) {
                 newPos.y = this.tilesToPixels(point.y) - (s.getImage().height);
@@ -195,12 +194,12 @@ export class GameMap {
             }
             s.collideVertical();
         } else {
-            if (s instanceof Player) console.log("point was null :",oldVel.y);
+            //if (s instanceof Player) console.log("point was null :",oldVel.y);
         }
         s.setPosition(newPos.x,newPos.y);
         if (s instanceof Player) {
             this.checkPlayerCollision(s as Player,oldPos.y < newPos.y);
-            console.log("Player pos:",newPos.y,"vel:",s.getVelocity().y);
+            //console.log("Player pos:",newPos.y,"vel:",s.getVelocity().y);
         }
         
     }
@@ -213,15 +212,15 @@ export class GameMap {
         this.updateSprite(this.player); //moves sprite within the game
         this.player.update(deltaTime); //updates the animation of the sprite
 
-        this.sprites.forEach((sprite,index,obj) => {
-            if (sprite.getState() == SpriteState.DEAD) {
-                //remove the sprite
-                obj.splice(index,1);
-                console.log("REMOVING SPRITE");
-            } else {
-                this.updateSprite(sprite);
-                sprite.update(deltaTime);
-            }
-        });
+        // this.sprites.forEach((sprite,index,obj) => {
+        //     if (sprite.getState() == SpriteState.DEAD) {
+        //         //remove the sprite
+        //         obj.splice(index,1);
+        //         console.log("REMOVING SPRITE");
+        //     } else {
+        //         this.updateSprite(sprite);
+        //         sprite.update(deltaTime);
+        //     }
+        // });
     }
 }
