@@ -49,12 +49,9 @@ export class GameMap {
                 if (ch===" ") continue;
                 //tiles are A-Z, sprites are a-z, 0-9, and special characters
                 if (ch.match(/[A-Z]/)) { //no need to look at mappings for tiles.
-                    console.log("tile match:",ch);
                     this.tiles[x][y]=this.resources.get(ch);
                 } else {
-                    console.log("ch=",ch);
                     let s = this.resources.get(mappings[ch]).clone();
-                    console.log("adding in sprite",s);
                     s.setPosition(this.tilesToPixels(x)+this.tile_size-s.getImage().width/2,
                                   this.tilesToPixels(y)+this.tile_size-s.getImage().height);
                     if (ch=='0') { //I don't like hard-coding in the character for the player.
@@ -112,13 +109,35 @@ export class GameMap {
             image(sprite.getImage(),
                 Math.trunc(Math.round(p.x) + offsetX),
                 Math.trunc(Math.round(p.y) + offsetY));
-            // if (sprite instanceof Creature) {
+            // if (sprite instanceof Creature) {  //come back after distinction made between creatures and powerups and background sprites
             //     sprite.wakeUp();
             // }
         });
     }
 
-    getSpriteCollision(s:Sprite) {
+    isCollision(s1:Sprite,s2:Sprite):boolean {
+        if (s1==s2) return false;
+        if (s1 instanceof Player && (s1 as Player).getState()!=SpriteState.NORMAL) return false;
+        if (s2 instanceof Player && (s2 as Player).getState()!=SpriteState.NORMAL) return false;
+        let pos1=s1.getPosition().copy();
+        let pos2=s2.getPosition().copy();
+        pos1.x=Math.round(pos1.x);
+        pos1.y=Math.round(pos1.y);
+        pos2.x=Math.round(pos2.x);
+        pos2.y=Math.round(pos2.y);
+        return (pos1.x < pos2.x + s2.getImage().width &&
+            pos2.x < pos1.x + s1.getImage().width &&
+            pos1.y < pos2.y + s2.getImage().height &&
+            pos2.y < pos1.y + s1.getImage().height);
+    }
+
+    getSpriteCollision(s:Sprite):Sprite {
+        this.sprites.forEach(other => {
+            if (this.isCollision(s,other)) {
+                console.log("colliding",other);
+                return other;
+            }
+        });
         return null;
     }
 
@@ -126,7 +145,8 @@ export class GameMap {
         if (p.getState()!=SpriteState.NORMAL) return;
         let s=this.getSpriteCollision(p);
         if (s) {
-
+            s.setState(SpriteState.DYING);
+            console.log("set to dying:",s);
         }
     }
 
@@ -159,92 +179,38 @@ export class GameMap {
             oldVel.y=oldVel.y+GRAVITY*deltaTime;
             s.setVelocity(oldVel.x,oldVel.y);
         }
-        console.log("ENTERING current position",newPos.x,newPos.y);
-        newPos.x = newPos.x + oldVel.x*deltaTime; //p5.Vector.add(oldPos,p5.Vector.mult(oldVel,deltaTime));
-        //console.log("vel",oldVel);
-        //console.log("delta",deltaTime);
-       //console.log("old",oldPos);
-       console.log("changed x position",newPos.x,newPos.y);
+
+        //update the x part of position first
+        newPos.x = newPos.x + oldVel.x*deltaTime;
         //see if there was a collision with a tile at the new location
         let point = this.getTileCollision(s,newPos);
         if (point) {
-            console.log("collision at tile",point.x,point.y);
-            console.log("which is at",this.tilesToPixels(point.x),this.tilesToPixels(point.y));
             if (oldVel.x > 0) { //moving to the right
                 newPos.x = this.tilesToPixels(point.x) - s.getImage().width;
             } else if (oldVel.x < 0) { //moving to the left
                 newPos.x = this.tilesToPixels(point.x+1);
             }
             s.collideHorizontal();
-            console.log("newPos is now",newPos.x,newPos.y);
-            //throw new Error("collision");
         }
+        if (s instanceof Player) {
+            this.checkPlayerCollision(s as Player, false);
+        }
+
+        //now update the y part of the position
         newPos.y = newPos.y + oldVel.y*deltaTime;
-        console.log("changed y so newPos",newPos.x,newPos.y);
-        //okay, check again to see if the new position (after a possible collision sideways) still collides with something
         point = this.getTileCollision(s,newPos);
         if (point) {
-            console.log("still colliding",point.x,point.y);
             if (oldVel.y > 0 ) {
                 newPos.y = this.tilesToPixels(point.y) - (s.getImage().height);
             } else if (oldVel.y < 0) {
                 newPos.y = this.tilesToPixels(point.y+1);
             }
-            if (newPos.y<500) {
-                console.log("newPos",newPos.x,newPos.y);
-                //throw new Error("stop");
-            }
-            //throw new Error("stop");
             s.collideVertical();
         }
-        console.log("LEAVING setting newPos to",newPos.x,newPos.y);
+        if (s instanceof Player) {
+            this.checkPlayerCollision(s as Player, s.getPosition().y < newPos.y);
+        }
         s.setPosition(newPos.x,newPos.y);
-        
-        // if (deltaTime>120) {
-        //     throw new Error("big delta");
-        // }
-        // if (p5.Vector.sub(oldPos,newPos).mag()>32  ) { //moving by more than 32 pixels
-        //     throw new Error("Too big of a change");
-        // }
-        // if (point) {
-        //     //move sprite to be next to the tile instead of over it
-        //     if (oldVel.x > 0) { //moving to the right
-        //         //console.log("MOVING BACK FROM BUMP");
-        //         newPos.x = this.tilesToPixels(point.x) - s.getImage().width;
-        //     } else if (oldVel.x < 0) { //moving to the left
-        //         //console.log("MOVING AHEAD FROM BUMP");
-        //         newPos.x = this.tilesToPixels(point.x+1);
-        //     }
-        //     s.collideHorizontal();
-        // }
-        // if (s instanceof Player) {
-        //     this.checkPlayerCollision(s as Player, false);
-        // }
-
-        // //update y position
-        // newPos.y += oldVel.y*deltaTime;
-        // //if (s instanceof Player) console.log("after 3: ---newPos",newPos.y);
-        // point = this.getTileCollision(s,newPos);
-        // //if (s instanceof Player) console.log("after 4: point.y:",(point==null?"null":point.y));
-        // if (point) { //collision when changing y part of position
-        //     if (oldVel.y > 0) {
-        //         newPos.y = this.tilesToPixels(point.y) - (s.getImage().height);
-        //     } else if (oldVel.y < 0) {
-        //         newPos.y = this.tilesToPixels(point.y+1);
-        //     }
-        //     s.collideVertical();
-        // } else {
-        //     //if (s instanceof Player) console.log("point was null :",oldVel.y);
-        // }
-        // s.setPosition(newPos.x,newPos.y);
-        // if (s instanceof Player) {
-        //     this.checkPlayerCollision(s as Player,oldPos.y < newPos.y);
-        //     //console.log("Player pos:",newPos.y,"vel:",s.getVelocity().y);
-        // }
-        // if (newPos.x<0 || newPos.x>500 || newPos.y<0 || newPos.y>515) {
-        //     console.log(newPos);
-        //     throw new Error("off screen");
-        // }
     }
 
     update() {
@@ -255,15 +221,15 @@ export class GameMap {
         this.updateSprite(this.player); //moves sprite within the game
         this.player.update(deltaTime); //updates the animation of the sprite
 
-        // this.sprites.forEach((sprite,index,obj) => {
-        //     if (sprite.getState() == SpriteState.DEAD) {
-        //         //remove the sprite
-        //         obj.splice(index,1);
-        //         console.log("REMOVING SPRITE");
-        //     } else {
-        //         this.updateSprite(sprite);
-        //         sprite.update(deltaTime);
-        //     }
-        // });
+        this.sprites.forEach((sprite,index,obj) => {
+            if (sprite.getState() == SpriteState.DEAD) {
+                //remove the sprite
+                obj.splice(index,1);
+                console.log("REMOVING SPRITE");
+            } else {
+                this.updateSprite(sprite);
+                sprite.update(deltaTime);
+            }
+        });
     }
 }

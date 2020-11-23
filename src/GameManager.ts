@@ -105,13 +105,11 @@ export class GameManager {
             vel.x=-this.map.player.getMaxSpeed();
         }
         this.map.player.setVelocity(vel.x,vel.y);
-        if (this.jump.isBeginPress()) {
-            console.log("**************************************jumping");
+        if (this.jump.isPressed()) {
             this.map.player.jump(false);
-            //throw new Error("STOP");
         }
         if (this.stop.isBeginPress()) {
-            throw new Error("STOP");
+            throw new Error("STOP"); //for testing purposes only
         }
     }
 }

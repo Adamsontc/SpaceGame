@@ -26,7 +26,6 @@ export class Player extends Sprite {
     }
 
     collideHorizontal() {
-        console.log("horizontal collision, setting x-velocity to zero");
         this.velocity.x=0;
     }
 
@@ -34,11 +33,17 @@ export class Player extends Sprite {
         if (this.onGround || forceJump) {
             this.onGround=false;
             this.setVelocity(0,-this.JUMP_SPEED);
-            console.log(this.JUMP_SPEED);
-            console.log("jump velocity:",this.velocity);
         }
     }
 
+
+    setPosition(x:number, y:number) {
+        //check if falling
+        if (Math.round(y) > Math.round(this.position.y)) {
+            this.onGround=false;
+        }
+        super.setPosition(x,y);
+    }
 
     addVelocity(x:number,y:number) {
         this.velocity.add(x,y);
@@ -77,6 +82,7 @@ export class Player extends Sprite {
         return p;
     }
 
+    //is this needed if it does the same thing as super?
     update(elapsedTime:number) {
         super.update(elapsedTime); 
     }

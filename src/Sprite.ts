@@ -5,27 +5,10 @@
  * behavior and abilities.
  */
 
-//import { Vector,Image } from 'p5';
-
-//import * as p5 from 'p5';
-
 export enum SpriteState { DEAD, DYING, NORMAL };
 
 export class Sprite {
     
-    collideVertical() {
-        
-        this.velocity.y=0;
-    }
-
-    collideHorizontal() {
-        this.velocity.x=-this.velocity.x;
-    }
-
-    isFlying() {
-        return false;
-    }
-
     protected position : p5.Vector;
     protected velocity : p5.Vector;
     protected animations : AnimPair;
@@ -43,8 +26,24 @@ export class Sprite {
         this.currAnimation=this.animations["default"];
     }
 
+    collideVertical() {
+        this.velocity.y=0;
+    }
+
+    collideHorizontal() {
+        this.velocity.x=-this.velocity.x;
+    }
+
+    isFlying() {
+        return false;
+    }
+
     getState() {
         return this.state;
+    }
+
+    setState(st:SpriteState) {
+        this.state=st;
     }
 
     clone() {
@@ -72,9 +71,6 @@ export class Sprite {
         return this.velocity;
     }
 
-    //No check is done when changing these properties.
-    //Be careful to make sure they are valid.
-
     addVelocity(x:number,y:number) {
         this.velocity.add(x,y);
     }
@@ -90,6 +86,12 @@ export class Sprite {
 
     setPosition(x:number, y:number) {
         this.position.set(x,y);
+    }
+
+    wakeUp() {
+        if (this.getState() == SpriteState.NORMAL && this.velocity.x == 0) {
+            this.setVelocity(0,0);
+        }
     }
 
     addAnimations(anims:{string:p5.Image}, width:number, duration:number, reverse=false) {
