@@ -80,6 +80,11 @@ export class Sprite {
     }
 
     setVelocity(x:number, y:number) {
+        if (x>0) {
+            this.setAnimation("right");
+        } else if (x<0) {
+            this.setAnimation("left");
+        }
         this.velocity.set(x,y);
     }
 
@@ -135,8 +140,6 @@ export class Sprite {
             }
         }
 
-        //update the sprite's location
-        this.position.add(p5.Vector.mult(this.velocity,elapsedTime));
     }
 
     getImage():p5.Image {

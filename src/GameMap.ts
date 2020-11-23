@@ -153,64 +153,98 @@ export class GameMap {
     updateSprite(s:Sprite) {
         //update velocity due to gravity
         let oldVel = s.getVelocity();
-        let oldPos = s.getPosition();
+        let newPos = s.getPosition().copy();
 
         if (!s.isFlying()) {
             oldVel.y=oldVel.y+GRAVITY*deltaTime;
+            s.setVelocity(oldVel.x,oldVel.y);
         }
-
-        let newPos = p5.Vector.add(oldPos,p5.Vector.mult(oldVel,deltaTime));
-        console.log("vel",oldVel);
-        console.log("delta",deltaTime);
-        console.log("old",oldPos);
-        console.log("new",newPos);
+        console.log("ENTERING current position",newPos.x,newPos.y);
+        newPos.x = newPos.x + oldVel.x*deltaTime; //p5.Vector.add(oldPos,p5.Vector.mult(oldVel,deltaTime));
+        //console.log("vel",oldVel);
+        //console.log("delta",deltaTime);
+       //console.log("old",oldPos);
+       console.log("changed x position",newPos.x,newPos.y);
         //see if there was a collision with a tile at the new location
         let point = this.getTileCollision(s,newPos);
-        if (deltaTime>120) {
-            throw new Error("big delta");
-        }
-        if (p5.Vector.sub(oldPos,newPos).mag()>32  ) { //moving by more than 32 pixels
-            throw new Error("Too big of a change");
-        }
         if (point) {
-            //move sprite to be next to the tile instead of over it
+            console.log("collision at tile",point.x,point.y);
+            console.log("which is at",this.tilesToPixels(point.x),this.tilesToPixels(point.y));
             if (oldVel.x > 0) { //moving to the right
-                //console.log("MOVING BACK FROM BUMP");
                 newPos.x = this.tilesToPixels(point.x) - s.getImage().width;
             } else if (oldVel.x < 0) { //moving to the left
-                //console.log("MOVING AHEAD FROM BUMP");
                 newPos.x = this.tilesToPixels(point.x+1);
             }
             s.collideHorizontal();
+            console.log("newPos is now",newPos.x,newPos.y);
+            //throw new Error("collision");
         }
-        if (s instanceof Player) {
-            this.checkPlayerCollision(s as Player, false);
-        }
-
-        //update y position
-        newPos.y += oldVel.y*deltaTime;
-        //if (s instanceof Player) console.log("after 3: ---newPos",newPos.y);
+        newPos.y = newPos.y + oldVel.y*deltaTime;
+        console.log("changed y so newPos",newPos.x,newPos.y);
+        //okay, check again to see if the new position (after a possible collision sideways) still collides with something
         point = this.getTileCollision(s,newPos);
-        //if (s instanceof Player) console.log("after 4: point.y:",(point==null?"null":point.y));
-        if (point) { //collision when changing y part of position
-            if (oldVel.y > 0) {
+        if (point) {
+            console.log("still colliding",point.x,point.y);
+            if (oldVel.y > 0 ) {
                 newPos.y = this.tilesToPixels(point.y) - (s.getImage().height);
             } else if (oldVel.y < 0) {
                 newPos.y = this.tilesToPixels(point.y+1);
             }
+            if (newPos.y<500) {
+                console.log("newPos",newPos.x,newPos.y);
+                //throw new Error("stop");
+            }
+            //throw new Error("stop");
             s.collideVertical();
-        } else {
-            //if (s instanceof Player) console.log("point was null :",oldVel.y);
         }
+        console.log("LEAVING setting newPos to",newPos.x,newPos.y);
         s.setPosition(newPos.x,newPos.y);
-        if (s instanceof Player) {
-            this.checkPlayerCollision(s as Player,oldPos.y < newPos.y);
-            //console.log("Player pos:",newPos.y,"vel:",s.getVelocity().y);
-        }
-        if (newPos.x<0 || newPos.x>500 || newPos.y<0 || newPos.y>515) {
-            console.log(newPos);
-            throw new Error("off screen");
-        }
+        
+        // if (deltaTime>120) {
+        //     throw new Error("big delta");
+        // }
+        // if (p5.Vector.sub(oldPos,newPos).mag()>32  ) { //moving by more than 32 pixels
+        //     throw new Error("Too big of a change");
+        // }
+        // if (point) {
+        //     //move sprite to be next to the tile instead of over it
+        //     if (oldVel.x > 0) { //moving to the right
+        //         //console.log("MOVING BACK FROM BUMP");
+        //         newPos.x = this.tilesToPixels(point.x) - s.getImage().width;
+        //     } else if (oldVel.x < 0) { //moving to the left
+        //         //console.log("MOVING AHEAD FROM BUMP");
+        //         newPos.x = this.tilesToPixels(point.x+1);
+        //     }
+        //     s.collideHorizontal();
+        // }
+        // if (s instanceof Player) {
+        //     this.checkPlayerCollision(s as Player, false);
+        // }
+
+        // //update y position
+        // newPos.y += oldVel.y*deltaTime;
+        // //if (s instanceof Player) console.log("after 3: ---newPos",newPos.y);
+        // point = this.getTileCollision(s,newPos);
+        // //if (s instanceof Player) console.log("after 4: point.y:",(point==null?"null":point.y));
+        // if (point) { //collision when changing y part of position
+        //     if (oldVel.y > 0) {
+        //         newPos.y = this.tilesToPixels(point.y) - (s.getImage().height);
+        //     } else if (oldVel.y < 0) {
+        //         newPos.y = this.tilesToPixels(point.y+1);
+        //     }
+        //     s.collideVertical();
+        // } else {
+        //     //if (s instanceof Player) console.log("point was null :",oldVel.y);
+        // }
+        // s.setPosition(newPos.x,newPos.y);
+        // if (s instanceof Player) {
+        //     this.checkPlayerCollision(s as Player,oldPos.y < newPos.y);
+        //     //console.log("Player pos:",newPos.y,"vel:",s.getVelocity().y);
+        // }
+        // if (newPos.x<0 || newPos.x>500 || newPos.y<0 || newPos.y>515) {
+        //     console.log(newPos);
+        //     throw new Error("off screen");
+        // }
     }
 
     update() {

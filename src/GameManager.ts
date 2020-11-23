@@ -6,7 +6,7 @@ import { ResourceManager } from "./ResourceManager.js";
 import { SoundManager } from "./SoundManager.js";
 import { Sprite } from "./Sprite.js";
 
-export const GRAVITY: number = 0.002;
+export const GRAVITY: number =  0.002;
 const FONT_SIZE: number = 24;
 
 enum STATE {Loading, Menu, Running, Finished}
@@ -96,20 +96,15 @@ export class GameManager {
     }
 
     processActions() {
-        if (this.moveRight.isBeginPress()) {
-            this.map.player.addVelocity(0.1,0);
+        let vel=this.map.player.getVelocity();
+        vel.x=0;
+        if (this.moveRight.isPressed()) {
+            vel.x=this.map.player.getMaxSpeed();
         }
-        if (this.moveRight.isEndPress()) {
-            console.log("end press right");
-            this.map.player.addVelocity(-0.1,0);   
+        if (this.moveLeft.isPressed()) {
+            vel.x=-this.map.player.getMaxSpeed();
         }
-        if (this.moveLeft.isBeginPress()) {
-            this.map.player.addVelocity(-0.1,0);
-        }
-        if (this.moveLeft.isEndPress()) {
-            console.log("end press left");
-            this.map.player.addVelocity(0.1,0);
-        }
+        this.map.player.setVelocity(vel.x,vel.y);
         if (this.jump.isBeginPress()) {
             console.log("**************************************jumping");
             this.map.player.jump(false);

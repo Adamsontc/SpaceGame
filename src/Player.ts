@@ -3,15 +3,19 @@ import { Sprite } from "./Sprite.js";
 
 export class Player extends Sprite {
 
-    MAX_SPEED:Vector;
+    MAX_SPEED:number;
     JUMP_SPEED:number
     onGround:boolean;
 
     constructor() {
         super();
-        this.MAX_SPEED=createVector(1,1);
-        this.JUMP_SPEED=0.4;
+        this.MAX_SPEED=0.5;
+        this.JUMP_SPEED=0.95 ;
         this.onGround=false;
+    }
+
+    getMaxSpeed() {
+        return this.MAX_SPEED;
     }
 
     collideVertical() {
@@ -21,26 +25,32 @@ export class Player extends Sprite {
         this.velocity.y=0;
     }
 
+    collideHorizontal() {
+        console.log("horizontal collision, setting x-velocity to zero");
+        this.velocity.x=0;
+    }
+
     jump(forceJump:boolean) {
         if (this.onGround || forceJump) {
             this.onGround=false;
             this.setVelocity(0,-this.JUMP_SPEED);
-            console.log("velocity:",this.velocity);
+            console.log(this.JUMP_SPEED);
+            console.log("jump velocity:",this.velocity);
         }
     }
 
 
-    addVelocity(x,y) {
+    addVelocity(x:number,y:number) {
         this.velocity.add(x,y);
-        if (this.velocity.x>this.MAX_SPEED.x) {
-            this.velocity.x=this.MAX_SPEED.x;
-        } else if (this.velocity.x<=-this.MAX_SPEED.x) {
-            this.velocity.x=-this.MAX_SPEED.x;
+        if (this.velocity.x>this.MAX_SPEED) {
+            this.velocity.x=this.MAX_SPEED;
+        } else if (this.velocity.x<=-this.MAX_SPEED) {
+            this.velocity.x=-this.MAX_SPEED;
         }
-        if (this.velocity.y>this.MAX_SPEED.y) {
-            this.velocity.y=this.MAX_SPEED.y;
-        } else if (this.velocity.y<-this.MAX_SPEED.y) {
-            this.velocity.y=-this.MAX_SPEED.y;
+        if (this.velocity.y>this.MAX_SPEED) {
+            this.velocity.y=this.MAX_SPEED;
+        } else if (this.velocity.y<-this.MAX_SPEED) {
+            this.velocity.y=-this.MAX_SPEED;
         }
         if (this.velocity.x>0 && this.currAnimName!="right") {
             this.setAnimation("right");
