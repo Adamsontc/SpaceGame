@@ -95,7 +95,9 @@ export class ResourceManager {
                             for (const spriteName in resources) {
                                 if (Object.prototype.hasOwnProperty.call(resources, spriteName)) {
                                     const buildProcess = resources[spriteName];
-                                    this.resources[spriteName]=this.buildSprite(spriteName,buildProcess);
+                                    let spriteType=buildProcess["type"]?buildProcess["type"]:"sprite";
+                                    delete buildProcess["type"];
+                                    this.resources[spriteName]=this.buildSprite(spriteName,buildProcess,spriteType);
                                 }
                             }
                             break;
@@ -113,10 +115,29 @@ export class ResourceManager {
         this.everythingLoaded=true;
     }
     
-    buildSprite(spriteName:string, anims: any): Sprite {
+    buildSprite(spriteName:string, anims: any, spriteType: string): Sprite {
         console.log("spriteName",spriteName);
         let first=true;
         let s;
+        switch(spriteType) {
+            case "sprite": {
+                s=new Sprite();
+                break;
+            }
+            case "player": {
+                s=new Player();
+                break;
+            }
+            case "creature": {
+                break;
+            }
+            case "powerup": {
+
+            }
+            default: {
+
+            }
+        }
         if (spriteName==="player") {
             s=new Player();
         } else {
