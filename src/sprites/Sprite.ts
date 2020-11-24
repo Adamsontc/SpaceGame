@@ -5,8 +5,6 @@
  * behavior and abilities.
  */
 
-export enum SpriteState { DEAD, DYING, NORMAL };
-
 export class Sprite {
     
     protected position : p5.Vector;
@@ -14,10 +12,8 @@ export class Sprite {
     protected animations : AnimPair;
     protected currAnimName: string;
     protected currAnimation: Animation;
-    protected state: SpriteState;
 
     constructor() {
-        this.state=SpriteState.NORMAL;
         this.animations={};
         this.addAnimation("default");
         this.position=createVector(0,0);
@@ -38,16 +34,8 @@ export class Sprite {
         return false;
     }
 
-    getState() {
-        return this.state;
-    }
-
-    setState(st:SpriteState) {
-        this.state=st;
-    }
-
     clone() {
-        let s = new Sprite();
+        let s = new this.constructor();
         s.position = this.position.copy();
         s.velocity = this.velocity.copy();
         s.animations={}; //throw away the animations from the new constructor call
@@ -86,12 +74,6 @@ export class Sprite {
 
     setPosition(x:number, y:number) {
         this.position.set(x,y);
-    }
-
-    wakeUp() {
-        if (this.getState() == SpriteState.NORMAL && this.velocity.x == 0) {
-            this.setVelocity(0,0);
-        }
     }
 
     addAnimations(anims:{string:p5.Image}, width:number, duration:number, reverse=false) {

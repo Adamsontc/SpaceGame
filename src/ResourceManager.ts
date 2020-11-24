@@ -1,6 +1,8 @@
 import { SoundFile } from "p5";
-import { Player } from "./Player.js";
-import { Sprite } from "./Sprite.js";
+import { Player } from "./sprites/Player.js";
+import { Fly, Grub } from "./sprites/Creature.js";
+import { Heart, Music, PowerUp, Star } from "./sprites/PowerUp.js";
+import { Sprite } from "./sprites/Sprite.js";
 
 export class ResourceManager {
 
@@ -95,7 +97,9 @@ export class ResourceManager {
                             for (const spriteName in resources) {
                                 if (Object.prototype.hasOwnProperty.call(resources, spriteName)) {
                                     const buildProcess = resources[spriteName];
-                                    this.resources[spriteName]=this.buildSprite(spriteName,buildProcess);
+                                    let spriteType=buildProcess['type'];
+                                    delete buildProcess['type'];
+                                    this.resources[spriteName]=this.buildSprite(spriteName,buildProcess,spriteType);
                                 }
                             }
                             break;
@@ -113,14 +117,47 @@ export class ResourceManager {
         this.everythingLoaded=true;
     }
     
-    buildSprite(spriteName:string, anims: any): Sprite {
+    buildSprite(spriteName:string, anims: any, spriteType:string): Sprite {
         console.log("spriteName",spriteName);
         let first=true;
         let s;
-        if (spriteName==="player") {
-            s=new Player();
-        } else {
-            s=new Sprite();
+        switch (spriteType) {
+            case 'Player': {
+                s = new Player();
+                break;
+            }
+            case 'Sprite': {
+                s = new Sprite();
+                break;
+            }
+            case 'Grub': {
+                s = new Grub();
+                break;
+            }
+            case 'Fly': {
+                s = new Fly();
+                break;
+            }
+            case 'Heart': {
+                s = new Heart();
+                break;
+            }
+            case 'PowerUp': {
+                s = new PowerUp();
+                break;
+            }
+            case 'Star': {
+                s = new Star();
+                break;
+            }
+            case 'Music': {
+                s = new Music();
+                break; 
+            }
+            default: {
+                console.log("No Sprite Type:",spriteType);
+                throw new Error();
+            }
         }
         for (const animName in anims) {
             console.log("animName",animName);

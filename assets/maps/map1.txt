@@ -9,7 +9,7 @@
 #   1       Bad Guy 1 (grub)
 #   2       Bad Guy 2 (fly)
                                                                  
-                                                           o     o
+      1                                                    o     o
                                                      o      o    o
                        o o o        o o o       o     o      o 
                       IIIIIII      IIIIIII       o     o         2

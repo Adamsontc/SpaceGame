@@ -1,6 +1,7 @@
 {
     "sprites": {
         "player": {
+            "type": "Player",
             "left": [
                 {"img":"player1", "duration":250},
                 {"img":"player2", "duration":150},
@@ -19,6 +20,7 @@
             ]
         },
         "music": {
+            "type": "Music",
             "default": [
                 {"img":"music1", "duration":150},
                 {"img":"music2", "duration":150},
@@ -26,13 +28,20 @@
             ]
         },
         "fly": {
-            "default": [
+            "type": "Fly",
+            "left": [
                 {"img":"fly1", "duration":150},
                 {"img":"fly2", "duration":150},
                 {"img":"fly3", "duration":150}
+            ],
+            "right": [
+                {"img":"fly1", "operators":["mirror"], "duration":150},
+                {"img":"fly2", "operators":["mirror"], "duration":150},
+                {"img":"fly3", "operators":["mirror"], "duration":150}
             ]
         },
         "powerup": {
+            "type": "PowerUp",
             "default": [
                 {"img":"powerup1", "duration":150},
                 {"img":"powerup2", "duration":150},
@@ -41,6 +50,7 @@
             ]
         },
         "heart": {
+            "type": "Heart",
             "default": [
                 {"img":"heart1", "duration":150},
                 {"img":"heart2", "duration":150},
@@ -48,12 +58,18 @@
             ]
         },
         "grub": {
-            "default": [
+            "type": "Grub",
+            "left": [
                 {"img":"grub1", "duration":150},
                 {"img":"grub2", "duration":150}
+            ],
+            "right": [
+                {"img":"grub1", "operators":["mirror"], "duration":150},
+                {"img":"grub2" , "operators":["mirror"], "duration":150}
             ]
         },
         "star": {
+            "type": "Star",
             "default": [
                 {"img":"star1", "duration":150},
                 {"img":"star2", "duration":150},

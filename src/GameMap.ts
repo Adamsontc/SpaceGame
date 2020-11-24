@@ -1,9 +1,10 @@
 import { NumberDict } from "p5";
-import { Player } from "./Player.js";
+import { Player } from "./sprites/Player.js";
 import { ResourceManager } from "./ResourceManager.js";
-import { Sprite, SpriteState } from "./Sprite.js";
+import { Sprite } from "./sprites/Sprite.js";
 import { GRAVITY } from './GameManager.js';
 import { hasUncaughtExceptionCaptureCallback } from "process";
+import { Creature, CreatureState, Grub } from "./sprites/Creature.js";
 
 export class GameMap {
 
@@ -109,44 +110,56 @@ export class GameMap {
             image(sprite.getImage(),
                 Math.trunc(Math.round(p.x) + offsetX),
                 Math.trunc(Math.round(p.y) + offsetY));
-            // if (sprite instanceof Creature) {  //come back after distinction made between creatures and powerups and background sprites
-            //     sprite.wakeUp();
-            // }
+            if (sprite instanceof Creature) {
+                sprite.wakeUp();
+            }
         });
     }
 
     isCollision(s1:Sprite,s2:Sprite):boolean {
         if (s1==s2) return false;
-        if (s1 instanceof Player && (s1 as Player).getState()!=SpriteState.NORMAL) return false;
-        if (s2 instanceof Player && (s2 as Player).getState()!=SpriteState.NORMAL) return false;
+        if (s1 instanceof Creature && (s1 as Creature).getState()!=CreatureState.NORMAL) return false;
+        if (s2 instanceof Creature && (s2 as Creature).getState()!=CreatureState.NORMAL) return false;
         let pos1=s1.getPosition().copy();
         let pos2=s2.getPosition().copy();
         pos1.x=Math.round(pos1.x);
         pos1.y=Math.round(pos1.y);
         pos2.x=Math.round(pos2.x);
         pos2.y=Math.round(pos2.y);
-        return (pos1.x < pos2.x + s2.getImage().width &&
-            pos2.x < pos1.x + s1.getImage().width &&
-            pos1.y < pos2.y + s2.getImage().height &&
-            pos2.y < pos1.y + s1.getImage().height);
+        let i1=s1.getImage();
+        let i2=s2.getImage();
+        let val = (pos1.x < pos2.x + i2.width &&
+            pos2.x < pos1.x + i1.width &&
+            pos1.y < pos2.y + i2.height &&
+            pos2.y < pos1.y + i1.height);
+        return val;
     }
 
     getSpriteCollision(s:Sprite):Sprite {
-        this.sprites.forEach(other => {
+        for (const other of this.sprites) {
             if (this.isCollision(s,other)) {
-                console.log("colliding",other);
                 return other;
             }
-        });
+        }
         return null;
     }
 
     checkPlayerCollision(p: Player, canKill: boolean) {
-        if (p.getState()!=SpriteState.NORMAL) return;
+        if (p.getState()!=CreatureState.NORMAL) return;
         let s=this.getSpriteCollision(p);
         if (s) {
-            s.setState(SpriteState.DYING);
-            console.log("set to dying:",s);
+            if (s instanceof Creature) {
+                if (canKill) {
+                    console.log("setting creature state to dying");
+                    s.setState(CreatureState.DYING);
+                    let pos=s.getPosition();
+                    p.setPosition(p.getPosition().x,pos.y-p.getImage().height);
+                    p.jump(true);
+                    console.log("set to dying:",s);
+                } else {
+                    p.setState(CreatureState.DYING);
+                }
+            }
         }
     }
 
@@ -214,7 +227,7 @@ export class GameMap {
     }
 
     update() {
-        if (this.player.getState() == SpriteState.DEAD) {
+        if (this.player.getState() == CreatureState.DEAD) {
             this.initialize(); //start the level over
             return;
         }
@@ -222,13 +235,15 @@ export class GameMap {
         this.player.update(deltaTime); //updates the animation of the sprite
 
         this.sprites.forEach((sprite,index,obj) => {
-            if (sprite.getState() == SpriteState.DEAD) {
-                //remove the sprite
-                obj.splice(index,1);
-                console.log("REMOVING SPRITE");
-            } else {
-                this.updateSprite(sprite);
-                sprite.update(deltaTime);
+            if (sprite instanceof Creature ) {
+                if (sprite.getState() == CreatureState.DEAD) {
+                    //remove the sprite
+                    obj.splice(index,1);
+                    console.log("REMOVING SPRITE");
+                } else {
+                    this.updateSprite(sprite);
+                    sprite.update(deltaTime);
+                }
             }
         });
     }

@@ -4,7 +4,7 @@ import { GameMap } from "./GameMap.js";
 import { InputManager } from "./InputManager.js";
 import { ResourceManager } from "./ResourceManager.js";
 import { SoundManager } from "./SoundManager.js";
-import { Sprite } from "./Sprite.js";
+import { Sprite } from "./sprites/Sprite.js";
 
 export const GRAVITY: number =  0.002;
 const FONT_SIZE: number = 24;

@@ -1,7 +1,8 @@
 import { Vector } from "p5";
+import { Creature } from "./Creature.js";
 import { Sprite } from "./Sprite.js";
 
-export class Player extends Sprite {
+export class Player extends Creature {
 
     MAX_SPEED:number;
     JUMP_SPEED:number
@@ -80,10 +81,5 @@ export class Player extends Sprite {
         p.currAnimation = p.animations[p.currAnimName];
         p.MAX_SPEED=this.MAX_SPEED;
         return p;
-    }
-
-    //is this needed if it does the same thing as super?
-    update(elapsedTime:number) {
-        super.update(elapsedTime); 
     }
 }

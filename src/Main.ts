@@ -12,7 +12,7 @@
  * the global namespace.  See index.html to see how this is done.
  */
 
-import { Sprite } from "./Sprite.js";
+import { Sprite } from "./sprites/Sprite.js";
 
 import { GameManager } from "./GameManager.js";  //handles loading of resources, keeping track and updating the state of everything in the game
 import { Renderer } from "p5";
@@ -41,8 +41,10 @@ export function setup() {
 }
 export function draw() {
 	background(128); //just for testing purposes.  this probably can be removed when done.
+	if (focused) {
+		game.update();
+	}
 	game.draw();
-	game.update();
 }
 
 
