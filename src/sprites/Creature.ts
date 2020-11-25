@@ -65,7 +65,6 @@ export class Creature extends Sprite {
         this.stateTime+=deltaTime;
         if (this.state == CreatureState.DYING && this.stateTime > this.DIE_TIME) {
             this.setState(CreatureState.DEAD);
-            console.log(this.DIE_TIME);
         }
     }
 

@@ -35,7 +35,7 @@ export class Sprite {
     }
 
     clone() {
-        let s = new this.constructor();
+        let s = new (this.constructor as any)();
         s.position = this.position.copy();
         s.velocity = this.velocity.copy();
         s.animations={}; //throw away the animations from the new constructor call

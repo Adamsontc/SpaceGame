@@ -22,6 +22,9 @@ export class GameMap {
         this.level=level;
         this.resources=resources;
         this.initialize();
+        console.log("map for level",this.level,"is ready!")
+        console.log("tiles",this.tiles);
+        console.log("sprites",this.sprites);
     }
 
     initialize() {
@@ -63,9 +66,6 @@ export class GameMap {
                 }
             }
         }
-        console.log("map for level",this.level,"is ready!")
-        console.log("tiles",this.tiles);
-        console.log("sprites",this.sprites);
     }
 
     tilesToPixels(x:number):number {
@@ -110,8 +110,9 @@ export class GameMap {
             image(sprite.getImage(),
                 Math.trunc(Math.round(p.x) + offsetX),
                 Math.trunc(Math.round(p.y) + offsetY));
-            if (sprite instanceof Creature) {
+            if (sprite instanceof Creature && p.x+offsetX> 0 && p.x+offsetX<width) {
                 sprite.wakeUp();
+                console.log("waking up sprite",sprite);
             }
         });
     }
@@ -150,12 +151,10 @@ export class GameMap {
         if (s) {
             if (s instanceof Creature) {
                 if (canKill) {
-                    console.log("setting creature state to dying");
                     s.setState(CreatureState.DYING);
                     let pos=s.getPosition();
                     p.setPosition(p.getPosition().x,pos.y-p.getImage().height);
                     p.jump(true);
-                    console.log("set to dying:",s);
                 } else {
                     p.setState(CreatureState.DYING);
                 }
@@ -205,11 +204,13 @@ export class GameMap {
             }
             s.collideHorizontal();
         }
+        s.setPosition(newPos.x,newPos.y);
         if (s instanceof Player) {
             this.checkPlayerCollision(s as Player, false);
         }
 
         //now update the y part of the position
+        let oldY = newPos.y;
         newPos.y = newPos.y + oldVel.y*deltaTime;
         point = this.getTileCollision(s,newPos);
         if (point) {
@@ -220,11 +221,11 @@ export class GameMap {
             }
             s.collideVertical();
         }
-        if (s instanceof Player) {
-            this.checkPlayerCollision(s as Player, s.getPosition().y < newPos.y);
-        }
         s.setPosition(newPos.x,newPos.y);
-    }
+        if (s instanceof Player) {
+            this.checkPlayerCollision(s as Player, oldY < newPos.y);
+        }
+            }
 
     update() {
         if (this.player.getState() == CreatureState.DEAD) {
@@ -239,7 +240,6 @@ export class GameMap {
                 if (sprite.getState() == CreatureState.DEAD) {
                     //remove the sprite
                     obj.splice(index,1);
-                    console.log("REMOVING SPRITE");
                 } else {
                     this.updateSprite(sprite);
                     sprite.update(deltaTime);
