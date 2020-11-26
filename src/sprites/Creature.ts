@@ -79,7 +79,7 @@ export class Grub extends Creature {
 export class Fly extends Creature {
 
     isFlying() {
-        return true;
+        return this.state==CreatureState.NORMAL;
     }
 
     getMaxSpeed() {

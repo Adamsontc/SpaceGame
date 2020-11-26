@@ -5,6 +5,7 @@ import { Sprite } from "./sprites/Sprite.js";
 import { GRAVITY } from './GameManager.js';
 import { hasUncaughtExceptionCaptureCallback } from "process";
 import { Creature, CreatureState, Grub } from "./sprites/Creature.js";
+import { Heart, Music, PowerUp, Star } from "./sprites/PowerUp.js";
 
 export class GameMap {
 
@@ -112,7 +113,6 @@ export class GameMap {
                 Math.trunc(Math.round(p.y) + offsetY));
             if (sprite instanceof Creature && p.x+offsetX> 0 && p.x+offsetX<width) {
                 sprite.wakeUp();
-                console.log("waking up sprite",sprite);
             }
         });
     }
@@ -158,7 +158,26 @@ export class GameMap {
                 } else {
                     p.setState(CreatureState.DYING);
                 }
+            } else if (s instanceof PowerUp) {
+                this.acquirePowerUp(s);
             }
+        }
+    }
+
+    removeSprite(s:Sprite) {
+        let i=this.sprites.indexOf(s);
+        if (i>-1) this.sprites.splice(i,1);
+    }
+
+    acquirePowerUp(p:PowerUp) {
+        this.removeSprite(p);
+        if (p instanceof Star) {
+
+        } else if (p instanceof Music) {
+
+        } else if (p instanceof Heart) {
+            this.level+=1;
+            this.initialize();
         }
     }
 
@@ -225,7 +244,7 @@ export class GameMap {
         if (s instanceof Player) {
             this.checkPlayerCollision(s as Player, oldY < newPos.y);
         }
-            }
+    }
 
     update() {
         if (this.player.getState() == CreatureState.DEAD) {
@@ -244,6 +263,8 @@ export class GameMap {
                     this.updateSprite(sprite);
                     sprite.update(deltaTime);
                 }
+            } else if (sprite instanceof PowerUp) {
+                sprite.update(deltaTime);
             }
         });
     }
