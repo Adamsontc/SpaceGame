@@ -239,7 +239,12 @@ export class ResourceManager {
                     break;
                 }
                 case "sound": {
-                    
+                    loadSound(rsc, j => {
+                        resolve(j);
+                    }, () => {
+                        reject("failed to load "+rsc);
+                    });
+                    break;
                 }
                 case "get": {
                     httpGet(rsc, j => {
@@ -270,12 +275,13 @@ export class ResourceManager {
         return this.loads[name];
     }
 
+    //creates an upside-down image
     flip(img:p5.Image):p5.Image {
-        //TODO -- actually flip the image
+
         return img;
     }
 
-    //creates a flipped image from the original
+    //creates a reflected image from the original
     mirror(img:p5.Image):p5.Image {
         img.loadPixels();
         let img2 = createImage(img.width,img.height);

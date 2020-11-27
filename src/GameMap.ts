@@ -1,9 +1,7 @@
-import { NumberDict } from "p5";
 import { Player } from "./sprites/Player.js";
 import { ResourceManager } from "./ResourceManager.js";
 import { Sprite } from "./sprites/Sprite.js";
 import { GRAVITY } from './GameManager.js';
-import { hasUncaughtExceptionCaptureCallback } from "process";
 import { Creature, CreatureState, Grub } from "./sprites/Creature.js";
 import { Heart, Music, PowerUp, Star } from "./sprites/PowerUp.js";
 
@@ -18,6 +16,9 @@ export class GameMap {
     height: number;
     level: number;
     resources: ResourceManager;
+    prize: p5.SoundFile;
+    music: p5.SoundFile;
+    boop: p5.SoundFile;
 
     constructor(level:number, resources:ResourceManager) {
         this.level=level;
@@ -29,6 +30,9 @@ export class GameMap {
     }
 
     initialize() {
+        this.prize=this.resources.getLoad("prize");
+        this.music=this.resources.getLoad("music");
+        this.boop=this.resources.getLoad("boop2");
         this.sprites=[];
         this.background=this.resources.get("background");
         this.tile_size=this.resources.get("TILE_SIZE");
@@ -67,6 +71,9 @@ export class GameMap {
                 }
             }
         }
+        this.music.setLoop(true);
+        this.music.playMode("restart");
+        this.music.play();
     }
 
     tilesToPixels(x:number):number {
@@ -152,6 +159,7 @@ export class GameMap {
             if (s instanceof Creature) {
                 if (canKill) {
                     s.setState(CreatureState.DYING);
+                    this.boop.play();
                     let pos=s.getPosition();
                     p.setPosition(p.getPosition().x,pos.y-p.getImage().height);
                     p.jump(true);
@@ -172,7 +180,7 @@ export class GameMap {
     acquirePowerUp(p:PowerUp) {
         this.removeSprite(p);
         if (p instanceof Star) {
-
+            this.prize.play();
         } else if (p instanceof Music) {
 
         } else if (p instanceof Heart) {
