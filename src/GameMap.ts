@@ -12,7 +12,7 @@ export class GameMap {
     sprites: Sprite[];
     player: Player;
     background: p5.Image;
-    width: number;
+    width: number; //height and width in tiles
     height: number;
     level: number;
     resources: ResourceManager;
@@ -85,20 +85,22 @@ export class GameMap {
     }
 
     draw() {
+        let myW=800;
+        let myH=600;
         let mapWidth=this.tilesToPixels(this.width);
         let position=this.player.getPosition();
-        let offsetX = width / 2 - Math.round(position.x) - this.tile_size;
+        let offsetX = myW / 2 - Math.round(position.x) - this.tile_size;
         offsetX = Math.min(offsetX,0);
-        offsetX = Math.trunc(Math.max(offsetX, width - mapWidth));
+        offsetX = Math.trunc(Math.max(offsetX, myW - mapWidth));
 
-        let offsetY = Math.trunc(height - this.tilesToPixels(this.height));
+        let offsetY = Math.trunc(myH - this.tilesToPixels(this.height));
 
-        let x = Math.trunc(offsetX * (width - this.background.width)/(width-mapWidth));
-        let y = Math.trunc(height - this.background.height);
-        image(this.background,x,y);
+        let x = Math.trunc(offsetX * (myW - this.background.width)/(myW-mapWidth));
+        let y = Math.trunc(myH - this.background.height);
+        image(this.background,0,0,myW,myH,0-x,0-y,800,600);
 
         let firstTileX = Math.trunc(this.pixelsToTiles(-offsetX));
-        let lastTileX = Math.trunc(firstTileX + this.pixelsToTiles(width) + 1);
+        let lastTileX = Math.trunc(firstTileX + this.pixelsToTiles(myW) + 1);
         for (let y = 0; y < this.height; y++) {
             for(let x=firstTileX; x <= lastTileX; x++) {
                 if (this.tiles[x] && this.tiles[x][y]) {
@@ -118,7 +120,7 @@ export class GameMap {
             image(sprite.getImage(),
                 Math.trunc(Math.round(p.x) + offsetX),
                 Math.trunc(Math.round(p.y) + offsetY));
-            if (sprite instanceof Creature && p.x+offsetX> 0 && p.x+offsetX<width) {
+            if (sprite instanceof Creature && p.x+offsetX> 0 && p.x+offsetX<myW) {
                 sprite.wakeUp();
             }
         });

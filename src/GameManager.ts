@@ -1,10 +1,9 @@
-import { timeStamp } from "console";
+import { Settings } from "./Settings.js";
 import { GameAction } from "./GameAction.js";
 import { GameMap } from "./GameMap.js";
 import { InputManager } from "./InputManager.js";
 import { ResourceManager } from "./ResourceManager.js";
 import { SoundManager } from "./SoundManager.js";
-import { Sprite } from "./sprites/Sprite.js";
 
 export const GRAVITY: number =  0.002;
 const FONT_SIZE: number = 24;
@@ -16,6 +15,7 @@ export class GameManager {
     resources: ResourceManager;  //the resovoir of all loaded resources
     map: GameMap; //the current state of the game
     inputManager: InputManager; //mappings between user events (keyboard, mouse, etc.) and game actions (run-left, jump, etc.)
+    settings: Settings;
     soundManager: SoundManager; //a player for background music and event sounds
     oldState: STATE;
     gameState: STATE; //the different possible states the game could be in (loading, menu, running, finished, etc.)
@@ -28,9 +28,10 @@ export class GameManager {
     constructor() {
         this.level=0;
         this.oldState=STATE.Loading;
-        this.gameState=STATE.Menu;
+        this.gameState=STATE.Loading;
         this.resources=new ResourceManager("assets/assets.json");
         this.inputManager = new InputManager();
+        this.settings = new Settings();
         this.soundManager = new SoundManager();
         this.moveRight=new GameAction();
         this.moveLeft=new GameAction();
@@ -45,6 +46,8 @@ export class GameManager {
                 break;
             }
             case STATE.Menu: {
+                this.map.draw();
+                this.settings.draw();
                 break;
             }
             case STATE.Loading: {
@@ -81,8 +84,9 @@ export class GameManager {
                     this.inputManager.setGameAction(this.moveRight,RIGHT_ARROW);
                     this.inputManager.setGameAction(this.moveLeft,LEFT_ARROW);
                     this.inputManager.setGameAction(this.jump,32);
-                    this.inputManager.setGameAction(this.stop,UP_ARROW); 
-                    this.gameState=STATE.Running;
+                    this.inputManager.setGameAction(this.stop,UP_ARROW);
+                    this.oldState=STATE.Running;
+                    this.gameState=STATE.Menu;
                 }
                 break;
             }
@@ -115,7 +119,7 @@ export class GameManager {
         }
     }
 
-    toggleState() {
+    toggleMenu() {
         if (this.gameState==STATE.Menu) {
             this.gameState=this.oldState;
         } else {

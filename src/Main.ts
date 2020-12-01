@@ -40,11 +40,16 @@ export function setup() {
 	console.log("**** Done Setup ****");
 }
 export function draw() {
-	background(128); //just for testing purposes.  this probably can be removed when done.
+	background(255); //just for testing purposes.  this probably can be removed when done.
+	let scaleFactor=min(width/800,height/600)
+	scale(scaleFactor,scaleFactor);
 	if (focused) {
 		game.update();
 	}
 	game.draw();
+	fill(255);
+	stroke(255);
+	rect(800,0,width*10,height*10); //a hack to make sure even with scaling only the correct portion of the game will be shown
 }
 
 
@@ -57,7 +62,7 @@ export function windowResized() {
 
 export function keyPressed() {
 	if (keyCode==ESCAPE) {
-		game.toggleState();
+		game.toggleMenu();
 	}
 }
 
