@@ -55,4 +55,10 @@ export function windowResized() {
 	//canvas.elt.height=600;
 }
 
+export function keyPressed() {
+	if (keyCode==ESCAPE) {
+		game.toggleState();
+	}
+}
+
 console.log("**** Done Loading Script ****");

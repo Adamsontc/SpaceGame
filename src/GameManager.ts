@@ -17,6 +17,7 @@ export class GameManager {
     map: GameMap; //the current state of the game
     inputManager: InputManager; //mappings between user events (keyboard, mouse, etc.) and game actions (run-left, jump, etc.)
     soundManager: SoundManager; //a player for background music and event sounds
+    oldState: STATE;
     gameState: STATE; //the different possible states the game could be in (loading, menu, running, finished, etc.)
     level: number;
     moveRight: GameAction;
@@ -26,7 +27,8 @@ export class GameManager {
 
     constructor() {
         this.level=0;
-        this.gameState=STATE.Loading;
+        this.oldState=STATE.Loading;
+        this.gameState=STATE.Menu;
         this.resources=new ResourceManager("assets/assets.json");
         this.inputManager = new InputManager();
         this.soundManager = new SoundManager();
@@ -76,11 +78,11 @@ export class GameManager {
                     this.map=new GameMap(this.level,this.resources);
                     //this.map.player.setVelocity(1,1);
                     console.log("Everything is loaded!");
-                    this.gameState=STATE.Running;
                     this.inputManager.setGameAction(this.moveRight,RIGHT_ARROW);
                     this.inputManager.setGameAction(this.moveLeft,LEFT_ARROW);
                     this.inputManager.setGameAction(this.jump,32);
                     this.inputManager.setGameAction(this.stop,UP_ARROW); 
+                    this.gameState=STATE.Running;
                 }
                 break;
             }
@@ -110,6 +112,15 @@ export class GameManager {
         }
         if (this.stop.isBeginPress()) {
             throw new Error("STOP"); //for testing purposes only
+        }
+    }
+
+    toggleState() {
+        if (this.gameState==STATE.Menu) {
+            this.gameState=this.oldState;
+        } else {
+            this.oldState=this.gameState;
+            this.gameState=STATE.Menu;
         }
     }
 }
