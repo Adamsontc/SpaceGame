@@ -98,7 +98,7 @@ export class Sprite {
     setAnimation(name:string) {
         this.currAnimName=name;
         this.currAnimation=this.animations[name];
-        this.start();
+        //this.start();
     }
 
     addFrame(name:string, img:p5.Image, duration:number) {

@@ -15,8 +15,8 @@ export class Settings {
     }
 
     draw() {
-        fill(255,0,0,128);
+        fill(0,0,0,224);
         stroke("green");
-        rect(10,10,800-20,600-20);
+        rect(20,20,800-40,600-40);
     }
 }

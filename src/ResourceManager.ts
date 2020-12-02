@@ -277,8 +277,23 @@ export class ResourceManager {
 
     //creates an upside-down image
     flip(img:p5.Image):p5.Image {
-
-        return img;
+        img.loadPixels();
+        let img2=createImage(img.width,img.height);
+        img2.loadPixels();
+        let newRow=img2.height;
+        for(let row=0;row<img.height;row++) {
+            for(let col=0;col<img.width;col++) {
+                let startIndex=(row*img.width+col)*4;
+                let newStartIndex=(newRow*img2.width+col)*4;
+                img2.pixels[newStartIndex]=img.pixels[startIndex];
+                img2.pixels[newStartIndex+1]=img.pixels[startIndex+1];
+                img2.pixels[newStartIndex+2]=img.pixels[startIndex+2];
+                img2.pixels[newStartIndex+3]=img.pixels[startIndex+3];
+            }
+            newRow--;
+        }
+        img2.updatePixels();
+        return img2;
     }
 
     //creates a reflected image from the original

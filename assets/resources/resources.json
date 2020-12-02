@@ -17,6 +17,22 @@
 		        {"img":"player2", "operators":["mirror"], "duration":150},
 		        {"img":"player3", "operators":["mirror"], "duration":200},
 		        {"img":"player2", "operators":["mirror"], "duration":150}
+            ],
+            "deadLeft": [
+                {"img":"player1", "operations":["flip"], "duration":250},
+                {"img":"player2", "operations":["flip"], "duration":150},
+                {"img":"player1", "operations":["flip"], "duration":150},
+                {"img":"player2", "operations":["flip"], "duration":150},
+                {"img":"player3", "operations":["flip"], "duration":200},
+                {"img":"player2", "operations":["flip"], "duration":150}
+            ],
+            "deadRight": [
+		        {"img":"player1", "operators":["mirror","flip"], "duration":250},
+		        {"img":"player2", "operators":["mirror","flip"], "duration":150},
+		        {"img":"player1", "operators":["mirror","flip"], "duration":150},
+		        {"img":"player2", "operators":["mirror","flip"], "duration":150},
+		        {"img":"player3", "operators":["mirror","flip"], "duration":200},
+		        {"img":"player2", "operators":["mirror","flip"], "duration":150}
             ]
         },
         "music": {
