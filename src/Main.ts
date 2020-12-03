@@ -61,8 +61,11 @@ export function windowResized() {
 }
 
 export function keyPressed() {
-	if (keyCode==ESCAPE) {
+	if (key=='m') {
 		game.toggleMenu();
+	}
+	if (keyCode==ESCAPE) {
+		game.toggleFullScreen();
 	}
 }
 

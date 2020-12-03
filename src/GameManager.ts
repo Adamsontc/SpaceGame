@@ -47,7 +47,8 @@ export class GameManager {
             }
             case STATE.Menu: {
                 this.map.draw();
-                this.settings.draw();
+                //this.settings.draw();
+                this.settings.showMenu();
                 break;
             }
             case STATE.Loading: {
@@ -119,12 +120,22 @@ export class GameManager {
         }
     }
 
+    toggleFullScreen() {
+        this.settings.toggleFullScreen();
+    }
+
     toggleMenu() {
         if (this.gameState==STATE.Menu) {
             this.gameState=this.oldState;
+            if (this.gameState!=STATE.Menu) {
+                this.settings.hideMenu();
+            } else {
+                this.settings.showMenu();
+            }
         } else {
             this.oldState=this.gameState;
             this.gameState=STATE.Menu;
+            this.settings.showMenu();
         }
     }
 }
