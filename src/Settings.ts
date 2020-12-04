@@ -2,25 +2,30 @@ import { SSL_OP_MICROSOFT_SESS_ID_BUG } from "constants";
 
 export class Settings {
 
-    playSounds: boolean;
-    playEvents: boolean;
+    public playMusic: boolean;
+    public playEvents: boolean;
+
+    music: p5.SoundFile;
+
 
     menu:  p5.Element;
     full: p5.Element;
-
+    
     constructor() {
-        this.playSounds=true;
+        this.playMusic=false;
         this.playEvents=true;
         this.menu=createDiv();
         this.menu.style("background-color","rgba(0,0,0,0.75)");
         this.menu.position(30,30);
-        let music=createCheckbox("Play Music",true);
+        let music=createCheckbox("Play Music",this.playMusic);
+        music.changed(this.togglePlayMusic.bind(this));
         this.menu.child(music);
         let events=createCheckbox("Play Event Sounds",true);
+        events.changed(this.toogleEventSounds.bind(this));
         this.menu.child(events);
         this.full = createCheckbox("Full Screen",false);
         console.log("FULL======",this.full);
-        this.full.changed(this.toggleFullScreen);
+        this.full.changed(this.toggleFullScreen.bind(this));
         this.menu.child(this.full);
         this.menu.hide();
         
@@ -37,12 +42,26 @@ export class Settings {
     }
 
     toggleFullScreen() {
-        console.log("in 1");
         fullscreen(!fullscreen());
-        console.log("in 2");
-        //this.full.value(fullscreen());
-        console.log("in 3");
-        console.log("fullscreen=",fullscreen());
-        console.log("FULL======",this.full);
+    }
+
+    togglePlayMusic() {
+        this.playMusic=!this.playMusic;
+        if (this.playMusic) {
+            this.music.setLoop(true);
+            this.music.playMode("restart");
+            this.music.play();
+        } else {
+            this.music.stop();
+        }
+    }
+
+    setMusic(m:p5.SoundFile) {
+        this.music=m;
+        console.log(this.music);
+    }
+
+    toogleEventSounds() {
+        this.playEvents=!this.playEvents;
     }
 }

@@ -4,6 +4,7 @@ import { Sprite } from "./sprites/Sprite.js";
 import { GRAVITY } from './GameManager.js';
 import { Creature, CreatureState, Grub } from "./sprites/Creature.js";
 import { Heart, Music, PowerUp, Star } from "./sprites/PowerUp.js";
+import { Settings } from "./Settings.js";
 
 export class GameMap {
 
@@ -16,11 +17,13 @@ export class GameMap {
     height: number;
     level: number;
     resources: ResourceManager;
+    settings: Settings;
     prize: p5.SoundFile;
     music: p5.SoundFile;
     boop: p5.SoundFile;
 
-    constructor(level:number, resources:ResourceManager) {
+    constructor(level:number, resources:ResourceManager, settings:Settings) {
+        this.settings=settings;
         this.level=level;
         this.resources=resources;
         this.initialize();
@@ -38,6 +41,11 @@ export class GameMap {
         this.tile_size=this.resources.get("TILE_SIZE");
         let mappings=this.resources.get("mappings");
         let map=this.resources.getLoad(this.resources.get("levels")[this.level]);
+        console.log("map=",map);
+        if (!map) {
+            this.level=0;
+            map=this.resources.getLoad(this.resources.get("levels")[this.level]);
+        }
         let lines=[];
         let width=0;
         let height=0;
@@ -71,9 +79,6 @@ export class GameMap {
                 }
             }
         }
-        this.music.setLoop(true);
-        this.music.playMode("restart");
-        this.music.play();
     }
 
     tilesToPixels(x:number):number {
@@ -161,7 +166,9 @@ export class GameMap {
             if (s instanceof Creature) {
                 if (canKill) {
                     s.setState(CreatureState.DYING);
-                    this.boop.play();
+                    if (this.settings.playEvents) {
+                        this.boop.play();
+                    }
                     let pos=s.getPosition();
                     p.setPosition(p.getPosition().x,pos.y-p.getImage().height);
                     p.jump(true);
@@ -182,7 +189,9 @@ export class GameMap {
     acquirePowerUp(p:PowerUp) {
         this.removeSprite(p);
         if (p instanceof Star) {
-            this.prize.play();
+            if (this.settings.playEvents) {
+                this.prize.play();
+            }
         } else if (p instanceof Music) {
 
         } else if (p instanceof Heart) {

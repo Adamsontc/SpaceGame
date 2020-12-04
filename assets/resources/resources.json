@@ -19,12 +19,12 @@
 		        {"img":"player2", "operators":["mirror"], "duration":150}
             ],
             "deadLeft": [
-                {"img":"player1", "operations":["flip"], "duration":250},
-                {"img":"player2", "operations":["flip"], "duration":150},
-                {"img":"player1", "operations":["flip"], "duration":150},
-                {"img":"player2", "operations":["flip"], "duration":150},
-                {"img":"player3", "operations":["flip"], "duration":200},
-                {"img":"player2", "operations":["flip"], "duration":150}
+                {"img":"player1", "operators":["flip"], "duration":250},
+                {"img":"player2", "operators":["flip"], "duration":150},
+                {"img":"player1", "operators":["flip"], "duration":150},
+                {"img":"player2", "operators":["flip"], "duration":150},
+                {"img":"player3", "operators":["flip"], "duration":200},
+                {"img":"player2", "operators":["flip"], "duration":150}
             ],
             "deadRight": [
 		        {"img":"player1", "operators":["mirror","flip"], "duration":250},
@@ -54,6 +54,16 @@
                 {"img":"fly1", "operators":["mirror"], "duration":150},
                 {"img":"fly2", "operators":["mirror"], "duration":150},
                 {"img":"fly3", "operators":["mirror"], "duration":150}
+            ],
+            "deadLeft": [
+                {"img":"fly1", "operators":["flip"], "duration":150},
+                {"img":"fly2", "operators":["flip"], "duration":150},
+                {"img":"fly3", "operators":["flip"], "duration":150}
+            ],
+            "deadRight": [
+                {"img":"fly1", "operators":["mirror","flip"], "duration":150},
+                {"img":"fly2", "operators":["mirror","flip"], "duration":150},
+                {"img":"fly3", "operators":["mirror","flip"], "duration":150}
             ]
         },
         "powerup": {
@@ -82,6 +92,14 @@
             "right": [
                 {"img":"grub1", "operators":["mirror"], "duration":150},
                 {"img":"grub2" , "operators":["mirror"], "duration":150}
+            ],
+            "deadLeft": [
+                {"img":"grub1", "operators":["flip"], "duration":150},
+                {"img":"grub2", "operators":["flip"], "duration":150}
+            ],
+            "deadRight": [
+                {"img":"grub1", "operators":["mirror","flip"], "duration":150},
+                {"img":"grub2" , "operators":["mirror","flip"], "duration":150}
             ]
         },
         "star": {

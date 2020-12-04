@@ -4,6 +4,7 @@ import { GameMap } from "./GameMap.js";
 import { InputManager } from "./InputManager.js";
 import { ResourceManager } from "./ResourceManager.js";
 import { SoundManager } from "./SoundManager.js";
+import { CreatureState } from "./sprites/Creature.js";
 
 export const GRAVITY: number =  0.002;
 const FONT_SIZE: number = 24;
@@ -79,7 +80,8 @@ export class GameManager {
             case STATE.Loading: {
                 if (this.resources.isLoaded()) {
                     //now setup the first map
-                    this.map=new GameMap(this.level,this.resources);
+                    this.map=new GameMap(this.level,this.resources,this.settings);
+                    this.settings.setMusic(this.resources.getLoad("music"));
                     //this.map.player.setVelocity(1,1);
                     console.log("Everything is loaded!");
                     this.inputManager.setGameAction(this.moveRight,RIGHT_ARROW);
@@ -105,14 +107,14 @@ export class GameManager {
     processActions() {
         let vel=this.map.player.getVelocity();
         vel.x=0;
-        if (this.moveRight.isPressed()) {
+        if (this.moveRight.isPressed() && this.map.player.getState()==CreatureState.NORMAL) {
             vel.x=this.map.player.getMaxSpeed();
         }
-        if (this.moveLeft.isPressed()) {
+        if (this.moveLeft.isPressed() && this.map.player.getState()==CreatureState.NORMAL) {
             vel.x=-this.map.player.getMaxSpeed();
         }
         this.map.player.setVelocity(vel.x,vel.y);
-        if (this.jump.isPressed()) {
+        if (this.jump.isPressed() && this.map.player.getState()==CreatureState.NORMAL) {
             this.map.player.jump(false);
         }
         if (this.stop.isBeginPress()) {
