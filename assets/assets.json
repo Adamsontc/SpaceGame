@@ -33,6 +33,9 @@
             "star2": "assets/images/star2.png",
             "star4": "assets/images/star4.png"
         },
+        "spritesheet": {
+            "caveman": "assets/images/spritesheet_caveman.png"
+        },
         "text": {
             "map1": "assets/maps/map1.txt",
             "map2": "assets/maps/map2.txt"

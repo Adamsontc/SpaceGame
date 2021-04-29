@@ -117,14 +117,14 @@ export class GameMap {
         }
 
         image(this.player.getImage(),
-            Math.trunc(Math.round(position.x) + offsetX),
-            Math.trunc(Math.round(position.y) + offsetY));
+            Math.trunc(Math.trunc(position.x) + offsetX),
+            Math.trunc(Math.trunc(position.y) + offsetY));
 
         this.sprites.forEach(sprite => {
             let p=sprite.getPosition();
             image(sprite.getImage(),
-                Math.trunc(Math.round(p.x) + offsetX),
-                Math.trunc(Math.round(p.y) + offsetY));
+                Math.trunc(Math.trunc(p.x) + offsetX),
+                Math.trunc(Math.trunc(p.y) + offsetY));
             if (sprite instanceof Creature && p.x+offsetX> 0 && p.x+offsetX<myW) {
                 sprite.wakeUp();
             }
