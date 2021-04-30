@@ -129,6 +129,8 @@
     },
     "images": {
         "background": "background",
+        "bg1": "bg1",
+        "bg2": "bg2",
         "A": "tile_A",
         "B": "tile_B",
         "C": "tile_C",

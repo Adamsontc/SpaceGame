@@ -12,7 +12,7 @@ export class GameMap {
     tile_size:number;
     sprites: Sprite[];
     player: Player;
-    background: p5.Image;
+    background: p5.Image[];
     width: number; //height and width in tiles
     height: number;
     level: number;
@@ -37,7 +37,7 @@ export class GameMap {
         this.music=this.resources.getLoad("music");
         this.boop=this.resources.getLoad("boop2");
         this.sprites=[];
-        this.background=this.resources.get("background");
+        this.background=[];//this.resources.get("background");
         this.tile_size=this.resources.get("TILE_SIZE");
         let mappings=this.resources.get("mappings");
         let map=this.resources.getLoad(this.resources.get("levels")[this.level]);
@@ -51,8 +51,26 @@ export class GameMap {
         let height=0;
         map.forEach(line => {
             if (!line.startsWith("#")) { //ignore comment lines
-                lines.push(line);
-                width = Math.max(width,line.length);
+                if (line.startsWith("@")) {
+                    let parts=line.split(" ");
+                    switch (parts[0]) {
+                        case "@parallax-layer": {
+                            this.background.push(this.resources.getLoad(parts[1]));
+                            break;
+                        }
+                        case "@music": {
+                            this.music=this.resources.getLoad(parts[1]);
+                            break;
+                        }
+                        default: {
+                            console.log("don't know how to handle this tag:"+parts[0]);
+                            break;
+                        }
+                    }
+                } else {
+                    lines.push(line);
+                    width = Math.max(width,line.length);
+                }
             }
         });
         height=lines.length;
@@ -79,6 +97,7 @@ export class GameMap {
                 }
             }
         }
+        console.log("background is",this.background);
     }
 
     tilesToPixels(x:number):number {
@@ -99,10 +118,13 @@ export class GameMap {
         offsetX = Math.trunc(Math.max(offsetX, myW - mapWidth));
 
         let offsetY = Math.trunc(myH - this.tilesToPixels(this.height));
-
-        let x = Math.trunc(offsetX * (myW - this.background.width)/(myW-mapWidth));
-        let y = Math.trunc(myH - this.background.height);
-        image(this.background,0,0,myW,myH,0-x,0-y,800,600);
+        this.background.forEach(bg => {
+            console.log("drawing background layer with"+bg);
+            let x = Math.trunc(offsetX * (myW - bg.width)/(myW-mapWidth));
+            let y = Math.trunc(myH - bg.height);
+            image(bg,0,0,myW,myH,0-x,0-y,800,600);
+        });
+        
 
         let firstTileX = Math.trunc(this.pixelsToTiles(-offsetX));
         let lastTileX = Math.trunc(firstTileX + this.pixelsToTiles(myW) + 1);
