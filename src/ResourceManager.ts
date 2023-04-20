@@ -1,6 +1,6 @@
 import { SoundFile } from "p5";
 import { Player } from "./sprites/Player.js";
-import { Fly, Grub } from "./sprites/Creature.js";
+import { Fly, Grub, Creature } from "./sprites/Creature.js";
 import { Heart, Music, PowerUp, Star } from "./sprites/PowerUp.js";
 import { Sprite } from "./sprites/Sprite.js";
 
@@ -126,6 +126,10 @@ export class ResourceManager {
                 s = new Player();
                 break;
             }
+            case 'Creature': {
+                s = new Creature();
+                break;
+            }
             case 'Sprite': {
                 s = new Sprite();
                 break;
@@ -169,33 +173,52 @@ export class ResourceManager {
                     first=false;
                 }
                 frames.forEach(frame => {
-                    if (frame.hasOwnProperty("operators")) {
-                        let img=this.loads[frame.img];
-                        frame['operators'].forEach(operator => {
-                            switch(operator) {
-                                case "mirror": {
-                                    img=this.mirror(img);
-                                    break;
-                                }
-                                case "flip": {
-                                    img=this.flip(img);
-                                    break;
-                                }
-                                default: {
-                                    console.log("Invalid Operation for Sprite ",spriteName,":",operator);
-                                    console.log("skipping frame for animation",animName);
-                                    break;
-                                }
-                            }
-                        });
-                        s.addFrame(animName,img,frame.duration);
+                    let images;
+                    if (frame.hasOwnProperty("sheet")) {
+                        let startImg=this.loads[frame.sheet];
+                        images=this.divideUpImage(startImg,frame.rows,frame.cols);
                     } else {
-                        s.addFrame(animName, this.loads[frame.img], frame.duration);
+                        images=[this.loads[frame.img]]; //just a single image but keep as a list
                     }
+                    images.forEach(img => {
+                        if (frame.hasOwnProperty("operators")) {
+                            frame['operators'].forEach(operator => {
+                                switch(operator) {
+                                    case "mirror": {
+                                        img=this.mirror(img);
+                                        break;
+                                    }
+                                    case "flip": {
+                                        img=this.flip(img);
+                                        break;
+                                    }
+                                    default: {
+                                        console.log("Invalid Operation for Sprite ",spriteName,":",operator);
+                                        console.log("skipping frame for animation",animName);
+                                        break;
+                                    }
+                                }
+                            });
+                        }
+                        s.addFrame(animName,img,frame.duration);
+                    })
                 });
             }
         }
         return s;
+    }
+
+    divideUpImage(img:p5.Image,rows:number,cols:number):p5.Image[] {
+        let images:p5.Image[]=[];
+        let canvas=createGraphics(img.width/cols,img.height/rows);
+        for(let rowIndex=0;rowIndex<img.height;rowIndex+=img.height/rows) {
+            for(let colIndex=0;colIndex<img.width;colIndex+=img.width/cols) {
+                canvas.image(img, 0,0, img.width/cols, img.height/rows, colIndex, rowIndex, img.width/cols, img.height/rows);
+                images.push(canvas.get());
+                canvas.clear();
+            }
+        }
+        return images;
     }
 
     /**
@@ -214,6 +237,14 @@ export class ResourceManager {
     loadResource(rsc:string,t:string):Promise<unknown> {
         return new Promise((resolve,reject) => {
             switch(t) {
+                case "spritesheet": {
+                    loadImage(rsc,img => {
+                        resolve(img);
+                    }, () => {
+                        reject("failed to load "+rsc);
+                    });
+                    break;
+                }
                 case "image": {
                     loadImage(rsc,img => {
                         resolve(img);

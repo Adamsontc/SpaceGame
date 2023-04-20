@@ -17,6 +17,8 @@
             "player2": "assets/images/player2.png",
             "player1": "assets/images/player1.png",
             "background": "assets/images/background.png",
+            "bg1": "assets/images/background.png",
+            "bg2": "assets/images/background2.png",
             "powerup4": "assets/images/powerup4.png",
             "powerup2": "assets/images/powerup2.png",
             "heart2": "assets/images/heart2.png",
@@ -32,6 +34,9 @@
             "star3": "assets/images/star3.png",
             "star2": "assets/images/star2.png",
             "star4": "assets/images/star4.png"
+        },
+        "spritesheet": {
+            "caveman": "assets/images/spritesheet_caveman.png"
         },
         "text": {
             "map1": "assets/maps/map1.txt",

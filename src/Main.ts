@@ -32,8 +32,6 @@ export function setup() {
 	console.log("**** Starting Setup ****");
 	frameRate(60);
 	canvas=createCanvas(windowWidth,windowHeight);
-	//canvas.elt.width=800;
-	//canvas.elt.height=600;
 	canvas.style('display','block');
 	canvas.style('padding','0px');
 	canvas.style('margin','0px');

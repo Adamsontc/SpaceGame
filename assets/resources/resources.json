@@ -1,5 +1,20 @@
 {
     "sprites": {
+        "caveman": {
+            "type": "Grub",
+            "left": [
+                {"sheet":"caveman", "rows":4, "cols":4, "duration":150}
+            ],
+            "right": [
+                {"sheet":"caveman", "operators":["mirror"], "rows":4, "cols":4, "duration":150}
+            ],
+            "deadRight": [
+                {"sheet":"caveman", "operators":["flip"], "rows":4, "cols":4, "duration":150}
+            ],
+            "deadLeft": [
+                {"sheet":"caveman", "operators":["flip","mirror"], "rows":4, "cols":4, "duration":150}
+            ]
+        },
         "player": {
             "type": "Player",
             "left": [
@@ -114,6 +129,8 @@
     },
     "images": {
         "background": "background",
+        "bg1": "bg1",
+        "bg2": "bg2",
         "A": "tile_A",
         "B": "tile_B",
         "C": "tile_C",
@@ -135,7 +152,8 @@
             "1": "grub",
             "2": "fly",
             "0": "player",
-            "^": "powerup"
+            "^": "powerup",
+            "-": "caveman"
         },
         "levels": [
             "map1",
