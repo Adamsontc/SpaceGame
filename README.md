@@ -1,4 +1,4 @@
-# Typescript Game
+# Space Game
 
 ## Setup
 
