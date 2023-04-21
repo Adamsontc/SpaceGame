@@ -14,7 +14,7 @@ You will also need to have an account on [github](https://github.com).
 
 To clone this repository run the following command:
 
-`git clone https://github.com/oliphantlt/typescript_game.git`
+`git clone https://github.com/Adamsontc/SpaceGame.git`
 
 This will create a directory on your computer called **typescript_game** which will contain the contents of this game.
 
