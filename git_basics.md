@@ -30,7 +30,29 @@ If someone has already set up a repository on the web and you want to get a copy
 
 ## Begin And Stop Tracking Files
 
+Files in your repository directory can be **tracked** or **untracked**.  The tracked files are the ones that git knows about while the untracked files are any other files in the directory.
+
+Any file that is tracked, git will pay attention to.  Git will notice if the file is *unmodified* (i.e. the file has not been changed since the last time you turned the file in to git), *modified* (i.e. the file has been changed since the last time it was turned in), or *staged* (i.e. the file is ready to be submitted to git).
+
+After you have created a file, you need to tell git that you want it to track the file.  To do this you use the `add` command:
+
+`git add <filename>`
+
+This marks the file as a tracked file.  This will set the file to be in *modified* state since it hasn't yet been turned in to git yet.  If you ever want to stop git from tracking the file then you use the `rm` command:
+
+`git rm <filename>`
+
+This tells git to stop tracking the file.  It will no longer be included when you turn in changes to git.
+
+To check what status the files in your directory are in you use the `status` command:
+
+`git status`
+
+If the command returns the result of "nothing to commit, working tree clean" then that means there are no tracked files that have been modified.  You might also see a list of untracked files, files that have been modified, or files that are staged and ready to be turned in to git.
+
 ## Stage And Commit Changes
+
+To turn files into git, you first need to stage the set of files that you want to turn in
 
 ## Ignoring Files
 
