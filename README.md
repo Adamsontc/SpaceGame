@@ -27,3 +27,5 @@ Your game should be all setup.
 If you are using Visual Studio Code, you can open the directory and use the node script to start a web server and monitor changes.  You can also do this from the command line by typing:
 
 npm run-script start
+
+yay
