@@ -18,36 +18,16 @@
         "player": {
             "type": "Player",
             "left": [
-                {"img":"player1", "duration":250},
-                {"img":"player2", "duration":150},
-                {"img":"player1", "duration":150},
-                {"img":"player2", "duration":150},
-                {"img":"player3", "duration":200},
-                {"img":"player2", "duration":150}
+                {"img":"player1", "duration":250}
             ],
             "right": [
-		        {"img":"player1", "operators":["mirror"], "duration":250},
-		        {"img":"player2", "operators":["mirror"], "duration":150},
-		        {"img":"player1", "operators":["mirror"], "duration":150},
-		        {"img":"player2", "operators":["mirror"], "duration":150},
-		        {"img":"player3", "operators":["mirror"], "duration":200},
-		        {"img":"player2", "operators":["mirror"], "duration":150}
+		        {"img":"player1", "operators":["mirror"], "duration":250}
             ],
             "deadLeft": [
-                {"img":"player1", "operators":["flip"], "duration":250},
-                {"img":"player2", "operators":["flip"], "duration":150},
-                {"img":"player1", "operators":["flip"], "duration":150},
-                {"img":"player2", "operators":["flip"], "duration":150},
-                {"img":"player3", "operators":["flip"], "duration":200},
-                {"img":"player2", "operators":["flip"], "duration":150}
+                {"img":"player1", "operators":["flip"], "duration":250}
             ],
             "deadRight": [
-		        {"img":"player1", "operators":["mirror","flip"], "duration":250},
-		        {"img":"player2", "operators":["mirror","flip"], "duration":150},
-		        {"img":"player1", "operators":["mirror","flip"], "duration":150},
-		        {"img":"player2", "operators":["mirror","flip"], "duration":150},
-		        {"img":"player3", "operators":["mirror","flip"], "duration":200},
-		        {"img":"player2", "operators":["mirror","flip"], "duration":150}
+		        {"img":"player1", "operators":["mirror","flip"], "duration":250}
             ]
         },
         "music": {
@@ -133,7 +113,10 @@
                 {"img":"portal2", "duration":150},
                 {"img":"portal3", "duration":150},
                 {"img":"portal4", "duration":150},
-                {"img":"portal5", "duration":150}
+                {"img":"portal5", "duration":150},
+                {"img":"portal6", "duration":150},
+                {"img":"portal1", "duration":150}
+
             ]
         }
     },
