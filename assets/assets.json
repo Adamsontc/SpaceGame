@@ -1,5 +1,10 @@
 {
         "image": {
+            "portal1": "assets/images/portal1.png",
+            "portal2": "assets/images/portal2.png",
+            "portal3": "assets/images/portal3.png",
+            "portal4": "assets/images/portal4.png",
+            "portal5": "assets/images/portal5.png",
             "tile_A": "assets/images/tile_A.png",
             "music1": "assets/images/music1.png",
             "music3": "assets/images/music3.png",

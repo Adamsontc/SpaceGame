@@ -125,6 +125,16 @@
                 {"img":"star3", "duration":150},
                 {"img":"star4", "duration":150}
             ]
+        },
+        "end_portal": {
+            "type":"Heart",
+            "default":[
+                {"img":"portal1", "duration":150},
+                {"img":"portal2", "duration":150},
+                {"img":"portal3", "duration":150},
+                {"img":"portal4", "duration":150},
+                {"img":"portal5", "duration":150}
+            ]
         }
     },
     "images": {
@@ -153,6 +163,7 @@
             "2": "fly",
             "0": "player",
             "^": "powerup",
+            "%": "end_portal",
             "-": "caveman"
         },
         "levels": [
