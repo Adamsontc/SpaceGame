@@ -10,8 +10,8 @@ export class Player extends Creature {
 
     constructor() {
         super();
-        this.MAX_SPEED=1.0;
-        this.JUMP_SPEED=0.95 ;
+        this.MAX_SPEED=.5;
+        this.JUMP_SPEED=0.75 ;
         this.onGround=false;
     }
 
