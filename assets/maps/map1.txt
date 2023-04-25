@@ -20,10 +20,12 @@
                                                                 
                                                               
                                                              
+                      *
+ 0                IIIIIII
+IIIII
 
-
-
-                          III          IIII                    
-                 IIIIII        IIIIII       IIIIIII            %
-        0                   -                             
-BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+        IIIII    3      - III        3  IIII   
+                         
+IIIIII               3 IIIIII        IIIIII       IIIIIII            %
+                   3        -                             
+BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
