@@ -1,5 +1,16 @@
 {
         "image": {
+            "blade1": "assets/images/blade1.png",
+            "blade2": "assets/images/blade2.png",
+            "blade3": "assets/images/blade3.png",
+            "blade4": "assets/images/blade4.png",
+            "blade5": "assets/images/blade5.png",
+            "blade6": "assets/images/blade6.png",
+            "ball0": "assets/images/ball0.png",
+            "ball1": "assets/images/ball1.png",
+            "ball2": "assets/images/ball2.png",
+            "ball3": "assets/images/ball3.png",
+            "ball4": "assets/images/ball4.png",
             "tile_A": "assets/images/tile_A.png",
             "music1": "assets/images/music1.png",
             "music3": "assets/images/music3.png",

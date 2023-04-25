@@ -90,6 +90,30 @@
                 {"img":"powerup4", "duration":150}
             ]
         },
+        "ball": {
+            "type": "PowerUp",
+            "default": [
+                {"img":"ball0", "duration":150},
+                {"img":"ball1", "duration":150},
+                {"img":"ball2", "duration":150},
+                {"img":"ball3", "duration":150},
+                {"img":"ball4", "duration":150},
+                {"img":"ball3", "duration":150},
+                {"img":"ball2", "duration":150},
+                {"img":"ball1", "duration":150}
+            ]
+        },
+        "blade": {
+            "type": "Blade",
+            "default": [
+                {"img":"blade1", "duration":50},
+                {"img":"blade2", "duration":50},
+                {"img":"blade3", "duration":50},
+                {"img":"blade4", "duration":50},
+                {"img":"blade5", "duration":50},
+                {"img":"blade6", "duration":50}
+            ]
+        },
         "heart": {
             "type": "Heart",
             "default": [
@@ -153,6 +177,8 @@
             "2": "fly",
             "0": "player",
             "^": "powerup",
+            "%": "ball",
+            "(": "blade",
             "-": "caveman"
         },
         "levels": [

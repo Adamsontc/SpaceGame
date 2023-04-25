@@ -1,8 +1,9 @@
 import { SoundFile } from "p5";
 import { Player } from "./sprites/Player.js";
 import { Fly, Grub, Creature } from "./sprites/Creature.js";
-import { Heart, Music, PowerUp, Star } from "./sprites/PowerUp.js";
+import { Heart, Music, PowerUp, Star} from "./sprites/PowerUp.js";
 import { Sprite } from "./sprites/Sprite.js";
+import { Blade } from './sprites/Blade.js';
 
 export class ResourceManager {
 
@@ -144,6 +145,10 @@ export class ResourceManager {
             }
             case 'Heart': {
                 s = new Heart();
+                break;
+            }
+            case 'Blade': {
+                s = new Blade();
                 break;
             }
             case 'PowerUp': {
