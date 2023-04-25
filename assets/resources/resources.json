@@ -1,5 +1,32 @@
 {
     "sprites": {
+        "alien": {
+            "type": "Alien",
+            "left": [
+                {"img":"alien1", "duration":150},
+                {"img":"alien2", "duration":150},
+                {"img":"alien3", "duration":150},
+                {"img":"alien4", "duration":150}
+            ],
+            "right": [
+                {"img":"alien1", "operators":["mirror"], "duration":150},
+                {"img":"alien2", "operators":["mirror"], "duration":150},
+                {"img":"alien3", "operators":["mirror"], "duration":150},
+                {"img":"alien4" , "operators":["mirror"], "duration":150}
+            ],
+            "deadLeft": [
+                {"img":"alien1", "operators":["flip"], "duration":150},
+                {"img":"alien2", "operators":["flip"], "duration":150},
+                {"img":"alien3", "operators":["flip"], "duration":150},
+                {"img":"alien4", "operators":["flip"], "duration":150}
+            ],
+            "deadRight": [
+                {"img":"alien1", "operators":["mirror","flip"], "duration":150},
+                {"img":"alien2", "operators":["mirror","flip"], "duration":150},
+                {"img":"alien3", "operators":["mirror","flip"], "duration":150},
+                {"img":"alien4" , "operators":["mirror","flip"], "duration":150}
+            ]
+        },
         "caveman": {
             "type": "Grub",
             "left": [
@@ -81,6 +108,27 @@
                 {"img":"fly3", "operators":["mirror","flip"], "duration":150}
             ]
         },
+
+        "spaceship": {
+            "type": "Fly",
+            "left": [
+                {"img":"spaceship", "duration":150},
+                {"img":"spaceshipwithbeam", "duration":150}
+            ],
+            "right": [
+                {"img":"spaceship", "operators":["mirror"], "duration":150},
+                {"img":"spaceshipwithbeam", "operators":["mirror"], "duration":150}
+            ],
+            "deadLeft": [
+                {"img":"spaceship", "operators":["flip"], "duration":150},
+                {"img":"spaceshipwithbeam", "operators":["flip"], "duration":150}
+            ],
+            "deadRight": [
+                {"img":"spaceship", "operators":["mirror","flip"], "duration":150},
+                {"img":"spaceshipwithbeam", "operators":["mirror","flip"], "duration":150}
+            ]
+        },
+
         "powerup": {
             "type": "PowerUp",
             "default": [
@@ -151,9 +199,11 @@
             "*": "heart",
             "1": "grub",
             "2": "fly",
+            "3": "spaceship",
             "0": "player",
             "^": "powerup",
-            "-": "caveman"
+            "-": "caveman",
+            ";": "alien"
         },
         "levels": [
             "map1",

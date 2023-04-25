@@ -1,5 +1,11 @@
 {
         "image": {
+            "spaceship": "assets/images/SpaceShip.png",
+            "spaceshipwithbeam": "assets/images/SpaceShipBeam.png",
+            "alien1": "assets/images/alien/alien2.png",
+            "alien2": "assets/images/alien/alien3.png",
+            "alien3": "assets/images/alien/alien4.png",
+            "alien4": "assets/images/alien/alien5.png",
             "tile_A": "assets/images/tile_A.png",
             "music1": "assets/images/music1.png",
             "music3": "assets/images/music3.png",
