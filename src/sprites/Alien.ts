@@ -1,7 +1,7 @@
 import { Sprite } from "./Sprite.js";
 
 /**
- * A Creature is a Sprite that is affected by gravity and can die.
+ * An alien is a Sprite that is affected by gravity and can die.
  */
 
 export enum AlienState { DEAD, DYING, NORMAL };
