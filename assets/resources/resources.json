@@ -15,6 +15,28 @@
                 {"sheet":"caveman", "operators":["flip","mirror"], "rows":4, "cols":4, "duration":150}
             ]
         },
+        "bullet": {
+            "type": "Bullet",
+            "left": [
+                {"img":"bullet1","operators":["mirror"], "duration":150},
+                {"img":"bullet2","operators":["mirror"], "duration":150},
+                {"img":"bullet1","operators":["mirror"], "duration":150}
+            ],
+            "right": [
+                {"img":"bullet1",  "duration":150},
+                {"img":"bullet2",  "duration":150},
+                {"img":"bullet1",  "duration":150}
+            ],
+            "deadLeft": [
+                {"img":"explosion1", "operators":["flip"], "duration":150},
+                {"img":"explosion2", "operators":["flip"], "duration":150}
+            ],
+            "deadRight": [
+                {"img":"explosion1", "operators":["mirror","flip"], "duration":150},
+                {"img":"explosion2", "operators":["mirror","flip"], "duration":150}
+            ]
+        },
+
         "player": {
             "type": "Player",
             "left": [
@@ -180,9 +202,14 @@
             "2": "fly",
             "0": "player",
             "^": "powerup",
+
             "%": "end_portal",
             "-": "caveman",
-            "-": "first_alien"
+            "-": "first_alien",
+
+            
+            "+": "bullet"
+
         },
         "levels": [
             "map1",
