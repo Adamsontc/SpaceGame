@@ -40,36 +40,16 @@
         "player": {
             "type": "Player",
             "left": [
-                {"img":"player1", "duration":250},
-                {"img":"player2", "duration":150},
-                {"img":"player1", "duration":150},
-                {"img":"player2", "duration":150},
-                {"img":"player3", "duration":200},
-                {"img":"player2", "duration":150}
+                {"img":"player1", "duration":250}
             ],
             "right": [
-		        {"img":"player1", "operators":["mirror"], "duration":250},
-		        {"img":"player2", "operators":["mirror"], "duration":150},
-		        {"img":"player1", "operators":["mirror"], "duration":150},
-		        {"img":"player2", "operators":["mirror"], "duration":150},
-		        {"img":"player3", "operators":["mirror"], "duration":200},
-		        {"img":"player2", "operators":["mirror"], "duration":150}
+		        {"img":"player1", "operators":["mirror"], "duration":250}
             ],
             "deadLeft": [
-                {"img":"player1", "operators":["flip"], "duration":250},
-                {"img":"player2", "operators":["flip"], "duration":150},
-                {"img":"player1", "operators":["flip"], "duration":150},
-                {"img":"player2", "operators":["flip"], "duration":150},
-                {"img":"player3", "operators":["flip"], "duration":200},
-                {"img":"player2", "operators":["flip"], "duration":150}
+                {"img":"player1", "operators":["flip"], "duration":250}
             ],
             "deadRight": [
-		        {"img":"player1", "operators":["mirror","flip"], "duration":250},
-		        {"img":"player2", "operators":["mirror","flip"], "duration":150},
-		        {"img":"player1", "operators":["mirror","flip"], "duration":150},
-		        {"img":"player2", "operators":["mirror","flip"], "duration":150},
-		        {"img":"player3", "operators":["mirror","flip"], "duration":200},
-		        {"img":"player2", "operators":["mirror","flip"], "duration":150}
+		        {"img":"player1", "operators":["mirror","flip"], "duration":250}
             ]
         },
         "music": {
@@ -147,6 +127,52 @@
                 {"img":"star3", "duration":150},
                 {"img":"star4", "duration":150}
             ]
+        },
+        "end_portal": {
+            "type":"Heart",
+            "default":[
+                {"img":"portal1", "duration":150},
+                {"img":"portal2", "duration":150},
+                {"img":"portal3", "duration":150},
+                {"img":"portal4", "duration":150},
+                {"img":"portal5", "duration":150},
+                {"img":"portal6", "duration":150},
+                {"img":"portal1", "duration":150}
+
+            ]
+        },
+        "first_alien": {
+            "type":"Alien",
+            "default":[
+                {"img":"alien", "duration":150},
+                {"img":"alien1", "duration":150},
+                {"img":"alien2", "duration":150},
+                {"img":"alien1", "duration":150}
+            ],
+            "deadLeft":[
+                {"img":"alien", "duration":150},
+                {"img":"alien1", "duration":150},
+                {"img":"alien2", "duration":150},
+                {"img":"alien1", "duration":150}
+            ],
+            "deadRight":[
+                {"img":"alien", "duration":150},
+                {"img":"alien1", "duration":150},
+                {"img":"alien2", "duration":150},
+                {"img":"alien1", "duration":150}
+            ],
+            "left":[
+                {"img":"alien", "duration":150},
+                {"img":"alien1", "duration":150},
+                {"img":"alien2", "duration":150},
+                {"img":"alien1", "duration":150}
+            ],
+            "right":[
+                {"img":"alien", "duration":150},
+                {"img":"alien1", "duration":150},
+                {"img":"alien2", "duration":150},
+                {"img":"alien1", "duration":150}
+            ]
         }
     },
     "images": {
@@ -162,6 +188,7 @@
         "G": "tile_G",
         "H": "tile_H",
         "I": "tile_I"
+        
     },
     "sounds": {
     },
@@ -175,12 +202,15 @@
             "2": "fly",
             "0": "player",
             "^": "powerup",
-            "-": "caveman",
-            "%": "bullet"
+            "%": "end_portal",
+            "4": "caveman",
+            "-": "first_alien",
+            "3": "bullet"
         },
         "levels": [
             "map1",
             "map2"
         ]
     }
+    
 }

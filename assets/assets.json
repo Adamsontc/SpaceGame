@@ -1,5 +1,14 @@
 {
         "image": {
+            "alien": "assets/images/Alien.png",
+            "alien1": "assets/images/Alien1.png",
+            "alien2": "assets/images/Alien2.png",
+            "portal1": "assets/images/portal1.png",
+            "portal2": "assets/images/portal2.png",
+            "portal3": "assets/images/portal3.png",
+            "portal4": "assets/images/portal4.png",
+            "portal5": "assets/images/portal5.png",
+            "portal6": "assets/images/portal6.png",
             "tile_A": "assets/images/tile_A.png",
             "music1": "assets/images/music1.png",
             "music3": "assets/images/music3.png",
@@ -30,6 +39,8 @@
             "grub1": "assets/images/grub1.png",
             "tile_H": "assets/images/tile_H.png",
             "tile_I": "assets/images/tile_I.png",
+            "surface2": "assets/images/surface2.png",
+            "surface3": "assets/images/surface3.png",
             "star1": "assets/images/star1.png",
             "star3": "assets/images/star3.png",
             "star2": "assets/images/star2.png",

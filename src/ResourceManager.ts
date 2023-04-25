@@ -4,7 +4,7 @@ import { Fly, Grub, Creature } from "./sprites/Creature.js";
 import { Heart, Music, PowerUp, Star } from "./sprites/PowerUp.js";
 import { Sprite } from "./sprites/Sprite.js";
 import { Bullet } from "./sprites/Bullet.js";
-
+import {Alien} from "./sprites/Alien.js";
 export class ResourceManager {
 
     assets: Object;
@@ -161,6 +161,10 @@ export class ResourceManager {
             }
             case 'Bullet': {
                 s = new Bullet();
+                break;
+            }
+            case 'Alien': {
+                s = new Alien();
                 break;
             }
             default: {
