@@ -25,5 +25,5 @@
 
                           III          IIII                    
                  IIIIII        IIIIII       IIIIIII            %
-        0                                                
+        0                   -                             
 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB

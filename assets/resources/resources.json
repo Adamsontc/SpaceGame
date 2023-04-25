@@ -118,6 +118,39 @@
                 {"img":"portal1", "duration":150}
 
             ]
+        },
+        "first_alien": {
+            "type":"Alien",
+            "default":[
+                {"img":"alien", "duration":150},
+                {"img":"alien1", "duration":150},
+                {"img":"alien2", "duration":150},
+                {"img":"alien1", "duration":150}
+            ],
+            "deadLeft":[
+                {"img":"alien", "duration":150},
+                {"img":"alien1", "duration":150},
+                {"img":"alien2", "duration":150},
+                {"img":"alien1", "duration":150}
+            ],
+            "deadRight":[
+                {"img":"alien", "duration":150},
+                {"img":"alien1", "duration":150},
+                {"img":"alien2", "duration":150},
+                {"img":"alien1", "duration":150}
+            ],
+            "left":[
+                {"img":"alien", "duration":150},
+                {"img":"alien1", "duration":150},
+                {"img":"alien2", "duration":150},
+                {"img":"alien1", "duration":150}
+            ],
+            "right":[
+                {"img":"alien", "duration":150},
+                {"img":"alien1", "duration":150},
+                {"img":"alien2", "duration":150},
+                {"img":"alien1", "duration":150}
+            ]
         }
     },
     "images": {
@@ -148,11 +181,13 @@
             "0": "player",
             "^": "powerup",
             "%": "end_portal",
-            "-": "caveman"
+            "-": "caveman",
+            "-": "first_alien"
         },
         "levels": [
             "map1",
             "map2"
         ]
     }
+    
 }
