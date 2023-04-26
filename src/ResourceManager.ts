@@ -3,7 +3,10 @@ import { Player } from "./sprites/Player.js";
 import { Fly, Grub, Creature } from "./sprites/Creature.js";
 import { Heart, Music, PowerUp, Star } from "./sprites/PowerUp.js";
 import { Sprite } from "./sprites/Sprite.js";
-
+import { Bullet } from "./sprites/Bullet.js";
+import {Alien} from "./sprites/Alien.js";
+import { AmmoBox } from "./sprites/PowerUp.js";
+import { Power } from "./sprites/PowerUp.js";
 export class ResourceManager {
 
     assets: Object;
@@ -157,6 +160,22 @@ export class ResourceManager {
             case 'Music': {
                 s = new Music();
                 break; 
+            }
+            case 'Bullet': {
+                s = new Bullet();
+                break;
+            }
+            case 'Alien': {
+                s = new Alien();
+                break;
+            }
+            case 'AmmoBox': {
+                s = new AmmoBox();
+                break;
+            }
+            case 'Power': {
+                s = new Power();
+                break;
             }
             default: {
                 console.log("No Sprite Type:",spriteType);
