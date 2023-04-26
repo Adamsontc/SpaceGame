@@ -3,6 +3,7 @@ import { Player } from "./sprites/Player.js";
 import { Fly, Grub, Creature } from "./sprites/Creature.js";
 import { Heart, Music, PowerUp, Star } from "./sprites/PowerUp.js";
 import { Sprite } from "./sprites/Sprite.js";
+import { FinalBoss } from "./sprites/FinalBoss.js";
 
 export class ResourceManager {
 
@@ -136,6 +137,10 @@ export class ResourceManager {
             }
             case 'Grub': {
                 s = new Grub();
+                break;
+            }
+            case 'FinalBoss': {
+                s = new FinalBoss();
                 break;
             }
             case 'Fly': {

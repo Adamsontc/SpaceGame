@@ -1,5 +1,9 @@
 {
         "image": {
+            "final_boss1": "assets/images/final_boss/final_boss1.png",
+            "final_boss2": "assets/images/final_boss/final_boss2.png",
+            "final_boss3": "assets/images/final_boss/final_boss3.png",
+            "final_boss4": "assets/images/final_boss/final_boss4.png",
             "tile_A": "assets/images/tile_A.png",
             "music1": "assets/images/music1.png",
             "music3": "assets/images/music3.png",
