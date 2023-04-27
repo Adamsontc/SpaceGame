@@ -23,5 +23,5 @@
                              o
             3         o     III
          IIII         IIII                %
-    0            4        oooooo
+    0            4   -     oooooo
 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB

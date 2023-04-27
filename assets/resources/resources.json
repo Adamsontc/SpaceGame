@@ -134,27 +134,33 @@
                 {"img":"final_boss4" , "operators":["mirror"], "duration":150}
             ],
             "deadLeft": [
-                {"img":"final_boss1", "operators":["flip"], "duration":150},
-                {"img":"final_boss2", "operators":["flip"], "duration":150},
-                {"img":"final_boss3", "operators":["flip"], "duration":150},
-                {"img":"final_boss4", "operators":["flip"], "duration":150}
+                
+                {"img":"final_boss_dead1", "operators":["flip"], "duration":150},
+               
+                {"img":"final_boss_dead2", "operators":["flip"], "duration":150},
+               
+                {"img":"final_boss_dead3", "operators":["flip"], "duration":150}
+                
             ],
             "deadRight": [
-                {"img":"final_boss1", "operators":["mirror","flip"], "duration":150},
-                {"img":"final_boss2" , "operators":["mirror","flip"], "duration":150},
-                {"img":"final_boss3", "operators":["mirror","flip"], "duration":150},
-                {"img":"final_boss4" , "operators":["mirror","flip"], "duration":150}
+                
+                {"img":"final_boss_dead1", "operators":["flip"], "duration":150},
+                
+                {"img":"final_boss_dead2", "operators":["flip"], "duration":150},
+                
+                {"img":"final_boss_dead3", "operators":["flip"], "duration":150}
+                
             ]
         },
         "star": {
             "type": "Star",
             "default": [
-                {"img":"medallion1", "duration":150},
-                {"img":"medallion2", "duration":150},
-                {"img":"medallion3", "duration":150},
-                {"img":"medallion4", "duration":150},
-                {"img":"medallion3", "duration":150},
-                {"img":"medallion2", "duration":150}
+                {"img":"medallion1", "duration":100},
+                {"img":"medallion2", "duration":100},
+                {"img":"medallion3", "duration":100},
+                {"img":"medallion4", "duration":100},
+                {"img":"medallion3", "duration":100},
+                {"img":"medallion2", "duration":100}
             ]
         },
         "end_portal": {
@@ -179,16 +185,12 @@
                 {"img":"alien1", "duration":150}
             ],
             "deadLeft":[
-                {"img":"alien", "duration":150},
-                {"img":"alien1", "duration":150},
-                {"img":"alien2", "duration":150},
-                {"img":"alien1", "duration":150}
+                {"img":"alien_dead", "duration":100},
+                {"img":"alien_dead1", "duration":100}
             ],
             "deadRight":[
-                {"img":"alien", "duration":150},
-                {"img":"alien1", "duration":150},
-                {"img":"alien2", "duration":150},
-                {"img":"alien1", "duration":150}
+                {"img":"alien_dead", "duration":100},
+                {"img":"alien_dead1", "duration":100}
             ],
             "left":[
                 {"img":"alien", "duration":150},
