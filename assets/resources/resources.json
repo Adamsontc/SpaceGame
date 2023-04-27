@@ -149,10 +149,12 @@
         "star": {
             "type": "Star",
             "default": [
-                {"img":"star1", "duration":150},
-                {"img":"star2", "duration":150},
-                {"img":"star3", "duration":150},
-                {"img":"star4", "duration":150}
+                {"img":"medallion1", "duration":150},
+                {"img":"medallion2", "duration":150},
+                {"img":"medallion3", "duration":150},
+                {"img":"medallion4", "duration":150},
+                {"img":"medallion3", "duration":150},
+                {"img":"medallion2", "duration":150}
             ]
         },
         "end_portal": {
@@ -200,7 +202,30 @@
                 {"img":"alien2", "duration":150},
                 {"img":"alien1", "duration":150}
             ]
-        }
+        },
+        "fireball": {
+            "type":"Fireball",
+            "default":[
+                {"img":"fireball1", "duration":150},
+                {"img":"fireball2", "duration":150}
+            ],
+            "deadLeft":[
+                {"img":"fireball1", "duration":150},
+                {"img":"fireball2", "duration":150}
+            ],
+            "deadRight":[
+                {"img":"fireball1", "duration":150},
+                {"img":"fireball2", "duration":150}
+            ],
+            "left":[
+                {"img":"fireball1", "duration":150},
+                {"img":"fireball2", "duration":150}
+            ],
+            "right":[
+                {"img":"fireball1", "duration":150},
+                {"img":"fireball2", "duration":150}
+            ]
+    }
     },
     "images": {
         "background": "background",
@@ -232,8 +257,8 @@
             "^": "powerup",
 
             "%": "end_portal",
-            "-": "caveman",
             "-": "first_alien",
+            "4": "fireball",
 
             
             "+": "bullet"

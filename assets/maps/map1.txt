@@ -17,15 +17,11 @@
 @parallax-layer bg1
 @parallax-layer bg2
 @music music
-
-
-
-
-
-
-     
-                 3      IIII
-               IIII            IIII      %
-                       -          
-BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
-
+ 
+  
+ 
+                             o
+            3         o     III
+         IIII         IIII                %
+    0            4        oooooo
+BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB

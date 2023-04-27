@@ -8,6 +8,7 @@ import {Alien} from "./sprites/Alien.js";
 import { Bullet } from "./sprites/Bullet.js";
 
 import { FinalBoss } from "./sprites/FinalBoss.js";
+import { Fireball } from "./sprites/Fireball.js";
 
 
 export class ResourceManager {
@@ -174,6 +175,10 @@ export class ResourceManager {
             }
             case 'Bullet': {
                 s = new Bullet();
+                break;
+            }
+            case 'Fireball':{
+                s = new Fireball();
                 break;
             }
             default: {
