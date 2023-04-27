@@ -1,6 +1,7 @@
 {
         "image": {
-
+            "fireball1": "assets/images/fireball1.png",
+            "fireball2": "assets/images/fireball2.png",
             "alien": "assets/images/Alien.png",
             "alien1": "assets/images/Alien1.png",
             "alien2": "assets/images/Alien2.png",
@@ -48,10 +49,10 @@
             "tile_I": "assets/images/tile_I.png",
             "surface2": "assets/images/surface2.png",
             "surface3": "assets/images/surface3.png",
-            "star1": "assets/images/star1.png",
-            "star3": "assets/images/star3.png",
-            "star2": "assets/images/star2.png",
-            "star4": "assets/images/star4.png",
+            "medallion1": "assets/images/medallion1.png",
+            "medallion2": "assets/images/medallion2.png",
+            "medallion3": "assets/images/medallion3.png",
+            "medallion4": "assets/images/medallion4.png",
             "bullet1": "assets/images/bullet.png",
             "bullet2": "assets/images/bullet2.png",
             "explosion1": "assets/images/explosion1.png",
