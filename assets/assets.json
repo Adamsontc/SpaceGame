@@ -1,5 +1,6 @@
 {
         "image": {
+
             "alien": "assets/images/Alien.png",
             "alien1": "assets/images/Alien1.png",
             "alien2": "assets/images/Alien2.png",
@@ -9,6 +10,12 @@
             "portal4": "assets/images/portal4.png",
             "portal5": "assets/images/portal5.png",
             "portal6": "assets/images/portal6.png",
+
+            "final_boss1": "assets/images/final_boss/final_boss1.png",
+            "final_boss2": "assets/images/final_boss/final_boss2.png",
+            "final_boss3": "assets/images/final_boss/final_boss3.png",
+            "final_boss4": "assets/images/final_boss/final_boss4.png",
+
             "tile_A": "assets/images/tile_A.png",
             "music1": "assets/images/music1.png",
             "music3": "assets/images/music3.png",
