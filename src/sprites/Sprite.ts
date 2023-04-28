@@ -51,6 +51,14 @@ export class Sprite {
         return s;
     }
 
+    getCurrAnimName():string {
+        return this.currAnimName;
+    }
+
+    getCurrAnimation():Animation {
+        return this.currAnimation;
+    }
+    
     getPosition() {
         return this.position;
     }

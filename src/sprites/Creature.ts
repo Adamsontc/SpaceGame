@@ -62,18 +62,8 @@ export class Creature extends Sprite {
         let newAnim=""
         if (this.velocity.x < 0 ) {
             newAnim="left";
-            console.log("LEFT");
         } else if (this.velocity.x > 0) {
             newAnim="right";
-            console.log("RIGHT");
-        } else if (this.velocity.x == 0) {
-            if (this.currAnimName=="left") {
-                console.log("stillLeft");
-                newAnim="stillLeft";
-            } else if (this.currAnimName=="right") {
-                console.log("stillRight");
-                newAnim="stillRight";
-            }
         }
         if (newAnim!="" && newAnim!=this.currAnimName) {
             this.setAnimation(newAnim);    
