@@ -21,6 +21,7 @@ export class GameMap {
     prize: p5.SoundFile;
     music: p5.SoundFile;
     boop: p5.SoundFile;
+    note_collision: p5.SoundFile;
 
     constructor(level:number, resources:ResourceManager, settings:Settings) {
         this.settings=settings;
@@ -36,6 +37,7 @@ export class GameMap {
         this.prize=this.resources.getLoad("prize");
         this.music=this.resources.getLoad("music");
         this.boop=this.resources.getLoad("boop2");
+        this.note_collision=this.resources.getLoad("music_collision");
         this.sprites=[];
         this.background=[];//this.resources.get("background");
         this.tile_size=this.resources.get("TILE_SIZE");
@@ -215,7 +217,7 @@ export class GameMap {
                 this.prize.play();
             }
         } else if (p instanceof Music) {
-
+            this.note_collision.play();
         } else if (p instanceof Heart) {
             this.level+=1;
             this.initialize();
