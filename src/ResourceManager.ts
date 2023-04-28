@@ -7,6 +7,10 @@ import { Bullet } from "./sprites/Bullet.js";
 import {Alien} from "./sprites/Alien.js";
 import { AmmoBox } from "./sprites/PowerUp.js";
 import { Power } from "./sprites/PowerUp.js";
+import { FinalBoss } from "./sprites/FinalBoss.js";
+import {Lava} from "./sprites/Lava.js"
+import { Fireball } from "./sprites/Fireball.js"
+
 export class ResourceManager {
 
     assets: Object;
@@ -141,6 +145,10 @@ export class ResourceManager {
                 s = new Grub();
                 break;
             }
+            case 'FinalBoss': {
+                s = new FinalBoss();
+                break;
+            }
             case 'Fly': {
                 s = new Fly();
                 break;
@@ -175,6 +183,14 @@ export class ResourceManager {
             }
             case 'Power': {
                 s = new Power();
+                break;
+            }
+            case 'Fireball':{
+                s = new Fireball();
+                break;
+            }
+            case 'Lava':{
+                s = new Lava();
                 break;
             }
             default: {
