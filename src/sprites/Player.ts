@@ -110,4 +110,5 @@ export class Player extends Creature {
         if (this.state == CreatureState.DYING && this.stateTime > this.DIE_TIME) {
             this.setState(CreatureState.DEAD);
         }
+    }
 }
