@@ -1,9 +1,15 @@
 import { SoundFile } from "p5";
 import { Player } from "./sprites/Player.js";
 import { Fly, Grub, Creature } from "./sprites/Creature.js";
-import { Heart, Music, PowerUp, Star} from "./sprites/PowerUp.js";
+import { Heart, Music, PowerUp, Star } from "./sprites/PowerUp.js";
 import { Sprite } from "./sprites/Sprite.js";
-import { Blade } from './sprites/Blade.js';
+import { Bullet } from "./sprites/Bullet.js";
+import {Alien} from "./sprites/Alien.js";
+import { AmmoBox } from "./sprites/PowerUp.js";
+import { Power } from "./sprites/PowerUp.js";
+import { FinalBoss } from "./sprites/FinalBoss.js";
+import {Lava} from "./sprites/Lava.js"
+import { Fireball } from "./sprites/Fireball.js"
 
 export class ResourceManager {
 
@@ -139,16 +145,16 @@ export class ResourceManager {
                 s = new Grub();
                 break;
             }
+            case 'FinalBoss': {
+                s = new FinalBoss();
+                break;
+            }
             case 'Fly': {
                 s = new Fly();
                 break;
             }
             case 'Heart': {
                 s = new Heart();
-                break;
-            }
-            case 'Blade': {
-                s = new Blade();
                 break;
             }
             case 'PowerUp': {
@@ -162,6 +168,30 @@ export class ResourceManager {
             case 'Music': {
                 s = new Music();
                 break; 
+            }
+            case 'Bullet': {
+                s = new Bullet();
+                break;
+            }
+            case 'Alien': {
+                s = new Alien();
+                break;
+            }
+            case 'AmmoBox': {
+                s = new AmmoBox();
+                break;
+            }
+            case 'Power': {
+                s = new Power();
+                break;
+            }
+            case 'Fireball':{
+                s = new Fireball();
+                break;
+            }
+            case 'Lava':{
+                s = new Lava();
+                break;
             }
             default: {
                 console.log("No Sprite Type:",spriteType);

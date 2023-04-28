@@ -91,6 +91,6 @@ export class Fly extends Creature {
     }
 
     getMaxSpeed() {
-        return 0.2;
+        return 0.15;
     }
 }
