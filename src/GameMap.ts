@@ -21,6 +21,7 @@ export class GameMap {
     prize: p5.SoundFile;
     music: p5.SoundFile;
     boop: p5.SoundFile;
+    black_hole: p5.SoundFile;
 
     constructor(level:number, resources:ResourceManager, settings:Settings) {
         this.settings=settings;
@@ -36,6 +37,7 @@ export class GameMap {
         this.prize=this.resources.getLoad("prize");
         this.music=this.resources.getLoad("music");
         this.boop=this.resources.getLoad("boop2");
+        this.black_hole=this.resources.getLoad("blackHole");
         this.sprites=[];
         this.background=[];//this.resources.get("background");
         this.tile_size=this.resources.get("TILE_SIZE");
@@ -217,6 +219,7 @@ export class GameMap {
         } else if (p instanceof Music) {
 
         } else if (p instanceof Heart) {
+            this.black_hole.play();
             this.level+=1;
             this.initialize();
         }
