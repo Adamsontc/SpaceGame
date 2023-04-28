@@ -16,13 +16,13 @@
 #   2       Bad Guy 2 (fly)
 @parallax-layer bg1
 @parallax-layer bg2
-@music music                                          
-                      *
- 0                IIIIIII
-IIIII
-
-        IIIII    3      - III        3  IIII   
-    a                     
-IIIIII               3 IIIIII        IIIIII       IIIIIII            %
-          p         3        -                             
-BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+@music music
+ 
+  
+ 
+                          
+      6 5 G H I J K L M N 
+       A B C D E F G O P 
+         6  +  4  -
+    0     ooooooooooo 3  %
+BBBBBBBBBBBBBBBBBBBBBBBBBBBB

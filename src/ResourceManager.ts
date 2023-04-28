@@ -8,6 +8,8 @@ import {Alien} from "./sprites/Alien.js";
 import { AmmoBox } from "./sprites/PowerUp.js";
 import { Power } from "./sprites/PowerUp.js";
 import { FinalBoss } from "./sprites/FinalBoss.js";
+import {Lava} from "./sprites/Lava.js"
+import { Fireball } from "./sprites/Fireball.js"
 
 export class ResourceManager {
 
@@ -181,6 +183,14 @@ export class ResourceManager {
             }
             case 'Power': {
                 s = new Power();
+                break;
+            }
+            case 'Fireball':{
+                s = new Fireball();
+                break;
+            }
+            case 'Lava':{
+                s = new Lava();
                 break;
             }
             default: {
