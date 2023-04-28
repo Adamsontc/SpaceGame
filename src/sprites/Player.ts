@@ -60,7 +60,8 @@ export class Player extends Creature {
         }
         if (this.velocity.x>0 && this.currAnimName!="right") {
             this.setAnimation("right");
-        } if (this.velocity.x<0 && this.currAnimName!="left") {
+        }
+        if (this.velocity.x<0 && this.currAnimName!="left") {
             this.setAnimation("left");
         }
     }

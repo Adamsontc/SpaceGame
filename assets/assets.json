@@ -1,18 +1,5 @@
 {
         "image": {
-<<<<<<< HEAD
-            "blade1": "assets/images/blade1.png",
-            "blade2": "assets/images/blade2.png",
-            "blade3": "assets/images/blade3.png",
-            "blade4": "assets/images/blade4.png",
-            "blade5": "assets/images/blade5.png",
-            "blade6": "assets/images/blade6.png",
-            "ball0": "assets/images/ball0.png",
-            "ball1": "assets/images/ball1.png",
-            "ball2": "assets/images/ball2.png",
-            "ball3": "assets/images/ball3.png",
-            "ball4": "assets/images/ball4.png",
-=======
             "lava1": "assets/images/lava.png",
             "lava2": "assets/images/lava1.png",
             "fireball1": "assets/images/fireball1.png",
@@ -36,7 +23,6 @@
             "final_boss2": "assets/images/final_boss/final_boss2.png",
             "final_boss3": "assets/images/final_boss/final_boss3.png",
             "final_boss4": "assets/images/final_boss/final_boss4.png",
->>>>>>> main
             "tile_A": "assets/images/tile_A.png",
             "music1": "assets/images/music1.png",
             "music3": "assets/images/music3.png",
@@ -60,6 +46,8 @@
             "player3": "assets/images/player3.png",
             "player2": "assets/images/player2.png",
             "player1": "assets/images/player1.png",
+            "player_run1": "assets/images/player1_run1.png",
+            "player_run2": "assets/images/player1_run2.png",
             "background": "assets/images/background.png",
             "bg1": "assets/images/background.png",
             "bg2": "assets/images/background2.png",
