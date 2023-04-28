@@ -135,20 +135,20 @@
             ],
             "deadLeft": [
                 
-                {"img":"final_boss_dead1", "operators":["flip"], "duration":150},
+                {"img":"final_boss_dead1", "duration":150},
                
-                {"img":"final_boss_dead2", "operators":["flip"], "duration":150},
+                {"img":"final_boss_dead2", "duration":150},
                
-                {"img":"final_boss_dead3", "operators":["flip"], "duration":150}
+                {"img":"final_boss_dead3", "duration":150}
                 
             ],
             "deadRight": [
                 
-                {"img":"final_boss_dead1", "operators":["flip"], "duration":150},
+                {"img":"final_boss_dead1", "duration":150},
                 
-                {"img":"final_boss_dead2", "operators":["flip"], "duration":150},
+                {"img":"final_boss_dead2", "duration":150},
                 
-                {"img":"final_boss_dead3", "operators":["flip"], "duration":150}
+                {"img":"final_boss_dead3", "duration":150}
                 
             ]
         },
@@ -205,6 +205,22 @@
                 {"img":"alien1", "duration":150}
             ]
         },
+        "goo": {
+            "type": "Fly",
+            "left": [
+                {"img":"goo", "duration":150}
+                
+            ],
+            "right": [
+                {"img":"goo", "duration":150}
+            ],
+            "deadLeft": [
+                {"img":"goo", "duration":150}
+            ],
+            "deadRight": [
+                {"img":"goo", "duration":150}
+            ]
+        },
         "fireball": {
             "type":"Fireball",
             "default":[
@@ -227,7 +243,31 @@
                 {"img":"fireball1", "duration":150},
                 {"img":"fireball2", "duration":150}
             ]
+    },
+    "lava_pool": {
+        "type":"Lava",
+        "default":[
+            {"img":"lava1", "duration":75},
+            {"img":"lava2", "duration":75}
+        ],
+        "deadLeft":[
+            {"img":"lava1", "duration":75},
+            {"img":"lava2", "duration":75}
+        ],
+        "deadRight":[
+            {"img":"lava1", "duration":75},
+            {"img":"lava2", "duration":150}
+        ],
+        "left":[
+            {"img":"lava1", "duration":75},
+            {"img":"lava2", "duration":75}
+        ],
+        "right":[
+            {"img":"lava1", "duration":75},
+            {"img":"lava2", "duration":75}
+        ]
     }
+    
     },
     "images": {
         "background": "background",
@@ -241,7 +281,14 @@
         "F": "tile_F",
         "G": "tile_G",
         "H": "tile_H",
-        "I": "tile_I"
+        "I": "tile_I",
+        "J": "tile_J",
+        "K": "tile_K",
+        "L": "tile_L",
+        "M": "tile_M",
+        "N": "tile_N",
+        "O": "tile_O",
+        "P": "tile_P"
         
     },
     "sounds": {
@@ -257,12 +304,11 @@
             "3": "final_boss",
             "0": "player",
             "^": "powerup",
-
             "%": "end_portal",
             "-": "first_alien",
             "4": "fireball",
-
-            
+            "5": "lava_pool",
+            "6": "goo",
             "+": "bullet"
 
         },

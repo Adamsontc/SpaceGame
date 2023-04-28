@@ -20,8 +20,9 @@
  
   
  
-                             o
-            3         o     III
-         IIII         IIII                %
-    0            4   -     oooooo
-BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+                          
+      6 5 G H I J K L M N 
+       A B C D E F G O P 
+         6  +  4  -
+    0     ooooooooooo 3  %
+BBBBBBBBBBBBBBBBBBBBBBBBBBBB

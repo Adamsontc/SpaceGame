@@ -1,5 +1,7 @@
 {
         "image": {
+            "lava1": "assets/images/lava.png",
+            "lava2": "assets/images/lava1.png",
             "fireball1": "assets/images/fireball1.png",
             "fireball2": "assets/images/fireball2.png",
             "alien": "assets/images/Alien.png",
@@ -16,6 +18,7 @@
             "portal4": "assets/images/portal4.png",
             "portal5": "assets/images/portal5.png",
             "portal6": "assets/images/portal6.png",
+            "goo": "assets/images/goo.png",
 
             "final_boss1": "assets/images/final_boss/final_boss1.png",
             "final_boss2": "assets/images/final_boss/final_boss2.png",
@@ -31,6 +34,13 @@
             "fly2": "assets/images/fly2.png",
             "tile_G": "assets/images/tile_G.png",
             "tile_F": "assets/images/tile_F.png",
+            "tile_J": "assets/images/tile_J.png",
+            "tile_K": "assets/images/tile_K.png",
+            "tile_L": "assets/images/tile_L.png",
+            "tile_M": "assets/images/tile_M.png",
+            "tile_N": "assets/images/tile_N.png",
+            "tile_O": "assets/images/tile_O.png",
+            "tile_P": "assets/images/tile_P.png",
             "fly3": "assets/images/fly3.png",
             "fly1": "assets/images/fly1.png",
             "tile_D": "assets/images/tile_D.png",

@@ -3,7 +3,7 @@ import { Player } from "./sprites/Player.js";
 import { Fly, Grub, Creature } from "./sprites/Creature.js";
 import { Heart, Music, PowerUp, Star } from "./sprites/PowerUp.js";
 import { Sprite } from "./sprites/Sprite.js";
-
+import { Lava } from "./sprites/Lava.js";
 import {Alien} from "./sprites/Alien.js";
 import { Bullet } from "./sprites/Bullet.js";
 
@@ -179,6 +179,10 @@ export class ResourceManager {
             }
             case 'Fireball':{
                 s = new Fireball();
+                break;
+            }
+            case 'Lava':{
+                s = new Lava();
                 break;
             }
             default: {
