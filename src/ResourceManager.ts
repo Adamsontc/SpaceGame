@@ -7,6 +7,8 @@ import { Bullet } from "./sprites/Bullet.js";
 import {Alien} from "./sprites/Alien.js";
 import { AmmoBox } from "./sprites/PowerUp.js";
 import { Power } from "./sprites/PowerUp.js";
+import { FinalBoss } from "./sprites/FinalBoss.js";
+
 export class ResourceManager {
 
     assets: Object;
@@ -139,6 +141,10 @@ export class ResourceManager {
             }
             case 'Grub': {
                 s = new Grub();
+                break;
+            }
+            case 'FinalBoss': {
+                s = new FinalBoss();
                 break;
             }
             case 'Fly': {

@@ -119,6 +119,33 @@
                 {"img":"grub2" , "operators":["mirror","flip"], "duration":150}
             ]
         },
+        "final_boss": {
+            "type": "FinalBoss",
+            "left": [
+                {"img":"final_boss1", "duration":150},
+                {"img":"final_boss2", "duration":150},
+                {"img":"final_boss3", "duration":150},
+                {"img":"final_boss4", "duration":150}
+            ],
+            "right": [
+                {"img":"final_boss1", "operators":["mirror"], "duration":150},
+                {"img":"final_boss2" , "operators":["mirror"], "duration":150},
+                {"img":"final_boss3", "operators":["mirror"], "duration":150},
+                {"img":"final_boss4" , "operators":["mirror"], "duration":150}
+            ],
+            "deadLeft": [
+                {"img":"final_boss1", "operators":["flip"], "duration":150},
+                {"img":"final_boss2", "operators":["flip"], "duration":150},
+                {"img":"final_boss3", "operators":["flip"], "duration":150},
+                {"img":"final_boss4", "operators":["flip"], "duration":150}
+            ],
+            "deadRight": [
+                {"img":"final_boss1", "operators":["mirror","flip"], "duration":150},
+                {"img":"final_boss2" , "operators":["mirror","flip"], "duration":150},
+                {"img":"final_boss3", "operators":["mirror","flip"], "duration":150},
+                {"img":"final_boss4" , "operators":["mirror","flip"], "duration":150}
+            ]
+        },
         "star": {
             "type": "Star",
             "default": [
@@ -216,6 +243,7 @@
             "*": "heart",
             "1": "grub",
             "2": "fly",
+            "3": "final_boss",
             "0": "player",
             "^": "powerup",
             "%": "end_portal",
