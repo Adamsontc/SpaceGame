@@ -85,7 +85,8 @@
             "music": "assets/sounds/music.mp3",
             "prize": "assets/sounds/prize.wav",
             "boop2": "assets/sounds/boop2.wav",
-            "blackHole": "assets/sounds/Black hole sound.wav"
+            "blackHole": "assets/sounds/Black hole sound.wav",
+            "dying": "assets/sounds/Dying.wav"
         },
         "json": {
             "resources": "assets/resources/resources.json"

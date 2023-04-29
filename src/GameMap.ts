@@ -22,6 +22,7 @@ export class GameMap {
     music: p5.SoundFile;
     boop: p5.SoundFile;
     black_hole: p5.SoundFile;
+    dying: p5.SoundFile;
 
     constructor(level:number, resources:ResourceManager, settings:Settings) {
         this.settings=settings;
@@ -38,6 +39,7 @@ export class GameMap {
         this.music=this.resources.getLoad("music");
         this.boop=this.resources.getLoad("boop2");
         this.black_hole=this.resources.getLoad("blackHole");
+        this.dying = this.resources.getLoad("dying");
         this.sprites=[];
         this.background=[];//this.resources.get("background");
         this.tile_size=this.resources.get("TILE_SIZE");
@@ -198,6 +200,7 @@ export class GameMap {
                     p.jump(true);
                 } else {
                     p.setState(CreatureState.DYING);
+                    this.dying.play();
                 }
             } else if (s instanceof PowerUp) {
                 this.acquirePowerUp(s);
