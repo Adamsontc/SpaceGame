@@ -38,7 +38,7 @@ export function setup() {
 	console.log("**** Done Setup ****");
 }
 export function draw() {
-	background(255); //just for testing purposes.  this probably can be removed when done.
+	background(0); //just for testing purposes.  this probably can be removed when done.
 	let scaleFactor=min(width/800,height/600)
 	scale(scaleFactor,scaleFactor);
 	if (focused) {
