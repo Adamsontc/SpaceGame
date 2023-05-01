@@ -48,6 +48,10 @@ export class Creature extends Sprite {
         }
     }
 
+    restartLevel(){
+        this.state=CreatureState.DEAD;
+    }
+
     wakeUp() {
         if (this.getState() == CreatureState.NORMAL && this.velocity.x == 0) {
             this.setVelocity(-this.getMaxSpeed(),0);
