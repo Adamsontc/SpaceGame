@@ -25,6 +25,7 @@ export class GameManager {
     moveLeft: GameAction;
     jump: GameAction;
     stop: GameAction;
+    
 
     constructor() {
         this.level=0;
@@ -38,6 +39,7 @@ export class GameManager {
         this.moveLeft=new GameAction();
         this.jump=new GameAction();
         this.stop=new GameAction();
+        
     }
 
     draw() {
@@ -115,7 +117,7 @@ export class GameManager {
         }
         this.map.player.setVelocity(vel.x,vel.y);
         if (this.jump.isPressed() && this.map.player.getState()==CreatureState.NORMAL) {
-            this.map.player.jump(false);
+            this.map.player.jump(true);
         }
         if (this.stop.isBeginPress()) {
             throw new Error("STOP"); //for testing purposes only
