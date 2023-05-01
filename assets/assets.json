@@ -1,6 +1,7 @@
 {
         "image": {
             "jet_anim": "assets/images/player1_jump.png",
+            "jet_anim1": "assets/images/player1_jump1.png",
             "lava1": "assets/images/lava.png",
             "lava2": "assets/images/lava1.png",
             "fireball1": "assets/images/fireball1.png",

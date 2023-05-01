@@ -11,8 +11,8 @@ export class Player extends Creature {
 
     constructor() {
         super();
-        this.MAX_SPEED=0.5;
-        this.JUMP_SPEED=0.95 ;
+        this.MAX_SPEED=0.35;
+        this.JUMP_SPEED=0.95;
         this.onGround=false;
         this.jetPackOn=false;
     }
@@ -86,10 +86,21 @@ export class Player extends Creature {
         return p;
     }
 
-    setJetPackState(){
+    turnOnJetPack(){
         this.jetPackOn=true;
     }
 
+    turnOffJetPack(){
+        this.jetPackOn=false;
+    }
+    
+    changeMaxSpeed(speed: number){
+        this.MAX_SPEED=speed;
+    }
+
+    changeJumpSpeed(speed: number){
+        this.JUMP_SPEED=speed;
+    }
     update(deltaTime:number) {
         let newAnim=""
         if(!this.jetPackOn){
@@ -110,10 +121,10 @@ export class Player extends Creature {
             }
         }
         else {
-            if(this.currAnimName=="left"||this.currAnimName=="stillLeft"){
+            if(this.currAnimName=="left"||this.currAnimName=="stillLeft" && this.velocity.y<0){
                 newAnim="jetLeft";
             }
-            else if(this.currAnimName=="right"||this.currAnimName=="stillRight"){
+            else if(this.currAnimName=="right"||this.currAnimName=="stillRight" && this.velocity.y<0){
                 newAnim="jetRight";
             }
         }

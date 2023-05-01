@@ -25,6 +25,7 @@ export class GameManager {
     moveLeft: GameAction;
     jump: GameAction;
     stop: GameAction;
+    propel: GameAction;
     
 
     constructor() {
@@ -39,7 +40,7 @@ export class GameManager {
         this.moveLeft=new GameAction();
         this.jump=new GameAction();
         this.stop=new GameAction();
-        
+        this.propel=new GameAction();
     }
 
     draw() {
@@ -86,10 +87,11 @@ export class GameManager {
                     this.settings.setMusic(this.resources.getLoad("music"));
                     //this.map.player.setVelocity(1,1);
                     console.log("Everything is loaded!");
-                    this.inputManager.setGameAction(this.moveRight,RIGHT_ARROW);
-                    this.inputManager.setGameAction(this.moveLeft,LEFT_ARROW);
-                    this.inputManager.setGameAction(this.jump,32);
+                    this.inputManager.setGameAction(this.moveRight,68);
+                    this.inputManager.setGameAction(this.moveLeft,65);
+                    this.inputManager.setGameAction(this.jump,87);
                     this.inputManager.setGameAction(this.stop,UP_ARROW);
+                    this.inputManager.setGameAction(this.propel,SHIFT);
                     this.oldState=STATE.Running;
                     this.gameState=STATE.Menu;
                 }
@@ -117,11 +119,30 @@ export class GameManager {
         }
         this.map.player.setVelocity(vel.x,vel.y);
         if (this.jump.isPressed() && this.map.player.getState()==CreatureState.NORMAL) {
-            this.map.player.jump(true);
+            this.map.player.changeJumpSpeed(0.95);
+            this.map.player.jump(false);
         }
         if (this.stop.isBeginPress()) {
             throw new Error("STOP"); //for testing purposes only
         }
+        if(this.propel.isPressed() && this.map.player.getState()==CreatureState.NORMAL){
+            this.map.player.changeJumpSpeed(0.40);
+            this.map.player.turnOnJetPack();
+            this.map.player.jump(true);
+        }
+        if(this.propel.isEndPress() && this.map.player.getState()==CreatureState.NORMAL){
+            this.map.player.turnOffJetPack();
+        }
+        // if(this.propel.isPressed() && this.map.player.getState()==CreatureState.NORMAL && this.moveLeft.isPressed()){
+        //     this.map.player.changeJumpSpeed(0.40);
+        //     this.map.player.turnOnJetPack();
+        //     this.map.player.setVelocity(vel.x,vel.y);
+        // }
+        // if(this.propel.isPressed() && this.map.player.getState()==CreatureState.NORMAL && this.moveRight.isPressed()){
+        //     this.map.player.changeJumpSpeed(0.40);
+        //     this.map.player.turnOnJetPack();
+        //     this.map.player.setVelocity(vel.x,vel.y);
+        // }
     }
 
     toggleFullScreen() {
