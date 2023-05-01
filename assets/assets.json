@@ -43,9 +43,11 @@
             "map2": "assets/maps/map2.txt"
         },
         "sound": {
-            "music": "assets/sounds/music.mp3",
+            "music": "assets/sounds/beats.wav",
             "prize": "assets/sounds/prize.wav",
-            "boop2": "assets/sounds/boop2.wav"
+            "boop2": "assets/sounds/boop2.wav",
+            "pewpew":"assets/sounds/My Song 6.wav",
+            "alien spit": "assets/sounds/My Song 2.wav"
         },
         "json": {
             "resources": "assets/resources/resources.json"
