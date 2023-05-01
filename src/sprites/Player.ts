@@ -1,5 +1,5 @@
 import { Vector } from "p5";
-import { Creature } from "./Creature.js";
+import { Creature, CreatureState } from "./Creature.js";
 import { Sprite } from "./Sprite.js";
 
 export class Player extends Creature {
@@ -10,8 +10,8 @@ export class Player extends Creature {
 
     constructor() {
         super();
-        this.MAX_SPEED=.5;
-        this.JUMP_SPEED=.95 ;
+        this.MAX_SPEED=0.5;
+        this.JUMP_SPEED=0.95 ;
         this.onGround=false;
     }
 
@@ -60,7 +60,8 @@ export class Player extends Creature {
         }
         if (this.velocity.x>0 && this.currAnimName!="right") {
             this.setAnimation("right");
-        } if (this.velocity.x<0 && this.currAnimName!="left") {
+        }
+        if (this.velocity.x<0 && this.currAnimName!="left") {
             this.setAnimation("left");
         }
     }
@@ -81,5 +82,33 @@ export class Player extends Creature {
         p.currAnimation = p.animations[p.currAnimName];
         p.MAX_SPEED=this.MAX_SPEED;
         return p;
+    }
+
+    update(deltaTime:number) {
+        let newAnim=""
+        if (this.velocity.x < 0 ) {
+            newAnim="left";
+            console.log("LEFT");
+        } else if (this.velocity.x > 0) {
+            newAnim="right";
+            console.log("RIGHT");
+        } else if (this.velocity.x == 0 && this instanceof Player) {
+            if (this.currAnimName=="left") {
+                console.log("stillLeft");
+                newAnim="stillLeft";
+            } else if (this.currAnimName=="right") {
+                console.log("stillRight");
+                newAnim="stillRight";
+            }
+        }
+        if (newAnim!="" && newAnim!=this.currAnimName) {
+            this.setAnimation(newAnim);    
+        } else {
+            super.update(deltaTime);
+        }
+        this.stateTime+=deltaTime;
+        if (this.state == CreatureState.DYING && this.stateTime > this.DIE_TIME) {
+            this.setState(CreatureState.DEAD);
+        }
     }
 }

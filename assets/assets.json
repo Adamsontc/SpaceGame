@@ -19,12 +19,10 @@
             "portal5": "assets/images/portal5.png",
             "portal6": "assets/images/portal6.png",
             "goo": "assets/images/goo.png",
-
             "final_boss1": "assets/images/final_boss/final_boss1.png",
             "final_boss2": "assets/images/final_boss/final_boss2.png",
             "final_boss3": "assets/images/final_boss/final_boss3.png",
             "final_boss4": "assets/images/final_boss/final_boss4.png",
-
             "tile_A": "assets/images/tile_A.png",
             "music1": "assets/images/music1.png",
             "music3": "assets/images/music3.png",
@@ -48,6 +46,8 @@
             "player3": "assets/images/player3.png",
             "player2": "assets/images/player2.png",
             "player1": "assets/images/player1.png",
+            "player_run1": "assets/images/player1_run1.png",
+            "player_run2": "assets/images/player1_run2.png",
             "background": "assets/images/background.png",
             "bg1": "assets/images/background.png",
             "bg2": "assets/images/background2.png",
@@ -71,7 +71,10 @@
             "bullet1": "assets/images/bullet.png",
             "bullet2": "assets/images/bullet2.png",
             "explosion1": "assets/images/explosion1.png",
-            "explosion2": "assets/images/explosion2.png"
+            "explosion2": "assets/images/explosion2.png",
+            "ammoBox": "assets/images/Ammo.png",
+            "power1": "assets/images/Power1.png",
+            "power2": "assets/images/Power2.png"
         },
         "spritesheet": {
             "caveman": "assets/images/spritesheet_caveman.png"

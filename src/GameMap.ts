@@ -137,6 +137,9 @@ export class GameMap {
                 }
             }
         }
+        console.log("about to draw player:");
+        console.log("currAnimName:",this.player.getCurrAnimName());
+        console.log("currAnimation:",this.player.getCurrAnimation());
 
         image(this.player.getImage(),
             Math.trunc(Math.trunc(position.x) + offsetX),
