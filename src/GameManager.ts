@@ -90,7 +90,7 @@ export class GameManager {
                     this.inputManager.setGameAction(this.moveLeft,LEFT_ARROW);
                     this.inputManager.setGameAction(this.jump,32);
                     this.inputManager.setGameAction(this.stop,UP_ARROW);
-                    this.inputManager.setGameAction(this.selfDeath,SHIFT);
+                    this.inputManager.setGameAction(this.selfDeath,82);
                     this.oldState=STATE.Running;
                     this.gameState=STATE.Menu;
                 }
