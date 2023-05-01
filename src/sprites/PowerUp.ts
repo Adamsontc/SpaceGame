@@ -15,3 +15,11 @@ export class Music extends PowerUp {
 export class Heart extends PowerUp {
     
 }
+
+export class AmmoBox extends PowerUp {
+
+}
+
+export class Power extends PowerUp {
+    
+}

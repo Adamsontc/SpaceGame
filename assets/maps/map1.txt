@@ -8,7 +8,7 @@
 #   a..z    Animated Tiles
 #   symbols (other than @ or #) Power-ups
 #   0       Player
-#   1-9     Different Bad Guys
+#   1-9     Different Bad Guys               
 #   o       Star
 #   !       Music Note
 #   *       Goal
@@ -17,13 +17,14 @@
 @parallax-layer bg1
 @parallax-layer bg2
 @music music
-                                                                
-                                                          o    o
-                                                     o     o    o
-                       o-o o        o o o       o     o      o   
-                      IIIIIII      IIIIIII       o     o          3
-                                                  o        2      
-                                  2                3 EF           
-     0           EF                                 EGD           
-        EF  1  - CD       1           ;            EGAD     *     
-BBBBBBBBGHBBBBBBBGHBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBGAAHBBBBBBBBBBBB
+
+ 
+  
+ 
+                          
+      6 5 G H I J K L M N 
+       A B C D E F G O P 
+         6  +  4  -
+    0     ooooooooooo 3  %
+BBBBBBBBBBBBBBBBBBBBBBBBBBBB
+
