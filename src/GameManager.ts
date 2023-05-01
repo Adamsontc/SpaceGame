@@ -25,6 +25,7 @@ export class GameManager {
     moveLeft: GameAction;
     jump: GameAction;
     stop: GameAction;
+    flip: GameAction;
 
     constructor() {
         this.level=0;
@@ -38,6 +39,7 @@ export class GameManager {
         this.moveLeft=new GameAction();
         this.jump=new GameAction();
         this.stop=new GameAction();
+        this.flip=new GameAction();
     }
 
     draw() {
@@ -88,8 +90,10 @@ export class GameManager {
                     this.inputManager.setGameAction(this.moveLeft,LEFT_ARROW);
                     this.inputManager.setGameAction(this.jump,32);
                     this.inputManager.setGameAction(this.stop,UP_ARROW);
+                    this.inputManager.setGameAction(this.flip,DOWN_ARROW);
                     this.oldState=STATE.Running;
                     this.gameState=STATE.Menu;
+                
                 }
                 break;
             }
@@ -119,6 +123,9 @@ export class GameManager {
         }
         if (this.stop.isBeginPress()) {
             throw new Error("STOP"); //for testing purposes only
+        }
+        if (this.flip.isBeginPress()) {
+            this.map.flipMap();
         }
     }
 
