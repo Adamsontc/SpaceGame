@@ -7,12 +7,14 @@ export class Player extends Creature {
     MAX_SPEED:number;
     JUMP_SPEED:number
     onGround:boolean;
+    jetPackOn:boolean;
 
     constructor() {
         super();
         this.MAX_SPEED=0.5;
         this.JUMP_SPEED=0.95 ;
         this.onGround=false;
+        this.jetPackOn=false;
     }
 
     getMaxSpeed() {
@@ -84,21 +86,35 @@ export class Player extends Creature {
         return p;
     }
 
+    setJetPackState(){
+        this.jetPackOn=true;
+    }
+
     update(deltaTime:number) {
         let newAnim=""
-        if (this.velocity.x < 0 ) {
-            newAnim="left";
-            console.log("LEFT");
-        } else if (this.velocity.x > 0) {
-            newAnim="right";
-            console.log("RIGHT");
-        } else if (this.velocity.x == 0 && this instanceof Player) {
-            if (this.currAnimName=="left") {
-                console.log("stillLeft");
-                newAnim="stillLeft";
-            } else if (this.currAnimName=="right") {
-                console.log("stillRight");
-                newAnim="stillRight";
+        if(!this.jetPackOn){
+            if (this.velocity.x < 0 ) {
+                newAnim="left";
+                console.log("LEFT");
+            } else if (this.velocity.x > 0) {
+                newAnim="right";
+                console.log("RIGHT");
+            } else if (this.velocity.x == 0 && this instanceof Player) {
+                if (this.currAnimName=="left") {
+                    console.log("stillLeft");
+                    newAnim="stillLeft";
+                } else if (this.currAnimName=="right") {
+                    console.log("stillRight");
+                    newAnim="stillRight";
+                }
+            }
+        }
+        else {
+            if(this.currAnimName=="left"||this.currAnimName=="stillLeft"){
+                newAnim="jetLeft";
+            }
+            else if(this.currAnimName=="right"||this.currAnimName=="stillRight"){
+                newAnim="jetRight";
             }
         }
         if (newAnim!="" && newAnim!=this.currAnimName) {
