@@ -21,6 +21,8 @@ export class GameMap {
     prize: p5.SoundFile;
     music: p5.SoundFile;
     boop: p5.SoundFile;
+    black_hole: p5.SoundFile;
+    dying: p5.SoundFile;
 
     shouldFlip: boolean;
 
@@ -39,6 +41,8 @@ export class GameMap {
         this.prize=this.resources.getLoad("prize");
         this.music=this.resources.getLoad("music");
         this.boop=this.resources.getLoad("boop2");
+        this.black_hole=this.resources.getLoad("blackHole");
+        this.dying = this.resources.getLoad("dying");
         this.sprites=[];
         this.background=[];//this.resources.get("background");
         this.tile_size=this.resources.get("TILE_SIZE");
@@ -147,6 +151,9 @@ export class GameMap {
                 }
             }
         }
+        console.log("about to draw player:");
+        console.log("currAnimName:",this.player.getCurrAnimName());
+        console.log("currAnimation:",this.player.getCurrAnimation());
 
         image(this.player.getImage(),
             Math.trunc(Math.trunc(position.x) + offsetX),
@@ -206,6 +213,7 @@ export class GameMap {
                     p.jump(true);
                 } else {
                     p.setState(CreatureState.DYING);
+                    this.dying.play();
                 }
             } else if (s instanceof PowerUp) {
                 this.acquirePowerUp(s);
@@ -227,6 +235,7 @@ export class GameMap {
         } else if (p instanceof Music) {
 
         } else if (p instanceof Heart) {
+            this.black_hole.play();
             this.level+=1;
             this.initialize();
         }

@@ -15,39 +15,50 @@
                 {"sheet":"caveman", "operators":["flip","mirror"], "rows":4, "cols":4, "duration":150}
             ]
         },
+        "bullet": {
+            "type": "Bullet",
+            "left": [
+                {"img":"bullet1","operators":["mirror"], "duration":150},
+                {"img":"bullet2","operators":["mirror"], "duration":150},
+                {"img":"bullet1","operators":["mirror"], "duration":150}
+            ],
+            "right": [
+                {"img":"bullet1",  "duration":150},
+                {"img":"bullet2",  "duration":150},
+                {"img":"bullet1",  "duration":150}
+            ],
+            "deadLeft": [
+                {"img":"explosion1", "operators":["flip"], "duration":150},
+                {"img":"explosion2", "operators":["flip"], "duration":150}
+            ],
+            "deadRight": [
+                {"img":"explosion1", "operators":["mirror","flip"], "duration":150},
+                {"img":"explosion2", "operators":["mirror","flip"], "duration":150}
+            ]
+        },
+
         "player": {
             "type": "Player",
             "left": [
-                {"img":"player1", "duration":250},
-                {"img":"player2", "duration":150},
-                {"img":"player1", "duration":150},
-                {"img":"player2", "duration":150},
-                {"img":"player3", "duration":200},
-                {"img":"player2", "duration":150}
+                {"img": "player_run1", "duration":250},
+                {"img": "player_run2", "duration":250}
             ],
             "right": [
-		        {"img":"player1", "operators":["mirror"], "duration":250},
-		        {"img":"player2", "operators":["mirror"], "duration":150},
-		        {"img":"player1", "operators":["mirror"], "duration":150},
-		        {"img":"player2", "operators":["mirror"], "duration":150},
-		        {"img":"player3", "operators":["mirror"], "duration":200},
-		        {"img":"player2", "operators":["mirror"], "duration":150}
+		        {"img": "player_run1", "operators":["mirror"], "duration":250},
+                {"img": "player_run2", "operators":["mirror"], "duration":250}
+
+            ],
+            "stillLeft": [
+                {"img": "player1", "duration":250}
+            ],
+            "stillRight": [
+                {"img": "player1", "operators":["mirror"], "duration":250}
             ],
             "deadLeft": [
-                {"img":"player1", "operators":["flip"], "duration":250},
-                {"img":"player2", "operators":["flip"], "duration":150},
-                {"img":"player1", "operators":["flip"], "duration":150},
-                {"img":"player2", "operators":["flip"], "duration":150},
-                {"img":"player3", "operators":["flip"], "duration":200},
-                {"img":"player2", "operators":["flip"], "duration":150}
+                {"img":"player1", "operators":["flip"], "duration":250}
             ],
             "deadRight": [
-		        {"img":"player1", "operators":["mirror","flip"], "duration":250},
-		        {"img":"player2", "operators":["mirror","flip"], "duration":150},
-		        {"img":"player1", "operators":["mirror","flip"], "duration":150},
-		        {"img":"player2", "operators":["mirror","flip"], "duration":150},
-		        {"img":"player3", "operators":["mirror","flip"], "duration":200},
-		        {"img":"player2", "operators":["mirror","flip"], "duration":150}
+		        {"img":"player1", "operators":["mirror","flip"], "duration":250}
             ]
         },
         "music": {
@@ -117,15 +128,171 @@
                 {"img":"grub2" , "operators":["mirror","flip"], "duration":150}
             ]
         },
+        "final_boss": {
+            "type": "FinalBoss",
+            "left": [
+                {"img":"final_boss1", "duration":150},
+                {"img":"final_boss2", "duration":150},
+                {"img":"final_boss3", "duration":150},
+                {"img":"final_boss4", "duration":150}
+            ],
+            "right": [
+                {"img":"final_boss1", "operators":["mirror"], "duration":150},
+                {"img":"final_boss2" , "operators":["mirror"], "duration":150},
+                {"img":"final_boss3", "operators":["mirror"], "duration":150},
+                {"img":"final_boss4" , "operators":["mirror"], "duration":150}
+            ],
+            "deadLeft": [
+                
+                {"img":"final_boss_dead1", "duration":150},
+               
+                {"img":"final_boss_dead2", "duration":150},
+               
+                {"img":"final_boss_dead3", "duration":150}
+                
+            ],
+            "deadRight": [
+                
+                {"img":"final_boss_dead1", "duration":150},
+                
+                {"img":"final_boss_dead2", "duration":150},
+                
+                {"img":"final_boss_dead3", "duration":150}
+                
+            ]
+        },
         "star": {
             "type": "Star",
             "default": [
-                {"img":"star1", "duration":150},
-                {"img":"star2", "duration":150},
-                {"img":"star3", "duration":150},
-                {"img":"star4", "duration":150}
+                {"img":"medallion1", "duration":100},
+                {"img":"medallion2", "duration":100},
+                {"img":"medallion3", "duration":100},
+                {"img":"medallion4", "duration":100},
+                {"img":"medallion3", "duration":100},
+                {"img":"medallion2", "duration":100}
             ]
-        }
+        },
+        "end_portal": {
+            "type":"Heart",
+            "default":[
+                {"img":"portal1", "duration":150},
+                {"img":"portal2", "duration":150},
+                {"img":"portal3", "duration":150},
+                {"img":"portal4", "duration":150},
+                {"img":"portal5", "duration":150},
+                {"img":"portal6", "duration":150},
+                {"img":"portal1", "duration":150}
+
+            ]
+        },
+        "ammoBox":{
+            "type":"AmmoBox",
+            "default":[
+                {"img":"ammoBox","duration":150}
+            ]
+
+        },
+
+        "power":{
+            "type":"Power",
+            "defualt": [
+                {"img":"power1", "duration": 150},
+                {"img":"power2", "duration": 150}
+            ]
+        },
+
+        "first_alien": {
+            "type":"Alien",
+            "default":[
+                {"img":"alien", "duration":150},
+                {"img":"alien1", "duration":150},
+                {"img":"alien2", "duration":150},
+                {"img":"alien1", "duration":150}
+            ],
+            "deadLeft":[
+                {"img":"alien_dead", "duration":100},
+                {"img":"alien_dead1", "duration":100}
+            ],
+            "deadRight":[
+                {"img":"alien_dead", "duration":100},
+                {"img":"alien_dead1", "duration":100}
+            ],
+            "left":[
+                {"img":"alien", "duration":150},
+                {"img":"alien1", "duration":150},
+                {"img":"alien2", "duration":150},
+                {"img":"alien1", "duration":150}
+            ],
+            "right":[
+                {"img":"alien", "duration":150},
+                {"img":"alien1", "duration":150},
+                {"img":"alien2", "duration":150},
+                {"img":"alien1", "duration":150}
+            ]
+        },
+        "goo": {
+            "type": "Fly",
+            "left": [
+                {"img":"goo", "duration":150}
+                
+            ],
+            "right": [
+                {"img":"goo", "duration":150}
+            ],
+            "deadLeft": [
+                {"img":"goo", "duration":150}
+            ],
+            "deadRight": [
+                {"img":"goo", "duration":150}
+            ]
+        },
+        "fireball": {
+            "type":"Fireball",
+            "default":[
+                {"img":"fireball1", "duration":150},
+                {"img":"fireball2", "duration":150}
+            ],
+            "deadLeft":[
+                {"img":"fireball1", "duration":150},
+                {"img":"fireball2", "duration":150}
+            ],
+            "deadRight":[
+                {"img":"fireball1", "duration":150},
+                {"img":"fireball2", "duration":150}
+            ],
+            "left":[
+                {"img":"fireball1", "duration":150},
+                {"img":"fireball2", "duration":150}
+            ],
+            "right":[
+                {"img":"fireball1", "duration":150},
+                {"img":"fireball2", "duration":150}
+            ]
+    },
+    "lava_pool": {
+        "type":"Lava",
+        "default":[
+            {"img":"lava1", "duration":75},
+            {"img":"lava2", "duration":75}
+        ],
+        "deadLeft":[
+            {"img":"lava1", "duration":75},
+            {"img":"lava2", "duration":75}
+        ],
+        "deadRight":[
+            {"img":"lava1", "duration":75},
+            {"img":"lava2", "duration":150}
+        ],
+        "left":[
+            {"img":"lava1", "duration":75},
+            {"img":"lava2", "duration":75}
+        ],
+        "right":[
+            {"img":"lava1", "duration":75},
+            {"img":"lava2", "duration":75}
+        ]
+    }
+    
     },
     "images": {
         "background": "background",
@@ -139,7 +306,15 @@
         "F": "tile_F",
         "G": "tile_G",
         "H": "tile_H",
-        "I": "tile_I"
+        "I": "tile_I",
+        "J": "tile_J",
+        "K": "tile_K",
+        "L": "tile_L",
+        "M": "tile_M",
+        "N": "tile_N",
+        "O": "tile_O",
+        "P": "tile_P"
+        
     },
     "sounds": {
     },
@@ -151,13 +326,21 @@
             "*": "heart",
             "1": "grub",
             "2": "fly",
+            "3": "final_boss",
             "0": "player",
             "^": "powerup",
-            "-": "caveman"
+            "%": "end_portal",
+            "-": "first_alien",
+            "4": "fireball",
+            "5": "lava_pool",
+            "6": "goo",
+            "+": "bullet"
+
         },
         "levels": [
             "map1",
             "map2"
         ]
     }
+    
 }
