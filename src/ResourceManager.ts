@@ -208,6 +208,7 @@ export class ResourceManager {
                     first=false;
                 }
                 frames.forEach(frame => {
+                    console.log("adding in frame:",frame);
                     let images;
                     if (frame.hasOwnProperty("sheet")) {
                         let startImg=this.loads[frame.sheet];
@@ -235,6 +236,7 @@ export class ResourceManager {
                                 }
                             });
                         }
+                        console.log("frame being added:",animName,img,frame.duration);
                         s.addFrame(animName,img,frame.duration);
                     })
                 });

@@ -46,6 +46,8 @@
             "player3": "assets/images/player3.png",
             "player2": "assets/images/player2.png",
             "player1": "assets/images/player1.png",
+            "player_run1": "assets/images/player1_run1.png",
+            "player_run2": "assets/images/player1_run2.png",
             "background": "assets/images/background.png",
             "bg1": "assets/images/background.png",
             "bg2": "assets/images/background2.png",
