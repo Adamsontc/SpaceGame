@@ -25,6 +25,7 @@ export class GameManager {
     moveLeft: GameAction;
     jump: GameAction;
     stop: GameAction;
+    float: GameAction;
 
     constructor() {
         this.level=0;
@@ -38,6 +39,7 @@ export class GameManager {
         this.moveLeft=new GameAction();
         this.jump=new GameAction();
         this.stop=new GameAction();
+        this.float = new GameAction();
     }
 
     draw() {
@@ -88,6 +90,7 @@ export class GameManager {
                     this.inputManager.setGameAction(this.moveLeft,LEFT_ARROW);
                     this.inputManager.setGameAction(this.jump,32);
                     this.inputManager.setGameAction(this.stop,UP_ARROW);
+                    this.inputManager.setGameAction(this.float, SHIFT);
                     this.oldState=STATE.Running;
                     this.gameState=STATE.Menu;
                 }
@@ -114,8 +117,13 @@ export class GameManager {
             vel.x=-this.map.player.getMaxSpeed();
         }
         this.map.player.setVelocity(vel.x,vel.y);
-        if (this.jump.isPressed() && this.map.player.getState()==CreatureState.NORMAL) {
+        if (this.jump.isBeginPress() && this.map.player.getState()==CreatureState.NORMAL) {
             this.map.player.jump(false);
+        }
+        
+        if (this.float.isPressed() && this.map.player.getState()==CreatureState.NORMAL) {
+            this.map.player.jump(true);
+
         }
         if (this.stop.isBeginPress()) {
             throw new Error("STOP"); //for testing purposes only
