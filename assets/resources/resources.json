@@ -50,6 +50,29 @@
 		        {"img":"player2", "operators":["mirror","flip"], "duration":150}
             ]
         },
+        "lava_pool": {
+            "type":"Lava",
+            "default":[
+                {"img":"lava1", "duration":75},
+                {"img":"lava2", "duration":75}
+            ],
+            "deadLeft":[
+                {"img":"lava1", "duration":75},
+                {"img":"lava2", "duration":75}
+            ],
+            "deadRight":[
+                {"img":"lava1", "duration":75},
+                {"img":"lava2", "duration":150}
+            ],
+            "left":[
+                {"img":"lava1", "duration":75},
+                {"img":"lava2", "duration":75}
+            ],
+            "right":[
+                {"img":"lava1", "duration":75},
+                {"img":"lava2", "duration":75}
+            ]
+        },
         "music": {
             "type": "Music",
             "default": [
@@ -153,7 +176,8 @@
             "2": "fly",
             "0": "player",
             "^": "powerup",
-            "-": "caveman"
+            "-": "caveman",
+            "l": "lava_pool"
         },
         "levels": [
             "map1",

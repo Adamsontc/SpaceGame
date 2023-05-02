@@ -15,3 +15,7 @@ export class Music extends PowerUp {
 export class Heart extends PowerUp {
     
 }
+
+export class Lava extends PowerUp {
+    
+}

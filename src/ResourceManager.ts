@@ -1,7 +1,7 @@
 import { SoundFile } from "p5";
 import { Player } from "./sprites/Player.js";
 import { Fly, Grub, Creature } from "./sprites/Creature.js";
-import { Heart, Music, PowerUp, Star } from "./sprites/PowerUp.js";
+import { Heart, Music, PowerUp, Star, Lava } from "./sprites/PowerUp.js";
 import { Sprite } from "./sprites/Sprite.js";
 
 export class ResourceManager {
@@ -152,6 +152,10 @@ export class ResourceManager {
             }
             case 'Star': {
                 s = new Star();
+                break;
+            }
+            case 'Lava': {
+                s = new Lava();
                 break;
             }
             case 'Music': {

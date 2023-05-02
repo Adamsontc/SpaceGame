@@ -33,7 +33,9 @@
             "star1": "assets/images/star1.png",
             "star3": "assets/images/star3.png",
             "star2": "assets/images/star2.png",
-            "star4": "assets/images/star4.png"
+            "star4": "assets/images/star4.png",
+            "lava1": "assets/images/lava.png",
+            "lava2": "assets/images/lava1.png"
         },
         "spritesheet": {
             "caveman": "assets/images/spritesheet_caveman.png"

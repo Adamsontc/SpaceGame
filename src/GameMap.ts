@@ -3,7 +3,7 @@ import { ResourceManager } from "./ResourceManager.js";
 import { Sprite } from "./sprites/Sprite.js";
 import { GRAVITY } from './GameManager.js';
 import { Creature, CreatureState, Grub } from "./sprites/Creature.js";
-import { Heart, Music, PowerUp, Star } from "./sprites/PowerUp.js";
+import { Heart, Music, PowerUp, Star, Lava } from "./sprites/PowerUp.js";
 import { Settings } from "./Settings.js";
 
 export class GameMap {
@@ -197,11 +197,17 @@ export class GameMap {
                 } else {
                     p.setState(CreatureState.DYING);
                 }
+            }else if (s instanceof Lava) {
+                p.setState(CreatureState.DYING);
+
+
             } else if (s instanceof PowerUp) {
                 this.acquirePowerUp(s);
-            }
+            } 
+            
         }
     }
+
 
     removeSprite(s:Sprite) {
         let i=this.sprites.indexOf(s);
