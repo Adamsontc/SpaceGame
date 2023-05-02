@@ -24,10 +24,7 @@ export class GameMap {
     black_hole: p5.SoundFile;
     dying: p5.SoundFile;
 
-    shouldFlip: boolean;
-
     constructor(level:number, resources:ResourceManager, settings:Settings) {
-        this.shouldFlip=false;
         this.settings=settings;
         this.level=level;
         this.resources=resources;
@@ -112,14 +109,7 @@ export class GameMap {
         return Math.floor(x/this.tile_size);
     }
 
-    flipMap(){
-        this.shouldFlip=!this.shouldFlip;
-    }
-
     draw() {
-        if (this.shouldFlip){
-            rotate(PI/60);
-        }
         let myW=800;
         let myH=600;
         let mapWidth=this.tilesToPixels(this.width);
