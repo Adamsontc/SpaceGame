@@ -26,6 +26,8 @@ export class GameManager {
     jump: GameAction;
     stop: GameAction;
     jetPack: GameAction;
+    propel: GameAction;
+    
 
     constructor() {
         this.level=0;
@@ -40,6 +42,7 @@ export class GameManager {
         this.jump=new GameAction();
         this.stop=new GameAction();
         this.jetPack = new GameAction();
+        this.propel=new GameAction();
     }
 
     draw() {
@@ -96,10 +99,9 @@ export class GameManager {
                     this.inputManager.setGameAction(this.jump,UP_ARROW);
                     this.inputManager.setGameAction(this.jump,87);
 
-
-                    this.inputManager.setGameAction(this.jetPack, SHIFT);
-                    this.inputManager.setGameAction(this.jetPack, 70);
-
+                    this.inputManager.setGameAction(this.propel, 70);
+                    this.inputManager.setGameAction(this.propel,SHIFT);
+                    
                     this.oldState=STATE.Running;
                     this.gameState=STATE.Menu;
                 
@@ -128,6 +130,7 @@ export class GameManager {
         }
         this.map.player.setVelocity(vel.x,vel.y);
         if (this.jump.isPressed() && this.map.player.getState()==CreatureState.NORMAL) {
+            this.map.player.changeJumpSpeed(0.95);
             this.map.player.jump(false);
         }
 
@@ -138,6 +141,24 @@ export class GameManager {
         if (this.stop.isBeginPress()) {
             throw new Error("STOP"); //for testing purposes only
         }
+        if(this.propel.isPressed() && this.map.player.getState()==CreatureState.NORMAL){
+            this.map.player.changeJumpSpeed(0.40);
+            this.map.player.turnOnJetPack();
+            this.map.player.fly(true);
+        }
+        if(this.propel.isEndPress() && this.map.player.getState()==CreatureState.NORMAL){
+            this.map.player.turnOffJetPack();
+        }
+        // if(this.propel.isPressed() && this.map.player.getState()==CreatureState.NORMAL && this.moveLeft.isPressed()){
+        //     this.map.player.changeJumpSpeed(0.40);
+        //     this.map.player.turnOnJetPack();
+        //     this.map.player.setVelocity(vel.x,vel.y);
+        // }
+        // if(this.propel.isPressed() && this.map.player.getState()==CreatureState.NORMAL && this.moveRight.isPressed()){
+        //     this.map.player.changeJumpSpeed(0.40);
+        //     this.map.player.turnOnJetPack();
+        //     this.map.player.setVelocity(vel.x,vel.y);
+        // }
     }
 
     toggleFullScreen() {

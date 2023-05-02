@@ -54,6 +54,14 @@
             "stillRight": [
                 {"img": "player1", "operators":["mirror"], "duration":250}
             ],
+            "jetLeft": [
+                {"img": "jet_anim", "duration":65},
+                {"img": "jet_anim1", "duration":65}
+            ],
+            "jetRight": [
+                {"img": "jet_anim", "operators":["mirror"],"duration":65},
+                {"img": "jet_anim1", "operators":["mirror"],"duration":65}
+            ],
             "deadLeft": [
                 {"img":"player1", "operators":["flip"], "duration":250}
             ],

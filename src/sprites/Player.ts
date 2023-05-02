@@ -8,6 +8,7 @@ export class Player extends Creature {
     JUMP_SPEED:number
     onGround:boolean;
     FLY_SPEED:number;
+    jetPackOn:boolean;
 
     constructor() {
         super();
@@ -15,6 +16,7 @@ export class Player extends Creature {
         this.JUMP_SPEED=0.95;
         this.FLY_SPEED = 0.40;
         this.onGround=false;
+        this.jetPackOn=false;
     }
 
     getMaxSpeed() {
@@ -94,17 +96,46 @@ export class Player extends Creature {
         return p;
     }
 
+    turnOnJetPack(){
+        this.jetPackOn=true;
+    }
+
+    turnOffJetPack(){
+        this.jetPackOn=false;
+    }
+    
+    changeMaxSpeed(speed: number){
+        this.MAX_SPEED=speed;
+    }
+
+    changeJumpSpeed(speed: number){
+        this.JUMP_SPEED=speed;
+    }
     update(deltaTime:number) {
         let newAnim=""
-        if (this.velocity.x < 0 ) {
-            newAnim="left";
-        } else if (this.velocity.x > 0) {
-            newAnim="right";
-        } else if (this.velocity.x == 0 && this instanceof Player) {
-            if (this.currAnimName=="left") {
-                newAnim="stillLeft";
-            } else if (this.currAnimName=="right") {
-                newAnim="stillRight";
+        if(!this.jetPackOn){
+            if (this.velocity.x < 0 ) {
+                newAnim="left";
+                console.log("LEFT");
+            } else if (this.velocity.x > 0) {
+                newAnim="right";
+                console.log("RIGHT");
+            } else if (this.velocity.x == 0 && this instanceof Player) {
+                if (this.currAnimName=="left") {
+                    console.log("stillLeft");
+                    newAnim="stillLeft";
+                } else if (this.currAnimName=="right") {
+                    console.log("stillRight");
+                    newAnim="stillRight";
+                }
+            }
+        }
+        else {
+            if(this.currAnimName=="left"||this.currAnimName=="stillLeft" && this.velocity.y<0){
+                newAnim="jetLeft";
+            }
+            else if(this.currAnimName=="right"||this.currAnimName=="stillRight" && this.velocity.y<0){
+                newAnim="jetRight";
             }
         }
         if (newAnim!="" && newAnim!=this.currAnimName) {
