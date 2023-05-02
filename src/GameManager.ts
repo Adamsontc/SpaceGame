@@ -25,6 +25,7 @@ export class GameManager {
     moveLeft: GameAction;
     jump: GameAction;
     stop: GameAction;
+    jetPack: GameAction;
 
     constructor() {
         this.level=0;
@@ -38,6 +39,7 @@ export class GameManager {
         this.moveLeft=new GameAction();
         this.jump=new GameAction();
         this.stop=new GameAction();
+        this.jetPack = new GameAction();
     }
 
     draw() {
@@ -84,10 +86,20 @@ export class GameManager {
                     this.settings.setMusic(this.resources.getLoad("music"));
                     //this.map.player.setVelocity(1,1);
                     console.log("Everything is loaded!");
+
                     this.inputManager.setGameAction(this.moveRight,RIGHT_ARROW);
+                    this.inputManager.setGameAction(this.moveRight,68);
+
                     this.inputManager.setGameAction(this.moveLeft,LEFT_ARROW);
-                    this.inputManager.setGameAction(this.jump,32);
-                    this.inputManager.setGameAction(this.stop,UP_ARROW);
+                    this.inputManager.setGameAction(this.moveLeft,65);
+
+                    this.inputManager.setGameAction(this.jump,UP_ARROW);
+                    this.inputManager.setGameAction(this.jump,87);
+
+
+                    this.inputManager.setGameAction(this.jetPack, SHIFT);
+                    this.inputManager.setGameAction(this.jetPack, 70);
+
                     this.oldState=STATE.Running;
                     this.gameState=STATE.Menu;
                 }
@@ -116,6 +128,11 @@ export class GameManager {
         this.map.player.setVelocity(vel.x,vel.y);
         if (this.jump.isPressed() && this.map.player.getState()==CreatureState.NORMAL) {
             this.map.player.jump(false);
+        }
+
+        if (this.jetPack.isPressed() && this.map.player.getState()==CreatureState.NORMAL) {
+            this.map.player.fly(true);
+            console.log("The F or Shift Key is being pressed");
         }
         if (this.stop.isBeginPress()) {
             throw new Error("STOP"); //for testing purposes only

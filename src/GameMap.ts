@@ -29,9 +29,6 @@ export class GameMap {
         this.level=level;
         this.resources=resources;
         this.initialize();
-        console.log("map for level",this.level,"is ready!")
-        console.log("tiles",this.tiles);
-        console.log("sprites",this.sprites);
     }
 
     initialize() {
@@ -123,7 +120,6 @@ export class GameMap {
 
         let offsetY = Math.trunc(myH - this.tilesToPixels(this.height));
         this.background.forEach(bg => {
-            console.log("drawing background layer with"+bg);
             let x = Math.trunc(offsetX * (myW - bg.width)/(myW-mapWidth));
             let y = Math.trunc(myH - bg.height);
             image(bg,0,0,myW,myH,0-x,0-y,800,600);
@@ -141,9 +137,6 @@ export class GameMap {
                 }
             }
         }
-        console.log("about to draw player:");
-        console.log("currAnimName:",this.player.getCurrAnimName());
-        console.log("currAnimation:",this.player.getCurrAnimation());
 
         image(this.player.getImage(),
             Math.trunc(Math.trunc(position.x) + offsetX),
