@@ -26,6 +26,7 @@ export class GameManager {
     jump: GameAction;
     stop: GameAction;
     propel: GameAction;
+    shoot: GameAction;
     
 
     constructor() {
@@ -41,6 +42,7 @@ export class GameManager {
         this.jump=new GameAction();
         this.stop=new GameAction();
         this.propel=new GameAction();
+        this.shoot=new GameAction();
     }
 
     draw() {
@@ -92,6 +94,7 @@ export class GameManager {
                     this.inputManager.setGameAction(this.jump,87);
                     this.inputManager.setGameAction(this.stop,UP_ARROW);
                     this.inputManager.setGameAction(this.propel,SHIFT);
+                    this.inputManager.setGameAction(this.shoot,32);
                     this.oldState=STATE.Running;
                     this.gameState=STATE.Menu;
                 }
@@ -128,10 +131,13 @@ export class GameManager {
         if(this.propel.isPressed() && this.map.player.getState()==CreatureState.NORMAL){
             this.map.player.changeJumpSpeed(0.40);
             this.map.player.turnOnJetPack();
-            this.map.player.jump(true);
+            this.map.player.fly(true);
         }
         if(this.propel.isEndPress() && this.map.player.getState()==CreatureState.NORMAL){
             this.map.player.turnOffJetPack();
+        }
+        if(this.shoot.isBeginPress() && this.map.player.getState()==CreatureState.NORMAL){
+            console.log("Shoot bullet!");
         }
         // if(this.propel.isPressed() && this.map.player.getState()==CreatureState.NORMAL && this.moveLeft.isPressed()){
         //     this.map.player.changeJumpSpeed(0.40);
