@@ -7,11 +7,13 @@ export class Player extends Creature {
     MAX_SPEED:number;
     JUMP_SPEED:number
     onGround:boolean;
+    FLY_SPEED:number;
 
     constructor() {
         super();
         this.MAX_SPEED=0.5;
-        this.JUMP_SPEED=0.95 ;
+        this.JUMP_SPEED=0.95;
+        this.FLY_SPEED = 0.40;
         this.onGround=false;
     }
 
@@ -34,6 +36,13 @@ export class Player extends Creature {
         if (this.onGround || forceJump) {
             this.onGround=false;
             this.setVelocity(0,-this.JUMP_SPEED);
+        }
+    }
+
+    fly(forceJump:boolean) {
+        if (this.onGround || forceJump) {
+            this.onGround=false;
+            this.setVelocity(0,-this.FLY_SPEED);
         }
     }
 
@@ -88,16 +97,12 @@ export class Player extends Creature {
         let newAnim=""
         if (this.velocity.x < 0 ) {
             newAnim="left";
-            console.log("LEFT");
         } else if (this.velocity.x > 0) {
             newAnim="right";
-            console.log("RIGHT");
         } else if (this.velocity.x == 0 && this instanceof Player) {
             if (this.currAnimName=="left") {
-                console.log("stillLeft");
                 newAnim="stillLeft";
             } else if (this.currAnimName=="right") {
-                console.log("stillRight");
                 newAnim="stillRight";
             }
         }

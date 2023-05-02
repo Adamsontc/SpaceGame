@@ -136,11 +136,6 @@ export class Sprite {
     }
 
     getImage():p5.Image {
-        console.log("in getImage:",this.currAnimName);
-        console.log("anim is:",this.currAnimation);
-        console.log("anim for stillLeft:",this.animations['stillLeft']);
-        console.log("anim for stillRight:",this.animations['stillRight']);
-        console.log("anim for deadLeft",this.animations['deadLeft']);
         if (this.currAnimation.frames.length > 0) {
             return this.currAnimation.frames[this.currAnimation.currFrameIndex].image;
         }
