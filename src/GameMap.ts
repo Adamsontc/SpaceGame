@@ -186,17 +186,7 @@ export class GameMap {
         let s=this.getSpriteCollision(p);
         if (s) {
             if (s instanceof Creature) {
-                if (canKill) {
-                    s.setState(CreatureState.DYING);
-                    if (this.settings.playEvents) {
-                        this.boop.play();
-                    }
-                    let pos=s.getPosition();
-                    p.setPosition(p.getPosition().x,pos.y-p.getImage().height);
-                    p.jump(true);
-                } else {
                     p.setState(CreatureState.DYING);
-                }
             }else if (s instanceof Lava) {
                 p.setState(CreatureState.DYING);
 
