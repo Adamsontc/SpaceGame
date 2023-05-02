@@ -3,7 +3,7 @@ import { ResourceManager } from "./ResourceManager.js";
 import { Sprite } from "./sprites/Sprite.js";
 import { GRAVITY } from './GameManager.js';
 import { Creature, CreatureState, Grub } from "./sprites/Creature.js";
-import { Heart, Music, PowerUp, Star } from "./sprites/PowerUp.js";
+import { Heart, Music, HyperJump, PowerUp, Star } from "./sprites/PowerUp.js";
 import { Settings } from "./Settings.js";
 
 export class GameMap {
@@ -219,6 +219,9 @@ export class GameMap {
         } else if (p instanceof Heart) {
             this.level+=1;
             this.initialize();
+        } else if (p instanceof HyperJump){
+            this.player.JUMP_SPEED+=1.50;
+            this.player.jump(true);
         }
     }
 

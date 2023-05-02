@@ -1,5 +1,6 @@
 {
         "image": {
+            "hyper_jump": "assets/images/hyper_jump.png",
             "tile_A": "assets/images/tile_A.png",
             "music1": "assets/images/music1.png",
             "music3": "assets/images/music3.png",

@@ -90,6 +90,12 @@
                 {"img":"powerup4", "duration":150}
             ]
         },
+        "hyper_jump": {
+            "type": "HyperJump",
+            "default": [
+                {"img":"hyper_jump", "duration":150}
+            ]
+        },
         "heart": {
             "type": "Heart",
             "default": [
@@ -153,7 +159,8 @@
             "2": "fly",
             "0": "player",
             "^": "powerup",
-            "-": "caveman"
+            "-": "caveman",
+            "3": "hyper_jump"
         },
         "levels": [
             "map1",

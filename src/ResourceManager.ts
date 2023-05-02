@@ -1,7 +1,7 @@
 import { SoundFile } from "p5";
 import { Player } from "./sprites/Player.js";
 import { Fly, Grub, Creature } from "./sprites/Creature.js";
-import { Heart, Music, PowerUp, Star } from "./sprites/PowerUp.js";
+import { Heart, Music, PowerUp, Star, HyperJump } from "./sprites/PowerUp.js";
 import { Sprite } from "./sprites/Sprite.js";
 
 export class ResourceManager {
@@ -157,6 +157,10 @@ export class ResourceManager {
             case 'Music': {
                 s = new Music();
                 break; 
+            }
+            case 'HyperJump': {
+                s = new HyperJump();
+                break;
             }
             default: {
                 console.log("No Sprite Type:",spriteType);
