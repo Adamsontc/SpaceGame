@@ -117,6 +117,7 @@
                 {"img":"grub2" , "operators":["mirror","flip"], "duration":150}
             ]
         },
+        
         "star": {
             "type": "Star",
             "default": [
