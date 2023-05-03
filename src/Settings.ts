@@ -18,14 +18,17 @@ export class Settings {
         this.menu.style("background-color","rgba(0,0,0,0.75)");
         this.menu.position(30,30);
         let music=createCheckbox("Play Music",this.playMusic);
-        music.changed(this.togglePlayMusic.bind(this));
+        //music.changed(this.togglePlayMusic.bind(this));
+        music.mousePressed(this.togglePlayMusic.bind(this));
         this.menu.child(music);
         let events=createCheckbox("Play Event Sounds",true);
-        events.changed(this.toogleEventSounds.bind(this));
+        //events.changed(this.toogleEventSounds.bind(this));
+        events.mousePressed(this.toogleEventSounds.bind(this));
         this.menu.child(events);
         this.full = createCheckbox("Full Screen",false);
         console.log("FULL======",this.full);
-        this.full.changed(this.toggleFullScreen.bind(this));
+        //this.full.changed(this.toggleFullScreen.bind(this));
+        this.full.mousePressed(this.toggleFullScreen.bind(this));
         this.menu.child(this.full);
         this.menu.hide();
         

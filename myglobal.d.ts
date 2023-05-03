@@ -9,5 +9,11 @@ declare global {
     interface Window {
         p5: typeof module,
     }
+    declare function loadSound(
+        path: string | any[],
+        successCallback?: (...args: any[]) => any,
+        errorCallback?: (...args: any[]) => any,
+        whileLoading?: (...args: any[]) => any
+    ): p5.SoundFile;
 }
 
