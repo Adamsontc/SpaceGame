@@ -72,11 +72,11 @@ export class Sprite {
     }
 
     setVelocity(x:number, y:number) {
-        if (x>0) {
-            this.setAnimation("right");
-        } else if (x<0) {
-            this.setAnimation("left");
-        }
+        // if (x>0) {
+        //     this.setAnimation("right");
+        // } else if (x<0) {
+        //     this.setAnimation("left");
+        // }
         this.velocity.set(x,y);
     }
 
@@ -121,6 +121,11 @@ export class Sprite {
     }
 
     update(elapsedTime:number) {
+        this.updateAnimation(elapsedTime);
+        //do anything else you want a sprite to do
+    }
+
+    updateAnimation(elapsedTime:number) {
         //update the animation
         if (this.currAnimation.frames.length > 1) {
             this.currAnimation.animTime += elapsedTime;
@@ -132,7 +137,6 @@ export class Sprite {
                 this.currAnimation.currFrameIndex++;
             }
         }
-
     }
 
     getImage():p5.Image {

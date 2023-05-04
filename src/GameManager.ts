@@ -25,7 +25,6 @@ export class GameManager {
     moveLeft: GameAction;
     jump: GameAction;
     stop: GameAction;
-    jetPack: GameAction;
     propel: GameAction;
     shoot: GameAction;
     
@@ -42,7 +41,6 @@ export class GameManager {
         this.moveLeft=new GameAction();
         this.jump=new GameAction();
         this.stop=new GameAction();
-        this.jetPack = new GameAction();
         this.propel=new GameAction();
         this.shoot=new GameAction();
     }
@@ -101,7 +99,6 @@ export class GameManager {
                     this.inputManager.setGameAction(this.jump,UP_ARROW);
                     this.inputManager.setGameAction(this.jump,87);
 
-                    this.inputManager.setGameAction(this.propel, 70);
                     this.inputManager.setGameAction(this.propel,SHIFT);
                     this.inputManager.setGameAction(this.shoot,32);
                     this.oldState=STATE.Running;
@@ -132,21 +129,13 @@ export class GameManager {
         }
         this.map.player.setVelocity(vel.x,vel.y);
         if (this.jump.isPressed() && this.map.player.getState()==CreatureState.NORMAL) {
-            this.map.player.changeJumpSpeed(0.95);
             this.map.player.jump(false);
-        }
-
-        if (this.jetPack.isPressed() && this.map.player.getState()==CreatureState.NORMAL) {
-            this.map.player.fly(true);
-            console.log("The F or Shift Key is being pressed");
         }
         if (this.stop.isBeginPress()) {
             throw new Error("STOP"); //for testing purposes only
         }
-        if(this.propel.isPressed() && this.map.player.getState()==CreatureState.NORMAL){
-            this.map.player.changeJumpSpeed(0.40);
+        if(this.propel.isBeginPress() && this.map.player.getState()==CreatureState.NORMAL){
             this.map.player.turnOnJetPack();
-            this.map.player.fly(true);
         }
         if(this.propel.isEndPress() && this.map.player.getState()==CreatureState.NORMAL){
             this.map.player.turnOffJetPack();
@@ -154,16 +143,7 @@ export class GameManager {
         if(this.shoot.isBeginPress() && this.map.player.getState()==CreatureState.NORMAL){
             console.log("Shoot bullet!");
         }
-        // if(this.propel.isPressed() && this.map.player.getState()==CreatureState.NORMAL && this.moveLeft.isPressed()){
-        //     this.map.player.changeJumpSpeed(0.40);
-        //     this.map.player.turnOnJetPack();
-        //     this.map.player.setVelocity(vel.x,vel.y);
-        // }
-        // if(this.propel.isPressed() && this.map.player.getState()==CreatureState.NORMAL && this.moveRight.isPressed()){
-        //     this.map.player.changeJumpSpeed(0.40);
-        //     this.map.player.turnOnJetPack();
-        //     this.map.player.setVelocity(vel.x,vel.y);
-        // }
+
     }
 
     toggleFullScreen() {

@@ -7,19 +7,33 @@ export class Player extends Creature {
     MAX_SPEED:number;
     JUMP_SPEED:number
     onGround:boolean;
-    FLY_SPEED:number;
     jetPackOn:boolean;
+    thrusterAmount:number;
+    fuel:number;
 
     constructor() {
         super();
         this.MAX_SPEED=0.5;
         this.JUMP_SPEED=0.95;
-        this.FLY_SPEED = 0.40;
+        this.thrusterAmount=0.003;
+        this.fuel=10;
         this.onGround=false;
         this.jetPackOn=false;
     }
 
-    getMaxSpeed() {
+    getThursterAmount():number {
+        if (this.jetPackOn) {
+            this.fuel-=this.thrusterAmount;
+            return this.thrusterAmount
+        }
+        return 0.0;
+    }
+
+    isJetPackOn():boolean {
+        return this.jetPackOn;
+    }
+
+    getMaxSpeed():number {
         return this.MAX_SPEED;
     }
 
@@ -41,13 +55,7 @@ export class Player extends Creature {
         }
     }
 
-    fly(forceJump:boolean) {
-        if (this.onGround || forceJump) {
-            this.onGround=false;
-            let currVel = this.getVelocity();
-            this.setVelocity(currVel.x,-this.FLY_SPEED);
-        }
-    }
+    
 
 
     setPosition(x:number, y:number) {
@@ -69,12 +77,6 @@ export class Player extends Creature {
             this.velocity.y=this.MAX_SPEED;
         } else if (this.velocity.y<-this.MAX_SPEED) {
             this.velocity.y=-this.MAX_SPEED;
-        }
-        if (this.velocity.x>0 && this.currAnimName!="right") {
-            this.setAnimation("right");
-        }
-        if (this.velocity.x<0 && this.currAnimName!="left") {
-            this.setAnimation("left");
         }
     }
 
@@ -98,6 +100,7 @@ export class Player extends Creature {
 
     turnOnJetPack(){
         this.jetPackOn=true;
+        this.onGround=false;
     }
 
     turnOffJetPack(){
@@ -113,35 +116,37 @@ export class Player extends Creature {
     }
     update(deltaTime:number) {
         let newAnim=""
-        if(!this.jetPackOn){
-            if (this.velocity.x < 0 ) {
+        if (this.velocity.x<0) {
+            if (this.jetPackOn) {
+                newAnim="jetLeft";
+            } else {
                 newAnim="left";
-                console.log("LEFT");
-            } else if (this.velocity.x > 0) {
+            }
+        } else if (this.velocity.x>0) {
+            if (this.jetPackOn) {
+                newAnim="jetRight";
+            } else {
                 newAnim="right";
-                console.log("RIGHT");
-            } else if (this.velocity.x == 0 && this instanceof Player) {
-                if (this.currAnimName=="left") {
-                    console.log("stillLeft");
+            }
+        } else {
+            if (this.jetPackOn) {
+                if (this.currAnimName.toUpperCase().includes("LEFT")) {
+                    newAnim="jetLeft";
+                } else {
+                    newAnim="jetRight";
+                }
+            } else {
+                if (this.currAnimName.toUpperCase().includes("LEFT")) {
                     newAnim="stillLeft";
-                } else if (this.currAnimName=="right") {
-                    console.log("stillRight");
+                } else {
                     newAnim="stillRight";
                 }
-            }
-        }
-        else {
-            if(this.currAnimName=="left"||this.currAnimName=="stillLeft" && this.velocity.y<0){
-                newAnim="jetLeft";
-            }
-            else if(this.currAnimName=="right"||this.currAnimName=="stillRight" && this.velocity.y<0){
-                newAnim="jetRight";
             }
         }
         if (newAnim!="" && newAnim!=this.currAnimName) {
             this.setAnimation(newAnim);    
         } else {
-            super.update(deltaTime);
+            this.updateAnimation(deltaTime);
         }
         this.stateTime+=deltaTime;
         if (this.state == CreatureState.DYING && this.stateTime > this.DIE_TIME) {

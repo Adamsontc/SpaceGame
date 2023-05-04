@@ -246,8 +246,14 @@ export class GameMap {
         let newPos = s.getPosition().copy();
 
         if (!s.isFlying()) {
-            oldVel.y=oldVel.y+GRAVITY*deltaTime;
-            s.setVelocity(oldVel.x,oldVel.y);
+            if (s instanceof Player) {
+                let thrust=(s as Player).getThursterAmount();
+                oldVel.y=oldVel.y+(GRAVITY-thrust)*deltaTime;
+                s.setVelocity(oldVel.x,oldVel.y);
+            } else {
+                oldVel.y=oldVel.y+GRAVITY*deltaTime;
+                s.setVelocity(oldVel.x,oldVel.y);
+            }
         }
 
         //update the x part of position first
