@@ -27,6 +27,7 @@ export class GameManager {
     stop: GameAction;
     propel: GameAction;
     shoot: GameAction;
+    blast: p5.SoundFile;
     
 
     constructor() {
@@ -43,6 +44,7 @@ export class GameManager {
         this.stop=new GameAction();
         this.propel=new GameAction();
         this.shoot=new GameAction();
+        
     }
 
     draw() {
@@ -144,6 +146,7 @@ export class GameManager {
             this.map.player.turnOffJetPack();
         }
         if(this.shoot.isBeginPress() && this.map.player.getState()==CreatureState.NORMAL){
+            this.map.playShoot();
             let p=this.map.player;
             let pos=p.getPosition();
             let animName = p.getCurrAnimName();
