@@ -24,6 +24,7 @@ export class GameMap {
     prize: p5.SoundFile;
     music: p5.SoundFile;
     boop: p5.SoundFile;
+    blast: p5.SoundFile;
     black_hole: p5.SoundFile;
     dying: p5.SoundFile;
     medallions: number;
@@ -40,6 +41,7 @@ export class GameMap {
         this.prize=this.resources.getLoad("prize");
         this.music=this.resources.getLoad("music");
         this.boop=this.resources.getLoad("boop2");
+        this.blast=this.resources.getLoad("gun_blast");
         this.black_hole=this.resources.getLoad("blackHole");
         this.dying = this.resources.getLoad("dying");
         this.sprites=[];
@@ -246,6 +248,10 @@ export class GameMap {
             }
         }
         return null;
+    }
+
+    playShoot(){
+        this.blast.play();
     }
 
     updateProjectile(proj:Projectile) {
