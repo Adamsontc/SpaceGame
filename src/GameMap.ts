@@ -4,6 +4,7 @@ import { Sprite } from "./sprites/Sprite.js";
 import { GRAVITY } from './GameManager.js';
 import { Creature, CreatureState, Grub } from "./sprites/Creature.js";
 import { Heart, Music, PowerUp, Star } from "./sprites/PowerUp.js";
+import { Lava } from "./sprites/Lava.js"
 import { Settings } from "./Settings.js";
 
 export class GameMap {
@@ -186,19 +187,14 @@ export class GameMap {
         let s=this.getSpriteCollision(p);
         if (s) {
             if (s instanceof Creature) {
-                if (canKill) {
-                    s.setState(CreatureState.DYING);
-                    if (this.settings.playEvents) {
-                        this.boop.play();
-                    }
-                    let pos=s.getPosition();
-                    p.setPosition(p.getPosition().x,pos.y-p.getImage().height);
-                    p.jump(true);
-                } else {
-                    p.setState(CreatureState.DYING);
-                    this.dying.play();
-                }
-            } else if (s instanceof PowerUp) {
+                p.setState(CreatureState.DYING)
+                this.dying.play();
+
+            }   else if (s instanceof Lava) {
+                p.setState(CreatureState.DYING);
+                this.dying.play();
+
+            }   else if (s instanceof PowerUp) {
                 this.acquirePowerUp(s);
             }
         }
