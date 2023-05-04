@@ -290,9 +290,9 @@ export class GameMap {
         let spriteCollided=this.getSpriteCollision(s);
         if (spriteCollided) {
             let oldVel=s.getVelocity();
-            s.setVelocity(s.getVelocity().x*-1, - oldVel);
+            s.setVelocity(oldVel.x*-1, -oldVel.y);
             }
-            return null;
+            return;
         }
 
 
