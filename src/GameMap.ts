@@ -192,10 +192,12 @@ export class GameMap {
             if (s instanceof Creature) {
                 p.setState(CreatureState.DYING)
                 this.dying.play();
+                this.medallions=0;
 
             }   else if (s instanceof Lava) {
                 p.setState(CreatureState.DYING);
                 this.dying.play();
+                this.medallions=0;
 
             }   else if (s instanceof PowerUp) {
                 this.acquirePowerUp(s);
