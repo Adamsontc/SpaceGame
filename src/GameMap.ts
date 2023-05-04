@@ -21,11 +21,13 @@ export class GameMap {
     prize: p5.SoundFile;
     music: p5.SoundFile;
     boop: p5.SoundFile;
+    numMedallions: number;
 
     constructor(level:number, resources:ResourceManager, settings:Settings) {
         this.settings=settings;
         this.level=level;
         this.resources=resources;
+        this.numMedallions=0;
         this.initialize();
         console.log("map for level",this.level,"is ready!")
         console.log("tiles",this.tiles);
@@ -216,7 +218,7 @@ export class GameMap {
         if (p instanceof Star) {
             if (this.settings.playEvents) {
                 this.prize.play();
-                this.player.medallions+=1;
+                this.numMedallions+=1;
             }
         } else if (p instanceof Music) {
 

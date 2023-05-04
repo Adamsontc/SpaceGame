@@ -15,8 +15,9 @@ export class Settings {
         this.playMusic=false;
         this.playEvents=true;
         this.menu=createDiv();
-        this.menu.style("background-color","rgba(0,0,0,0.75)");
+        this.menu.style("background-color","rgba(27,212,121,0.60)");
         this.menu.position(30,30);
+        this.menu.style("color","#ffffff");
         let music=createCheckbox("Play Music",this.playMusic);
         music.changed(this.togglePlayMusic.bind(this));
         this.menu.child(music);

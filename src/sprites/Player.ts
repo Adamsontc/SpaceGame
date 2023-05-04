@@ -8,7 +8,7 @@ export class Player extends Creature {
     JUMP_SPEED:number
     onGround:boolean;
     jetPackOn:boolean;
-    medallions:number;
+    
 
     constructor() {
         super();
@@ -16,15 +16,10 @@ export class Player extends Creature {
         this.JUMP_SPEED=0.95;
         this.onGround=false;
         this.jetPackOn=false;
-        this.medallions=0;
     }
 
     getMaxSpeed() {
         return this.MAX_SPEED;
-    }
-
-    getMedallions(){
-        return this.medallions;
     }
 
     collideVertical() {
