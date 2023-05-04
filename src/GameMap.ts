@@ -283,7 +283,14 @@ export class GameMap {
         if (s instanceof Player) {
             this.checkPlayerCollision(s as Player, oldY < newPos.y);
         }
+        let spriteCollided=this.getSpriteCollision(s);
+        if (spriteCollided) {
+            let oldVel=s.getVelocity();
+            s.setVelocity(s.getVelocity().x*-1, - oldVel);
+            }
+            return null;
     }
+        
 
     update() {
         if (this.player.getState() == CreatureState.DEAD) {
