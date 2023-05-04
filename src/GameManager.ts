@@ -144,7 +144,18 @@ export class GameManager {
             this.map.player.turnOffJetPack();
         }
         if(this.shoot.isBeginPress() && this.map.player.getState()==CreatureState.NORMAL){
-            console.log("Shoot bullet!");
+            let p=this.map.player;
+            let pos=p.getPosition();
+            let animName = p.getCurrAnimName();
+            //let mappings=this.resources.get('mappings');
+            let bullet = this.resources.get("blast").clone();
+            bullet.setPosition(pos.x+40,pos.y+20);
+            if (animName.toUpperCase().includes("RIGHT")) {
+                bullet.setRight(true);
+            } else {
+                bullet.setRight(false);
+            }
+            this.map.sprites.push(bullet);
         }
 
     }

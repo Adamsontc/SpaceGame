@@ -69,6 +69,12 @@
 		        {"img":"player1", "operators":["mirror","flip"], "duration":250}
             ]
         },
+        "blast": {
+            "type": "Projectile",
+            "default": [
+                {"img":"blast", "duration":1000}
+            ]
+        },
         "music": {
             "type": "Music",
             "default": [
@@ -330,6 +336,7 @@
         "TILE_SIZE": 64,
         "mappings": {
             "o": "star",
+            "b": "blast",
             "!": "music",
             "*": "heart",
             "1": "grub",

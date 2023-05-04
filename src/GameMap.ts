@@ -4,6 +4,7 @@ import { Sprite } from "./sprites/Sprite.js";
 import { GRAVITY } from './GameManager.js';
 import { Creature, CreatureState, Grub } from "./sprites/Creature.js";
 import { Heart, Music, PowerUp, Star } from "./sprites/PowerUp.js";
+import { Projectile } from './sprites/Projectile.js';
 import { Lava } from "./sprites/Lava.js"
 import { Settings } from "./Settings.js";
 
@@ -246,6 +247,25 @@ export class GameMap {
         return null;
     }
 
+    updateProjectile(proj:Projectile) {
+        let newPos = proj.getPosition().copy();
+        newPos.x += proj.getVelocity().x*deltaTime;
+        //newPos.add(proj.getVelocity().mult(deltaTime));
+        let point = this.getTileCollision(proj,newPos);
+        if (point) {
+            this.removeSprite(proj);
+        } else {
+            let spriteCollided=this.getSpriteCollision(proj);
+            if (spriteCollided) {
+                if (spriteCollided instanceof Creature && !(spriteCollided instanceof Lava)) {
+                    spriteCollided.setState(CreatureState.DYING);
+                    this.removeSprite(proj);
+                }
+            }
+            proj.setPosition(newPos.x,newPos.y);
+        }
+    }
+
     updateSprite(s:Sprite) {
         //update velocity due to gravity
         let oldVel = s.getVelocity();
@@ -323,6 +343,8 @@ export class GameMap {
                 }
             } else if (sprite instanceof PowerUp) {
                 sprite.update(deltaTime);
+            } else if (sprite instanceof Projectile) {
+                this.updateProjectile(sprite);
             }
         });
     }

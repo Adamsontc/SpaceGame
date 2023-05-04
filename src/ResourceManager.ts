@@ -8,8 +8,10 @@ import {Alien} from "./sprites/Alien.js";
 import { AmmoBox } from "./sprites/PowerUp.js";
 import { Power } from "./sprites/PowerUp.js";
 import { FinalBoss } from "./sprites/FinalBoss.js";
-import {Lava} from "./sprites/Lava.js"
-import { Fireball } from "./sprites/Fireball.js"
+import {Lava} from "./sprites/Lava.js";
+import { Fireball } from "./sprites/Fireball.js";
+import { Projectile } from "./sprites/Projectile.js";
+
 
 export class ResourceManager {
 
@@ -167,6 +169,10 @@ export class ResourceManager {
             }
             case 'Music': {
                 s = new Music();
+                break; 
+            }
+            case 'Projectile': {
+                s = new Projectile();
                 break; 
             }
             case 'Bullet': {
