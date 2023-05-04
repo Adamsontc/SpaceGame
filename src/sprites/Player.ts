@@ -44,7 +44,7 @@ export class Player extends Creature {
     fly(forceJump:boolean) {
         if (this.onGround || forceJump) {
             this.onGround=false;
-            let currVel=this.getVelocity();
+            let currVel = this.getVelocity();
             this.setVelocity(currVel.x,-this.FLY_SPEED);
         }
     }
