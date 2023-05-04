@@ -48,6 +48,7 @@ export class GameManager {
     draw() {
         switch (this.gameState) {
             case STATE.Running: {
+                textStyle()
                 this.map.draw();
                 break;
             }

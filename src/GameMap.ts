@@ -24,11 +24,13 @@ export class GameMap {
     boop: p5.SoundFile;
     black_hole: p5.SoundFile;
     dying: p5.SoundFile;
+    medallions: number;
 
     constructor(level:number, resources:ResourceManager, settings:Settings) {
         this.settings=settings;
         this.level=level;
         this.resources=resources;
+        this.medallions=0;
         this.initialize();
     }
 
@@ -111,6 +113,7 @@ export class GameMap {
     }
 
     draw() {
+        
         let myW=800;
         let myH=600;
         let mapWidth=this.tilesToPixels(this.width);
@@ -210,6 +213,7 @@ export class GameMap {
         if (p instanceof Star) {
             if (this.settings.playEvents) {
                 this.prize.play();
+                this.medallions+=1;
             }
         } else if (p instanceof Music) {
 
