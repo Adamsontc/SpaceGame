@@ -149,10 +149,11 @@ export class GameManager {
             let animName = p.getCurrAnimName();
             //let mappings=this.resources.get('mappings');
             let bullet = this.resources.get("blast").clone();
-            bullet.setPosition(pos.x+40,pos.y+20);
             if (animName.toUpperCase().includes("RIGHT")) {
+                bullet.setPosition(pos.x+40,pos.y+25);
                 bullet.setRight(true);
             } else {
+                bullet.setPosition(pos.x-30,pos.y+25);
                 bullet.setRight(false);
             }
             this.map.sprites.push(bullet);

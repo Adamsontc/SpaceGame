@@ -5,7 +5,7 @@ export class Projectile extends Sprite {
 
     constructor() {
         super();
-        this.setVelocity(0.25,0);
+        this.setVelocity(0.55,0);
     }
 
     isFlying() {

@@ -314,13 +314,14 @@ export class GameMap {
         s.setPosition(newPos.x,newPos.y);
         if (s instanceof Player) {
             this.checkPlayerCollision(s as Player, oldY < newPos.y);
-        }
-        let spriteCollided=this.getSpriteCollision(s);
-        if (spriteCollided) {
+        } else {
+            let spriteCollided=this.getSpriteCollision(s);
+            if (spriteCollided && !(spriteCollided instanceof Projectile)) {
             let oldVel=s.getVelocity();
-            s.setVelocity(s.getVelocity().x*-1, - oldVel);
+            s.setVelocity(oldVel.x*-1, -oldVel);
             }
-            return null;
+
+        }
     }
         
 
