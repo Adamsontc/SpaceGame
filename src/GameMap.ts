@@ -7,6 +7,7 @@ import { Heart, Music, PowerUp, Star } from "./sprites/PowerUp.js";
 import { Projectile } from './sprites/Projectile.js';
 import { Lava } from "./sprites/Lava.js"
 import { Settings } from "./Settings.js";
+import { Fireball } from "./sprites/Fireball.js";
 
 export class GameMap {
 
@@ -257,7 +258,7 @@ export class GameMap {
         } else {
             let spriteCollided=this.getSpriteCollision(proj);
             if (spriteCollided) {
-                if (spriteCollided instanceof Creature && !(spriteCollided instanceof Lava)) {
+                if (spriteCollided instanceof Creature && !(spriteCollided instanceof Lava) && !(spriteCollided instanceof Fireball)) {
                     spriteCollided.setState(CreatureState.DYING);
                     this.removeSprite(proj);
                 }
@@ -315,13 +316,12 @@ export class GameMap {
         if (s instanceof Player) {
             this.checkPlayerCollision(s as Player, oldY < newPos.y);
         } else {
-            let spriteCollided=this.getSpriteCollision(s);
-            if (spriteCollided && !(spriteCollided instanceof Projectile)) {
+        let spriteCollided=this.getSpriteCollision(s);
+        if (spriteCollided && !(spriteCollided instanceof Projectile)) {
             let oldVel=s.getVelocity();
             s.setVelocity(oldVel.x*-1, -oldVel);
             }
-
-        }
+        } 
     }
         
 
