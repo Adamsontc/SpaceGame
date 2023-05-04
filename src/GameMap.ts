@@ -216,6 +216,7 @@ export class GameMap {
         if (p instanceof Star) {
             if (this.settings.playEvents) {
                 this.prize.play();
+                this.player.medallions+=1;
             }
         } else if (p instanceof Music) {
 

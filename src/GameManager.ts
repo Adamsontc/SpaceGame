@@ -49,6 +49,8 @@ export class GameManager {
         switch (this.gameState) {
             case STATE.Running: {
                 this.map.draw();
+                textSize(32);
+	            text("Medallions: "+this.map.player.medallions,20,25);
                 break;
             }
             case STATE.Menu: {
