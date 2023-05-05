@@ -8,9 +8,7 @@ export class Player extends Creature {
     JUMP_SPEED:number
     onGround:boolean;
     jetPackOn:boolean;
-    thrusterAmount:number;
-    fuel:number;
-    numBullets: number;
+    
 
     constructor() {
         super();

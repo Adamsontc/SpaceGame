@@ -13,12 +13,13 @@
  */
 
 import { Sprite } from "./sprites/Sprite.js";
-
+import {GameMap} from "./GameMap.js";
 import { GameManager } from "./GameManager.js";  //handles loading of resources, keeping track and updating the state of everything in the game
 import { Renderer } from "p5";
-
+import { Player } from "./sprites/Player.js";
 let game: GameManager;
 let canvas: Renderer;
+
 
 console.log("**** Loading Script ****");
 
@@ -48,6 +49,8 @@ export function draw() {
 	fill(255);
 	stroke(255);
 	rect(800,0,width*10,height*10); //a hack to make sure even with scaling only the correct portion of the game will be shown
+	//textSize(32);
+	//text(medallions,20,25);
 }
 
 
