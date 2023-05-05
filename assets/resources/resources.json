@@ -279,8 +279,8 @@
                 {"img":"fireball2", "duration":150}
             ],
             "right":[
-                {"img":"fireball1", "duration":150},
-                {"img":"fireball2", "duration":150}
+                {"img":"fireball1","operators": ["mirror"], "duration":150},
+                {"img":"fireball2","operators": ["mirror"], "duration":150}
             ]
     },
     "lava_pool": {
@@ -349,7 +349,9 @@
             "4": "fireball",
             "5": "lava_pool",
             "6": "goo",
-            "+": "bullet"
+            "+": "bullet",
+            "p": "power",
+            "a": "ammoBox"
 
         },
         "levels": [

@@ -3,7 +3,7 @@ import { ResourceManager } from "./ResourceManager.js";
 import { Sprite } from "./sprites/Sprite.js";
 import { GRAVITY } from './GameManager.js';
 import { Creature, CreatureState, Grub } from "./sprites/Creature.js";
-import { Heart, Music, PowerUp, Star } from "./sprites/PowerUp.js";
+import { Heart, Music, PowerUp, Star, AmmoBox } from "./sprites/PowerUp.js";
 import { Projectile } from './sprites/Projectile.js';
 import { Lava } from "./sprites/Lava.js"
 import { Settings } from "./Settings.js";
@@ -203,7 +203,11 @@ export class GameMap {
                 this.dying.play();
                 this.medallions=0;
 
-            }   else if (s instanceof PowerUp) {
+            } else if (s instanceof AmmoBox) {
+                this.acquirePowerUp(s);
+
+
+            } else if (s instanceof PowerUp) {
                 this.acquirePowerUp(s);
             }
         }
