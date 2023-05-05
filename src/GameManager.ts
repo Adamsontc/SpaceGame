@@ -54,8 +54,9 @@ export class GameManager {
             case STATE.Running: {
                 textStyle()
                 this.map.draw();
-                textSize(32);
+                textSize(24);
                 text("Medallions: "+this.map.medallions,20,25);
+                text("Ammo: "+ this.map.player.getnumBullets(),20,45);
                 break;
             }
             case STATE.Menu: {
