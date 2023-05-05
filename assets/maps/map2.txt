@@ -8,6 +8,8 @@
 #   *       Goal
 #   1       Bad Guy 1 (grub)
 #   2       Bad Guy 2 (fly)
+@parallax-layer bg1
+@parallax-layer bg2
 BF          o o o                o o o o o o o o o o o o o o o o o o o o o o o                EB
 AD         IIIIIII              IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII               CA
 AD 0                    o o o                I                   EBBBBBBBBBBBBBF     o o o o  CA

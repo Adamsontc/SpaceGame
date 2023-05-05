@@ -17,9 +17,17 @@
 @parallax-layer bg1
 @parallax-layer bg2
 @music music
-                                                                
-                                                          o    o
-                                                     o     o    o
+                 
+                 
+                  II
+                             II
+                    II             II        
+                                             II
+                                                   II
+                                        II
+        II
+                                    II                      o    o
+                II                            II         o     o    o
                        o-o o        o o o       o     o      o   
                       IIIIIII      IIIIIII       o     o         2 
                                                   o        2      
