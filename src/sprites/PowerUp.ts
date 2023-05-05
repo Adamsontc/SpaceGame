@@ -17,6 +17,7 @@ export class Heart extends PowerUp {
 }
 
 export class AmmoBox extends PowerUp {
+    
 
 }
 

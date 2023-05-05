@@ -10,6 +10,7 @@ export class Player extends Creature {
     jetPackOn:boolean;
     thrusterAmount:number;
     fuel:number;
+    numBullets: number;
 
     constructor() {
         super();
@@ -17,6 +18,7 @@ export class Player extends Creature {
         this.JUMP_SPEED=0.80;
         this.thrusterAmount=0.003;
         this.fuel=10;
+        this.numBullets = 10;
         this.onGround=false;
         this.jetPackOn=false;
     }
@@ -35,6 +37,10 @@ export class Player extends Creature {
 
     getMaxSpeed():number {
         return this.MAX_SPEED;
+    }
+
+    getnumBullets():number {
+        return this.numBullets;
     }
 
     collideVertical() {

@@ -3,10 +3,11 @@ import { ResourceManager } from "./ResourceManager.js";
 import { Sprite } from "./sprites/Sprite.js";
 import { GRAVITY } from './GameManager.js';
 import { Creature, CreatureState, Grub } from "./sprites/Creature.js";
-import { Heart, Music, PowerUp, Star } from "./sprites/PowerUp.js";
+import { Heart, Music, PowerUp, Star, AmmoBox } from "./sprites/PowerUp.js";
 import { Projectile } from './sprites/Projectile.js';
 import { Lava } from "./sprites/Lava.js"
 import { Settings } from "./Settings.js";
+import { Fireball } from "./sprites/Fireball.js";
 
 export class GameMap {
 
@@ -23,6 +24,7 @@ export class GameMap {
     prize: p5.SoundFile;
     music: p5.SoundFile;
     boop: p5.SoundFile;
+    blast: p5.SoundFile;
     black_hole: p5.SoundFile;
     dying: p5.SoundFile;
     medallions: number;
@@ -39,6 +41,7 @@ export class GameMap {
         this.prize=this.resources.getLoad("prize");
         this.music=this.resources.getLoad("music");
         this.boop=this.resources.getLoad("boop2");
+        this.blast=this.resources.getLoad("gun_blast");
         this.black_hole=this.resources.getLoad("blackHole");
         this.dying = this.resources.getLoad("dying");
         this.sprites=[];
@@ -118,12 +121,15 @@ export class GameMap {
         let myW=800;
         let myH=600;
         let mapWidth=this.tilesToPixels(this.width);
+        let mapHeight = this.tilesToPixels(this.height);
         let position=this.player.getPosition();
         let offsetX = myW / 2 - Math.round(position.x) - this.tile_size;
         offsetX = Math.min(offsetX,0);
         offsetX = Math.trunc(Math.max(offsetX, myW - mapWidth));
 
-        let offsetY = Math.trunc(myH - this.tilesToPixels(this.height));
+        let offsetY = myH / 2 - Math.round(position.y) - this.tile_size;
+        offsetY = Math.min(offsetY,0);
+        offsetY = Math.trunc(Math.max(offsetY, myH - mapHeight));
         this.background.forEach(bg => {
             let x = Math.trunc(offsetX * (myW - bg.width)/(myW-mapWidth));
             let y = Math.trunc(myH - bg.height);
@@ -200,7 +206,11 @@ export class GameMap {
                 this.dying.play();
                 this.medallions=0;
 
-            }   else if (s instanceof PowerUp) {
+            } else if (s instanceof AmmoBox) {
+                this.acquirePowerUp(s);
+
+
+            } else if (s instanceof PowerUp) {
                 this.acquirePowerUp(s);
             }
         }
@@ -247,6 +257,10 @@ export class GameMap {
         return null;
     }
 
+    playShoot(){
+        this.blast.play();
+    }
+
     updateProjectile(proj:Projectile) {
         let newPos = proj.getPosition().copy();
         newPos.x += proj.getVelocity().x*deltaTime;
@@ -257,7 +271,7 @@ export class GameMap {
         } else {
             let spriteCollided=this.getSpriteCollision(proj);
             if (spriteCollided) {
-                if (spriteCollided instanceof Creature && !(spriteCollided instanceof Lava)) {
+                if (spriteCollided instanceof Creature && !(spriteCollided instanceof Lava) && !(spriteCollided instanceof Fireball)) {
                     spriteCollided.setState(CreatureState.DYING);
                     this.removeSprite(proj);
                 }
@@ -314,13 +328,13 @@ export class GameMap {
         s.setPosition(newPos.x,newPos.y);
         if (s instanceof Player) {
             this.checkPlayerCollision(s as Player, oldY < newPos.y);
-        }
+        } else {
         let spriteCollided=this.getSpriteCollision(s);
-        if (spriteCollided) {
+        if (spriteCollided && !(spriteCollided instanceof Projectile)) {
             let oldVel=s.getVelocity();
-            s.setVelocity(s.getVelocity().x*-1, - oldVel);
+            s.setVelocity(oldVel.x*-1, -oldVel);
             }
-            return null;
+        } 
     }
         
 
