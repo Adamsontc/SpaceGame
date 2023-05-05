@@ -1,0 +1,24 @@
+# Map file for tile-based game 
+# (Lines that start with '#' are comments)
+# The tiles are:
+#   (Space) Empty tile
+#   A..Z    Tiles A through Z
+#   o       Star
+#   !       Music Note
+#   *       Goal
+#   1       Bad Guy 1 (grub)
+#   2       Bad Guy 2 (fly)
+@parallax-layer bg1
+@parallax-layer bg2
+@music music
+
+KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+K                                                   K
+0                                                   K
+                                                    K
+                                                    K
+                                                    K
+                                                    K
+                                                    K
+ 55555555555555555555555555555555555555555555555555 K                     
+BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
