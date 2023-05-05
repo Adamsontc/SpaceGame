@@ -144,8 +144,8 @@ export class GameManager {
         if (this.stop.isBeginPress()) {
             throw new Error("STOP"); //for testing purposes only
         }
-        if(this.propel.isBeginPress() && this.map.player.getState()==CreatureState.NORMAL){
-            this.map.player.turnOnJetPack();
+        if(this.propel.isBeginPress() && this.map.player.getState()==CreatureState.NORMAL && this.map.player.fuel>0){
+                this.map.player.turnOnJetPack();
         }
         if(this.propel.isEndPress() && this.map.player.getState()==CreatureState.NORMAL){
             this.map.player.turnOffJetPack();

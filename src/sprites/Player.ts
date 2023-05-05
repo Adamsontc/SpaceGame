@@ -16,7 +16,7 @@ export class Player extends Creature {
         this.MAX_SPEED=0.35;
         this.JUMP_SPEED=0.80;
         this.thrusterAmount=0.003;
-        this.fuel=10;
+        this.fuel=5000;
         this.onGround=false;
         this.jetPackOn=false;
     }
@@ -107,6 +107,16 @@ export class Player extends Creature {
         this.onGround=false;
     }
 
+    useFuel(){
+        if(this.jetPackOn){
+            this.fuel-=deltaTime;
+        }
+        if(this.fuel<=0){
+            this.fuel=0;
+            this.jetPackOn=false;
+        }
+    }
+
     turnOffJetPack(){
         this.jetPackOn=false;
     }
@@ -119,6 +129,7 @@ export class Player extends Creature {
         this.JUMP_SPEED=speed;
     }
     update(deltaTime:number) {
+        this.useFuel();
         let newAnim=""
         if (this.velocity.x<0) {
             if (this.jetPackOn) {
