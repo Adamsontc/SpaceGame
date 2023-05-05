@@ -17,7 +17,7 @@
 @parallax-layer bg1
 @parallax-layer bg2
 @music music
-KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+
 K    ooooo  K                                   K
 K   -  K 4  K    o        KKK                %  K
 0    KKKKKKKK    II        K   o       o     3  K
