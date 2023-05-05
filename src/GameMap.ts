@@ -205,10 +205,6 @@ export class GameMap {
                 this.dying.play();
                 this.medallions=0;
 
-            } else if (s instanceof AmmoBox) {
-                this.acquirePowerUp(s);
-
-
             } else if (s instanceof PowerUp) {
                 this.acquirePowerUp(s);
             }
@@ -233,6 +229,8 @@ export class GameMap {
             this.black_hole.play();
             this.level+=1;
             this.initialize();
+        } else if (p instanceof AmmoBox){
+            this.player.numBullets+=5;
         }
     }
 

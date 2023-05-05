@@ -18,7 +18,7 @@ export class Player extends Creature {
         this.JUMP_SPEED=0.80;
         this.thrusterAmount=0.003;
         this.fuel=5000;
-        this.numBullets = 10;
+        this.numBullets = 3;
         this.onGround=false;
         this.jetPackOn=false;
     }
