@@ -28,6 +28,7 @@ export class GameManager {
     propel: GameAction;
     shoot: GameAction;
     blast: p5.SoundFile;
+    restart: GameAction;
     
 
     constructor() {
@@ -44,6 +45,7 @@ export class GameManager {
         this.stop=new GameAction();
         this.propel=new GameAction();
         this.shoot=new GameAction();
+        this.restart=new GameAction();
         
     }
 
@@ -106,6 +108,9 @@ export class GameManager {
 
                     this.inputManager.setGameAction(this.propel,SHIFT);
                     this.inputManager.setGameAction(this.shoot,32);
+                    this.inputManager.setGameAction(this.restart,82);
+
+
                     this.oldState=STATE.Running;
                     this.gameState=STATE.Menu;
                 
@@ -160,6 +165,9 @@ export class GameManager {
                 bullet.setRight(false);
             }
             this.map.sprites.push(bullet);
+        }
+        if(this.restart.isBeginPress() && this.map.player.getState()==CreatureState.NORMAL){
+            this.map.player.restartLevel();
         }
 
     }

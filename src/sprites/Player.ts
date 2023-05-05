@@ -48,6 +48,10 @@ export class Player extends Creature {
         this.velocity.x=0;
     }
 
+    restartLevel(){
+        this.state=CreatureState.DEAD;
+    }
+
     jump(forceJump:boolean) {
         if (this.onGround || forceJump) {
             this.onGround=false;
