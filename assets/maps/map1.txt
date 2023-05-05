@@ -17,7 +17,7 @@
 @parallax-layer bg1
 @parallax-layer bg2
 @music music
-<<<<<<< HEAD
+
 KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
                            -            oooooo    K 
                III                      IIIIII    K 
@@ -28,15 +28,4 @@ IIII      III               -     III         -   K
     IIIII          K                   K     %     K 
 555555555555555555 K 55555555555555555 K 555555555 K
 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
-=======
-KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
-K      Kooo K    o        KKK          o   oooo K
-0    KKKKK KK    II        K   o        a    -  K
-KKKK      - K         o    K   II  -   II   KKKKKKKKK
-o  KKKKK KKKK         II           p        K       K
- o K +    a K    o                 II    4     %    K
-o  KKKK KKKKK    II        K            4           K
-   -                       K                        K
- o  o o o o  p 55555555555 K 5555555555555555555555 K                     
-BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
->>>>>>> Tristan_Adamson
+
