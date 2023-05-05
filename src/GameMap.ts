@@ -3,7 +3,7 @@ import { ResourceManager } from "./ResourceManager.js";
 import { Sprite } from "./sprites/Sprite.js";
 import { GRAVITY } from './GameManager.js';
 import { Creature, CreatureState, Grub } from "./sprites/Creature.js";
-import { Heart, Music, PowerUp, Star } from "./sprites/PowerUp.js";
+import { Heart, Music, PowerUp, Star, AmmoBox } from "./sprites/PowerUp.js";
 import { Projectile } from './sprites/Projectile.js';
 import { Lava } from "./sprites/Lava.js"
 import { Settings } from "./Settings.js";
@@ -121,12 +121,11 @@ export class GameMap {
         let myW=800;
         let myH=600;
         let mapWidth=this.tilesToPixels(this.width);
+        let mapHeight = this.tilesToPixels(this.height);
         let position=this.player.getPosition();
         let offsetX = myW / 2 - Math.round(position.x) - this.tile_size;
         offsetX = Math.min(offsetX,0);
         offsetX = Math.trunc(Math.max(offsetX, myW - mapWidth));
-
-        let mapHeight=this.tilesToPixels(this.height);
         let offsetY = myH / 2 - Math.round(position.y) - this.tile_size;
         offsetY = Math.min(offsetY,0);
         offsetY = Math.trunc(Math.max(offsetY, myH - mapHeight));
@@ -206,7 +205,11 @@ export class GameMap {
                 this.dying.play();
                 this.medallions=0;
 
-            }   else if (s instanceof PowerUp) {
+            } else if (s instanceof AmmoBox) {
+                this.acquirePowerUp(s);
+
+
+            } else if (s instanceof PowerUp) {
                 this.acquirePowerUp(s);
             }
         }

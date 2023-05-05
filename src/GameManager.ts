@@ -21,6 +21,7 @@ export class GameManager {
     oldState: STATE;
     gameState: STATE; //the different possible states the game could be in (loading, menu, running, finished, etc.)
     level: number;
+    ammo: number;
     moveRight: GameAction;
     moveLeft: GameAction;
     jump: GameAction;
@@ -33,6 +34,7 @@ export class GameManager {
 
     constructor() {
         this.level=0;
+        this.ammo = 10;
         this.oldState=STATE.Loading;
         this.gameState=STATE.Loading;
         this.resources=new ResourceManager("assets/assets.json");
@@ -54,8 +56,9 @@ export class GameManager {
             case STATE.Running: {
                 textStyle()
                 this.map.draw();
-                textSize(32);
+                textSize(24);
                 text("Medallions: "+this.map.medallions,20,25);
+                text("Ammo: "+ this.map.player.getnumBullets(),20,45);
                 break;
             }
             case STATE.Menu: {
@@ -150,7 +153,7 @@ export class GameManager {
         if(this.propel.isEndPress() && this.map.player.getState()==CreatureState.NORMAL){
             this.map.player.turnOffJetPack();
         }
-        if(this.shoot.isBeginPress() && this.map.player.getState()==CreatureState.NORMAL){
+        if(this.shoot.isBeginPress() && this.map.player.getState()==CreatureState.NORMAL && this.map.player.getnumBullets()>0){
             this.map.playShoot();
             let p=this.map.player;
             let pos=p.getPosition();
@@ -164,7 +167,9 @@ export class GameManager {
                 bullet.setPosition(pos.x-30,pos.y+25);
                 bullet.setRight(false);
             }
+            this.map.player.numBullets-=1;
             this.map.sprites.push(bullet);
+            console.log(this.map.player.numBullets);
         }
         if(this.restart.isBeginPress() && this.map.player.getState()==CreatureState.NORMAL){
             this.map.player.restartLevel();
