@@ -292,7 +292,7 @@ export class GameMap {
         let spriteCollided=this.getSpriteCollision(s);
         if (spriteCollided) {
             let oldVel=s.getVelocity();
-            s.setVelocity(oldVel.x*-1, - oldVel.y);
+            s.setVelocity(s.getVelocity().x*-1, - oldVel);
             }
             return;
         }
