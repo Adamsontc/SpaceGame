@@ -274,6 +274,7 @@ export class GameMap {
             let spriteCollided=this.getSpriteCollision(proj);
             if (spriteCollided) {
                 if (spriteCollided instanceof Creature && !(spriteCollided instanceof Lava) && !(spriteCollided instanceof Fireball)) {
+                    this.boop.play();
                     spriteCollided.setState(CreatureState.DYING);
                     this.removeSprite(proj);
                 }

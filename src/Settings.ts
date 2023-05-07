@@ -17,7 +17,7 @@ export class Settings {
         this.menu=createDiv();
         this.menu.style("background-color","rgba(27,212,121,0.60)");
         this.menu.position(30,30);
-        this.menu.style("color","#ffffff");
+        this.menu.style("color","#000000");
         let music=createCheckbox("Play Music",this.playMusic);
         //music.changed(this.togglePlayMusic.bind(this));
         music.mousePressed(this.togglePlayMusic.bind(this));
@@ -27,10 +27,23 @@ export class Settings {
         events.mousePressed(this.toogleEventSounds.bind(this));
         this.menu.child(events);
         this.full = createCheckbox("Full Screen",false);
+        let myDiv = createDiv("W: Jump");
+        let myDiv1 = createDiv("A: Left");
+        let myDiv2 = createDiv("D: Right");
+        let myDiv3 = createDiv("SPACE: Shoot");
+        let myDiv4 = createDiv("SHIFT: Thrusters");
+        //myDiv.style('font-size', '18px');
+        //myDiv.style('color', '#ff0000');
+        //myDiv.position(20, 65);
         console.log("FULL======",this.full);
         //this.full.changed(this.toggleFullScreen.bind(this));
         this.full.mousePressed(this.toggleFullScreen.bind(this));
         this.menu.child(this.full);
+        this.menu.child(myDiv);
+        this.menu.child(myDiv1);
+        this.menu.child(myDiv2);
+        this.menu.child(myDiv3);
+        this.menu.child(myDiv4);
         this.menu.hide();
         
     }
