@@ -112,12 +112,14 @@ export class GameMap {
         let myW=800;
         let myH=600;
         let mapWidth=this.tilesToPixels(this.width);
+        let mapHeight = this.tilesToPixels(this.height);
         let position=this.player.getPosition();
         let offsetX = myW / 2 - Math.round(position.x) - this.tile_size;
         offsetX = Math.min(offsetX,0);
         offsetX = Math.trunc(Math.max(offsetX, myW - mapWidth));
-
-        let offsetY = Math.trunc(myH - this.tilesToPixels(this.height));
+        let offsetY = myH / 2 - Math.round(position.y) - this.tile_size; 
+            offsetY = Math.min(offsetY,0); 
+            offsetY = Math.trunc(Math.max(offsetY, myH - mapHeight));
         this.background.forEach(bg => {
             console.log("drawing background layer with"+bg);
             let x = Math.trunc(offsetX * (myW - bg.width)/(myW-mapWidth));
