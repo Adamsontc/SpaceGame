@@ -17,6 +17,10 @@
 @parallax-layer bg1
 @parallax-layer bg2
 @music music
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 7fef02fa592fc11014348c764256bf75c707218c
 KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
                  a         -            oooooo    K 
                III                      IIIIII    K 
@@ -27,3 +31,15 @@ IIII      III               -     III     3   -   K
     IIIII          K                   K     %     K 
 555555555555555555 K 55555555555555555 K 555555555 K
 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+<<<<<<< HEAD
+=======
+=======
+  KKKKKKKK
+ 0       K
+KK     KKK
+Ko       K
+Ko      3K
+K3      KK
+BBBBBBBBBB
+>>>>>>> oliphant_just_playing
+>>>>>>> 7fef02fa592fc11014348c764256bf75c707218c

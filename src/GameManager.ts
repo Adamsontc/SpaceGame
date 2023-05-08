@@ -5,6 +5,8 @@ import { InputManager } from "./InputManager.js";
 import { ResourceManager } from "./ResourceManager.js";
 import { SoundManager } from "./SoundManager.js";
 import { CreatureState } from "./sprites/Creature.js";
+import { Overlay } from "./Overlay.js";
+import { Image, Renderer } from "p5";
 
 export const GRAVITY: number =  0.002;
 const FONT_SIZE: number = 24;
@@ -13,6 +15,7 @@ enum STATE {Loading, Menu, Running, Finished}
 
 export class GameManager {
 	
+    overlay: Overlay;
     resources: ResourceManager;  //the resovoir of all loaded resources
     map: GameMap; //the current state of the game
     inputManager: InputManager; //mappings between user events (keyboard, mouse, etc.) and game actions (run-left, jump, etc.)
@@ -37,6 +40,7 @@ export class GameManager {
         this.ammo = 10;
         this.oldState=STATE.Loading;
         this.gameState=STATE.Loading;
+        this.overlay = new Overlay();
         this.resources=new ResourceManager("assets/assets.json");
         this.inputManager = new InputManager();
         this.settings = new Settings();
