@@ -12,10 +12,11 @@
 @parallax-layer bg2
 @music music
 
+
 KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
 K      Kooo K    o        KKK          o   oooo K
 0    KKKKK KK    II        K   o             -  K
-KKKK      - K         o    K   II  -   II   KKKKKKKKK
+KKKK a    - K         o    K   II  -   II   KKKKKKKKK
 o  KKKKK KKKK         II           o        K       K
  o K +      K    o                 II    4     %    K
 o  KKKK KKKKK    II        K            4           K

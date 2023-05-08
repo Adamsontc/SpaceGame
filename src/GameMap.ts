@@ -250,13 +250,13 @@ export class GameMap {
 
         } else if (p instanceof Heart) {
             this.black_hole.play();
-            this.numBullets+=Math.trunc(this.medallions/10);
-            this.medallions=this.medallions%10;
+            //this.numBullets+=Math.trunc(this.medallions/10);
+            //this.medallions=this.medallions%10;
             this.level+=1;
             this.initialize();
         } else if (p instanceof AmmoBox){
+            this.numBullets+=5;
             this.ammo.play();
-            this.numBullets+=3;
         } else if (p instanceof Power){
             this.boost.play();
             this.player.fuel+=2500;
