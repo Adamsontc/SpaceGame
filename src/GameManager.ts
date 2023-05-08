@@ -90,7 +90,6 @@ export class GameManager {
             }
             default: {
                 //should never happen
-                console.log("IMPOSSIBLE STATE IN GAME");
                 break;
             }
         }
@@ -113,7 +112,6 @@ export class GameManager {
                     this.map=new GameMap(this.level,this.resources,this.settings);
                     this.settings.setMusic(this.resources.getLoad("music"));
                     //this.map.player.setVelocity(1,1);
-                    console.log("Everything is loaded!");
 
                     this.inputManager.setGameAction(this.moveRight,RIGHT_ARROW);
                     this.inputManager.setGameAction(this.moveRight,68);
@@ -140,7 +138,6 @@ export class GameManager {
             }
             default: {
                 //should never happen
-                console.log("IMPOSSIBLE STATE IN GAME");
                 break;
             }
         }
@@ -184,7 +181,6 @@ export class GameManager {
             }
             this.map.player.numBullets-=1;
             this.map.sprites.push(bullet);
-            console.log(this.map.player.numBullets);
         }
         if(this.restart.isBeginPress() && this.map.player.getState()==CreatureState.NORMAL){
             this.map.player.restartLevel();

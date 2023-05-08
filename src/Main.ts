@@ -21,25 +21,25 @@ let game: GameManager;
 let canvas: Renderer;
 let img1,img2,img3: Image;
 
-console.log("**** Loading Script ****");
+
 
 export function preload() {
-	console.log("**** Starting Preload ****");
+
 	game = new GameManager(); //all resources are loaded via the constructor of the GameManager
-	console.log("**** Done Preload ****");
+
 	img1 = loadImage("assets/images/medallion1.png");
 	img2 = loadImage("assets/images/blast.png");
 	img3 = loadImage("assets/images/life1.png");
 }
 
 export function setup() {
-	console.log("**** Starting Setup ****");
+
 	frameRate(60);
 	canvas=createCanvas(windowWidth,windowHeight);
 	canvas.style('display','block');
 	canvas.style('padding','0px');
 	canvas.style('margin','0px');
-	console.log("**** Done Setup ****");
+
 	
 }
 export function draw() {
@@ -60,7 +60,6 @@ export function draw() {
 
 
 export function windowResized() {
-	console.log("**** Window Resized ****");
 	resizeCanvas(windowWidth, windowHeight);
 	//canvas.elt.width=800;
 	//canvas.elt.height=600;
@@ -75,4 +74,3 @@ export function keyPressed() {
 	}
 }
 
-console.log("**** Done Loading Script ****");

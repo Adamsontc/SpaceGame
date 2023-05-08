@@ -56,7 +56,6 @@ export class GameMap {
         this.tile_size=this.resources.get("TILE_SIZE");
         let mappings=this.resources.get("mappings");
         let map=this.resources.getLoad(this.resources.get("levels")[this.level]);
-        console.log("map=",map);
         if (!map) {
             this.level=0;
             map=this.resources.getLoad(this.resources.get("levels")[this.level]);
@@ -78,7 +77,6 @@ export class GameMap {
                             break;
                         }
                         default: {
-                            console.log("don't know how to handle this tag:"+parts[0]);
                             break;
                         }
                     }
@@ -112,7 +110,6 @@ export class GameMap {
                 }
             }
         }
-        console.log("background is",this.background);
     }
 
     tilesToPixels(x:number):number {
@@ -364,6 +361,7 @@ export class GameMap {
 
     update() {
         if (this.player.getState() == CreatureState.DEAD) {
+
             this.initialize(); //start the level over
             return;
         }

@@ -37,7 +37,7 @@ export class ResourceManager {
     async init(f:string) {
         let promise=this.loadResource(f,"json");
         await promise.then(value =>{
-            console.log("just loaded assets file and it is",value)
+
             //now load up all the assets
             this.assets=value;
             
@@ -61,7 +61,6 @@ export class ResourceManager {
         }
         //when they are loaded store them into loads
         await Promise.all(loadPromises).then( values => {
-            console.log("Got All The Assets!");
             for (let index = 0; index < values.length; index++) {
                 this.loads[loadNames[index]]=values[index];
                 
@@ -114,20 +113,16 @@ export class ResourceManager {
                             break;
                         }
                         default: {
-                            console.log("Unknown Resource Type:",resourceType);
                         }
                     }
                 }
             }
         } else {
-            console.log("Loaded Assets but no resources key so no resources will be built");
         }
-        console.log("Done Building Resources:",this.resources);
         this.everythingLoaded=true;
     }
     
     buildSprite(spriteName:string, anims: any, spriteType:string): Sprite {
-        console.log("spriteName",spriteName);
         let first=true;
         let s;
         switch (spriteType) {
@@ -200,12 +195,10 @@ export class ResourceManager {
                 break;
             }
             default: {
-                console.log("No Sprite Type:",spriteType);
                 throw new Error();
             }
         }
         for (const animName in anims) {
-            console.log("animName",animName);
             if (Object.prototype.hasOwnProperty.call(anims, animName)) {
                 const frames = anims[animName];
                 s.addAnimation(animName);
@@ -214,7 +207,6 @@ export class ResourceManager {
                     first=false;
                 }
                 frames.forEach(frame => {
-                    console.log("adding in frame:",frame);
                     let images;
                     if (frame.hasOwnProperty("sheet")) {
                         let startImg=this.loads[frame.sheet];
@@ -235,14 +227,11 @@ export class ResourceManager {
                                         break;
                                     }
                                     default: {
-                                        console.log("Invalid Operation for Sprite ",spriteName,":",operator);
-                                        console.log("skipping frame for animation",animName);
                                         break;
                                     }
                                 }
                             });
-                        }
-                        console.log("frame being added:",animName,img,frame.duration);
+                        } 
                         s.addFrame(animName,img,frame.duration);
                     })
                 });
@@ -337,7 +326,7 @@ export class ResourceManager {
     }
 
     listResources():string[] {
-        //console.log(this.resources);
+  
         return Object.keys(this.resources);
     }
 

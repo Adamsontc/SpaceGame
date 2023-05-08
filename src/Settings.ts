@@ -35,7 +35,6 @@ export class Settings {
         //myDiv.style('font-size', '18px');
         //myDiv.style('color', '#ff0000');
         //myDiv.position(20, 65);
-        console.log("FULL======",this.full);
         //this.full.changed(this.toggleFullScreen.bind(this));
         this.full.mousePressed(this.toggleFullScreen.bind(this));
         this.menu.child(this.full);
@@ -75,7 +74,6 @@ export class Settings {
 
     setMusic(m:p5.SoundFile) {
         this.music=m;
-        console.log(this.music);
     }
 
     toogleEventSounds() {
