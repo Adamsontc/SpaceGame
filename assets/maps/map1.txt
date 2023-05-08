@@ -17,13 +17,10 @@
 @parallax-layer bg1
 @parallax-layer bg2
 @music music
-KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
-K      Kooo K    o        KKK          o   oooo K
-0    KKKKK KK    II        K   o        a    -  K
-KKKK        K         o    K   II  -   II   KKKKKKKKK
-o  KKKKK KKKK         II           p        K       K
- o K +    a K    o                 II    4     %    K
-o  KKKK KKKKK    II        K            4           K
-   -                       K                        K
- o  o o o o  p 55555555555 K 5555555555555555555555 K                     
-BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+  KKKKKKKK
+ 0       K
+KK     KKK
+Ko       K
+Ko      3K
+K3      KK
+BBBBBBBBBB

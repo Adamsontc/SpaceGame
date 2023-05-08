@@ -10,7 +10,7 @@ import { Power } from "./sprites/PowerUp.js";
 import { FinalBoss } from "./sprites/FinalBoss.js";
 import {Lava} from "./sprites/Lava.js";
 import { Fireball } from "./sprites/Fireball.js";
-import { Projectile } from "./sprites/Projectile.js";
+import { Projectile, EnemyProjectile} from "./sprites/Projectile.js";
 
 
 export class ResourceManager {
@@ -174,6 +174,10 @@ export class ResourceManager {
             case 'Projectile': {
                 s = new Projectile();
                 break; 
+            }
+            case 'EnemyProjectile': {
+                s = new EnemyProjectile();
+                break;
             }
             case 'Bullet': {
                 s = new Bullet();

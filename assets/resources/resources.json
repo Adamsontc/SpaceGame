@@ -63,10 +63,10 @@
                 {"img": "jet_anim1", "operators":["mirror"],"duration":65}
             ],
             "deadLeft": [
-                {"img":"player1", "operators":["flip"], "duration":250}
+                {"img":"player1", "operators":["flip"], "duration":650}
             ],
             "deadRight": [
-		        {"img":"player1", "operators":["mirror","flip"], "duration":250}
+		        {"img":"player1", "operators":["mirror","flip"], "duration":650}
             ]
         },
         "blast": {
@@ -245,7 +245,7 @@
             ]
         },
         "goo": {
-            "type": "Fly",
+            "type": "EnemyProjectile",
             "left": [
                 {"img":"goo", "duration":150}
                 

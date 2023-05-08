@@ -1,7 +1,9 @@
 import { Sprite } from "./Sprite.js";
+import { GameMap } from "../GameMap.js";
 
 /**
  * A Creature is a Sprite that is affected by gravity and can die.
+ * It can also effect the Map on which it exists.
  */
 
 export enum CreatureState { DEAD, DYING, NORMAL };
@@ -26,6 +28,10 @@ export class Creature extends Sprite {
          return s;
     }
 
+    effectMap(map:GameMap) {
+
+    }
+
     getState() {
         return this.state;
     }
@@ -36,11 +42,11 @@ export class Creature extends Sprite {
             this.state=st;
             if (this.state == CreatureState.DYING) {
                 this.setVelocity(0,0);
-                if (this.currAnimName=="left") {
+                if (this.currAnimName.toUpperCase().includes("LEFT")) {
                     console.log("deadLeft");
                     this.setAnimation("deadLeft");
                 }
-                if (this.currAnimName=="right") {
+                if (this.currAnimName.toUpperCase().includes("RIGHT")) {
                     console.log("deadRight");
                     this.setAnimation("deadRight");
                 }
