@@ -1,20 +1,5 @@
 {
     "sprites": {
-        "caveman": {
-            "type": "Grub",
-            "left": [
-                {"sheet":"caveman", "rows":4, "cols":4, "duration":150}
-            ],
-            "right": [
-                {"sheet":"caveman", "operators":["mirror"], "rows":4, "cols":4, "duration":150}
-            ],
-            "deadRight": [
-                {"sheet":"caveman", "operators":["flip"], "rows":4, "cols":4, "duration":150}
-            ],
-            "deadLeft": [
-                {"sheet":"caveman", "operators":["flip","mirror"], "rows":4, "cols":4, "duration":150}
-            ]
-        },
         "bullet": {
             "type": "Bullet",
             "left": [
@@ -75,37 +60,6 @@
                 {"img":"blast", "duration":1000}
             ]
         },
-        "music": {
-            "type": "Music",
-            "default": [
-                {"img":"music1", "duration":150},
-                {"img":"music2", "duration":150},
-                {"img":"music3", "duration":150}
-            ]
-        },
-        "fly": {
-            "type": "Fly",
-            "left": [
-                {"img":"fly1", "duration":150},
-                {"img":"fly2", "duration":150},
-                {"img":"fly3", "duration":150}
-            ],
-            "right": [
-                {"img":"fly1", "operators":["mirror"], "duration":150},
-                {"img":"fly2", "operators":["mirror"], "duration":150},
-                {"img":"fly3", "operators":["mirror"], "duration":150}
-            ],
-            "deadLeft": [
-                {"img":"fly1", "operators":["flip"], "duration":150},
-                {"img":"fly2", "operators":["flip"], "duration":150},
-                {"img":"fly3", "operators":["flip"], "duration":150}
-            ],
-            "deadRight": [
-                {"img":"fly1", "operators":["mirror","flip"], "duration":150},
-                {"img":"fly2", "operators":["mirror","flip"], "duration":150},
-                {"img":"fly3", "operators":["mirror","flip"], "duration":150}
-            ]
-        },
         "life": {
             "type": "PowerUp",
             "default": [
@@ -113,33 +67,6 @@
                 {"img":"life3", "duration":150},
                 {"img":"life2", "duration":150},
                 {"img":"life3", "duration":150}
-            ]
-        },
-        "heart": {
-            "type": "Heart",
-            "default": [
-                {"img":"heart1", "duration":150},
-                {"img":"heart2", "duration":150},
-                {"img":"heart3", "duration":150}
-            ]
-        },
-        "grub": {
-            "type": "Grub",
-            "left": [
-                {"img":"grub1", "duration":150},
-                {"img":"grub2", "duration":150}
-            ],
-            "right": [
-                {"img":"grub1", "operators":["mirror"], "duration":150},
-                {"img":"grub2" , "operators":["mirror"], "duration":150}
-            ],
-            "deadLeft": [
-                {"img":"grub1", "operators":["flip"], "duration":150},
-                {"img":"grub2", "operators":["flip"], "duration":150}
-            ],
-            "deadRight": [
-                {"img":"grub1", "operators":["mirror","flip"], "duration":150},
-                {"img":"grub2" , "operators":["mirror","flip"], "duration":150}
             ]
         },
         "final_boss": {
