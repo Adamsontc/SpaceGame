@@ -2,13 +2,27 @@
 @parallax-layer bg2
 @music music
 
-KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
-K                                                   K
-0                                                   K
-                                                    K
-                                                    K
-                                                    K
-                                                    K
-                                                    K
- 55555555555555555555555555555555555555555555555555 K                     
-BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+
+
+KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+                                     K
+                                     K
+            KKKKKKK                  K
+            KKKKKKK                  K
+     oo     KKKKKKK                  K
+    BBBB    KKKKKKK                  K
+            KKKKKKK                  K
+            KKKKKKK                  K
+ p          KKKKKKK                  K
+BBBBB       KKKKKKK                  K
+          a KKKKKKK ooooooooooooooo  K
+        BBBBKKKKKKK ooooooooooooooo  K
+     o      KKKKKKK ooooooooooooooo  K
+   o        KKKKKKK ooooooooooooooo  K
+0        3  KKKKKKK ooooooooooooooo  K       
+BB     BBBB KKKKKKK ooooooooooooooo  K
+    4       KKKKKKK ooooooooooooooo  K
+            KKKKKKK ooooooooooooooo  K
+            KKKKKKK ooooooooooooooo  K
+ oooooooooo KKKKKKK oooooppppoooooo  K   
+BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
