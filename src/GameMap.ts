@@ -6,8 +6,9 @@ import { Creature, CreatureState, Grub } from "./sprites/Creature.js";
 import { Heart, Music, PowerUp, Star, AmmoBox, Power } from "./sprites/PowerUp.js";
 import { Projectile } from './sprites/Projectile.js';
 import { Lava } from "./sprites/Lava.js"
+import { Fireball } from './sprites/Fireball.js';
 import { Settings } from "./Settings.js";
-import { Fireball } from "./sprites/Fireball.js";
+
 
 export class GameMap {
 
@@ -29,12 +30,14 @@ export class GameMap {
     dying: p5.SoundFile;
     full_death: p5.SoundFile;
     medallions: number;
+    ALPHALEVEL: number;
     lives: number;
     numBullets: number;
     boost: p5.SoundFile;
     ammo: p5.SoundFile;
 
     constructor(level:number, resources:ResourceManager, settings:Settings) {
+        this.ALPHALEVEL=20;
         this.settings=settings;
         this.level=level;
         this.resources=resources;
@@ -194,6 +197,7 @@ export class GameMap {
 
     getSpriteCollision(s:Sprite):Sprite {
         for (const other of this.sprites) {
+            //if (this.pp_collision(s,other)) {
             if (this.isCollision(s,other)) {
                 return other;
             }
@@ -204,7 +208,7 @@ export class GameMap {
     checkPlayerCollision(p: Player, canKill: boolean) {
         if (p.getState()!=CreatureState.NORMAL) return;
         let s=this.getSpriteCollision(p);
-        if (s) {
+        if (s && this.pp_collision(p,s)) {
             if (s instanceof Creature) {
                 if(this.lives==1){
                     p.setState(CreatureState.DYING)
@@ -359,12 +363,12 @@ export class GameMap {
         if (s instanceof Player) {
             this.checkPlayerCollision(s as Player, oldY < newPos.y);
         } else {
-        let spriteCollided=this.getSpriteCollision(s);
-        if (spriteCollided && !(spriteCollided instanceof Projectile)) {
-            let oldVel=s.getVelocity();
-            s.setVelocity(oldVel.x*-1, -oldVel);
+            let spriteCollided=this.getSpriteCollision(s);
+            if (spriteCollided && !(spriteCollided instanceof Projectile)) {
+                let oldVel=s.getVelocity();
+                s.setVelocity(oldVel.x*-1, - oldVel.y);
             }
-        } 
+        }
     }
         
 
@@ -392,4 +396,103 @@ export class GameMap {
             }
         });
     }
+
+    /**Per-Pixel Collision Detection
+     * Got code from https://openprocessing.org/sketch/149174/ which implements this
+     * in Processing (An older precurser to p5.js)
+     * I've modified it to work with p5.js and TypeScript
+    */
+    pp_collision(a:Sprite, b:Sprite):boolean {
+
+        //convert my parameters to the parameters from original code
+        let imgA = a.getImage();
+        let aPos = a.getPosition();
+        let aix = aPos.x;
+        let aiy = aPos.y;
+        let imgB = b.getImage();
+        let bPos = b.getPosition();
+        let bix = bPos.x;
+        let biy = bPos.y;
+
+        return this.pp_image_collision(imgA,aix,aiy,imgB,bix,biy);
+    }
+
+    pp_image_collision(imgA:p5.Image, aix:number, aiy:number, imgB:p5.Image, bix:number, biy:number) {
+        let topA   = aiy;
+        let botA   = aiy + imgA.height;
+        let leftA  = aix;
+        let rightA = aix + imgA.width;
+        let topB   = biy;
+        let botB   = biy + imgB.height;
+        let leftB  = bix;
+        let rightB = bix + imgB.width;
+
+        if (botA <= topB  || botB <= topA || rightA <= leftB || rightB <= leftA)
+            return false;
+
+        // If we get here, we know that there is an overlap
+        // So we work out where the sides of the overlap are
+        let leftO = (leftA < leftB) ? leftB : leftA;
+        let rightO = (rightA > rightB) ? rightB : rightA;
+        let botO = (botA > botB) ? botB : botA;
+        let topO = (topA < topB) ? topB : topA;
+
+
+        // P is the top-left, S is the bottom-right of the overlap
+        let APx = leftO-leftA;   
+        let APy = topO-topA;
+        let ASx = rightO-leftA;  
+        let ASy = botO-topA-1;
+        let BPx = leftO-leftB;   
+        let BPy = topO-topB;
+
+        let widthO = rightO - leftO;
+        let foundCollision = false;
+
+        // Images to test
+        imgA.loadPixels();
+        imgB.loadPixels();
+
+        // These are widths in BYTES. They are used inside the loop
+        //  to avoid the need to do the slow multiplications
+        let surfaceWidthA = imgA.width;
+        let surfaceWidthB = imgB.width;
+
+        let pixelAtransparent = true;
+        let pixelBtransparent = true;
+
+        // Get start pixel positions
+        let pA = (APy * surfaceWidthA) + APx;
+        let pB = (BPy * surfaceWidthB) + BPx;
+
+        let ax = APx; 
+        let ay = APy;
+        let bx = BPx; 
+        let by = BPy;
+        for (ay = APy; ay < ASy; ay++) {
+            bx = BPx;
+            for (ax = APx; ax < ASx; ax++) {
+                //modified imgA.pixels[pA] in row below
+                //processing kept color data type inside pixels (which were 4 numbers)
+                //while p5.js keeps a single array that is 4 times as large
+                let pixelAtransparent = imgA.pixels[pA*4] < this.ALPHALEVEL;
+                let pixelBtransparent = imgB.pixels[pB*4] < this.ALPHALEVEL;
+
+                if (!pixelAtransparent && !pixelBtransparent) {
+                    foundCollision = true;
+                    break;
+                }
+                pA ++;
+                pB ++;
+                bx++;
+            }
+            if (foundCollision) break;
+            pA = pA + surfaceWidthA - widthO;
+            pB = pB + surfaceWidthB - widthO;
+            by++;
+        }
+        return foundCollision;
+    }
+
+
 }
