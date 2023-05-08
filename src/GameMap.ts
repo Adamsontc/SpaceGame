@@ -255,7 +255,7 @@ export class GameMap {
             this.level+=1;
             this.initialize();
         } else if (p instanceof AmmoBox){
-            this.numBullets+=5;
+            this.numBullets+=3;
             this.ammo.play();
         } else if (p instanceof Power){
             this.boost.play();
