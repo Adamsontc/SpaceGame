@@ -215,6 +215,7 @@ export class GameMap {
                     this.full_death.play();
                     this.level=0;
                     this.medallions=0;
+                    this.numBullets=3;
                     this.lives+=3;
                 }
                 if(this.lives>1){
