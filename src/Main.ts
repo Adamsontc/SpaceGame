@@ -15,10 +15,11 @@
 import { Sprite } from "./sprites/Sprite.js";
 
 import { GameManager } from "./GameManager.js";  //handles loading of resources, keeping track and updating the state of everything in the game
-import { Renderer } from "p5";
+import { Image, Renderer } from "p5";
 
 let game: GameManager;
 let canvas: Renderer;
+let img1,img2: Image;
 
 console.log("**** Loading Script ****");
 
@@ -26,6 +27,8 @@ export function preload() {
 	console.log("**** Starting Preload ****");
 	game = new GameManager(); //all resources are loaded via the constructor of the GameManager
 	console.log("**** Done Preload ****");
+	img1 = loadImage("assets/images/medallion1.png");
+	img2 = loadImage("assets/images/blast.png");
 }
 
 export function setup() {
@@ -36,6 +39,7 @@ export function setup() {
 	canvas.style('padding','0px');
 	canvas.style('margin','0px');
 	console.log("**** Done Setup ****");
+	
 }
 export function draw() {
 	background(255); //just for testing purposes.  this probably can be removed when done.
@@ -45,6 +49,8 @@ export function draw() {
 		game.update();
 	}
 	game.draw();
+	image(img1, 15, 15, 32, 32);
+	image(img2, 19, 45);
 	fill(255);
 	stroke(255);
 	rect(800,0,width*10,height*10); //a hack to make sure even with scaling only the correct portion of the game will be shown

@@ -3,7 +3,7 @@ import { ResourceManager } from "./ResourceManager.js";
 import { Sprite } from "./sprites/Sprite.js";
 import { GRAVITY } from './GameManager.js';
 import { Creature, CreatureState, Grub } from "./sprites/Creature.js";
-import { Heart, Music, PowerUp, Star, AmmoBox } from "./sprites/PowerUp.js";
+import { Heart, Music, PowerUp, Star, AmmoBox, Power } from "./sprites/PowerUp.js";
 import { Projectile } from './sprites/Projectile.js';
 import { Lava } from "./sprites/Lava.js"
 import { Settings } from "./Settings.js";
@@ -231,6 +231,11 @@ export class GameMap {
             this.initialize();
         } else if (p instanceof AmmoBox){
             this.player.numBullets+=5;
+        } else if (p instanceof Power){
+            this.player.fuel+=2500;
+            if(this.player.fuel>this.player.MAX_FUEL){
+                this.player.fuel=this.player.MAX_FUEL
+            } 
         }
     }
 
@@ -269,6 +274,7 @@ export class GameMap {
             let spriteCollided=this.getSpriteCollision(proj);
             if (spriteCollided) {
                 if (spriteCollided instanceof Creature && !(spriteCollided instanceof Lava) && !(spriteCollided instanceof Fireball)) {
+                    this.boop.play();
                     spriteCollided.setState(CreatureState.DYING);
                     this.removeSprite(proj);
                 }

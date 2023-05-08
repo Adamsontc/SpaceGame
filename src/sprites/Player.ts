@@ -6,18 +6,21 @@ export class Player extends Creature {
 
     MAX_SPEED:number;
     JUMP_SPEED:number
+    MAX_FUEL:number;
     onGround:boolean;
     jetPackOn:boolean;
     thrusterAmount:number;
     fuel:number;
     numBullets: number;
+    
 
     constructor() {
         super();
+        this.MAX_FUEL=7500;
         this.MAX_SPEED=0.35;
         this.JUMP_SPEED=0.80;
         this.thrusterAmount=0.003;
-        this.fuel=5000;
+        this.fuel=7500;
         this.numBullets = 3;
         this.onGround=false;
         this.jetPackOn=false;
