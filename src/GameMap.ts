@@ -52,11 +52,10 @@ export class GameMap {
         this.black_hole=this.resources.getLoad("blackHole");
         this.dying = this.resources.getLoad("dying");
         this.sprites=[];
-        this.background=[];//this.resources.get("background");
+        this.background=[];
         this.tile_size=this.resources.get("TILE_SIZE");
         let mappings=this.resources.get("mappings");
         let map=this.resources.getLoad(this.resources.get("levels")[this.level]);
-        console.log("map=",map);
         if (!map) {
             this.level=0;
             map=this.resources.getLoad(this.resources.get("levels")[this.level]);
@@ -78,7 +77,6 @@ export class GameMap {
                             break;
                         }
                         default: {
-                            console.log("don't know how to handle this tag:"+parts[0]);
                             break;
                         }
                     }
@@ -104,7 +102,7 @@ export class GameMap {
                     let s = this.resources.get(mappings[ch]).clone();
                     s.setPosition(this.tilesToPixels(x)+this.tile_size-s.getImage().width/2,
                                   this.tilesToPixels(y)+this.tile_size-s.getImage().height);
-                    if (ch=='0') { //I don't like hard-coding in the character for the player.
+                    if (ch=='0') { 
                         this.player=s;
                     } else {
                         this.sprites.push(s);
@@ -112,7 +110,7 @@ export class GameMap {
                 }
             }
         }
-        console.log("background is",this.background);
+        
     }
 
     tilesToPixels(x:number):number {
@@ -191,7 +189,6 @@ export class GameMap {
 
     getSpriteCollision(s:Sprite):Sprite {
         for (const other of this.sprites) {
-            //if (this.pp_collision(s,other)) {
             if (this.isCollision(s,other)) {
                 return other;
             }
@@ -287,7 +284,6 @@ export class GameMap {
     updateProjectile(proj:Projectile) {
         let newPos = proj.getPosition().copy();
         newPos.x += proj.getVelocity().x*deltaTime;
-        //newPos.add(proj.getVelocity().mult(deltaTime));
         let point = this.getTileCollision(proj,newPos);
         if (point) {
             this.removeSprite(proj);

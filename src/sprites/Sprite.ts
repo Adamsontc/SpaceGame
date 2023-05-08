@@ -72,11 +72,6 @@ export class Sprite {
     }
 
     setVelocity(x:number, y:number) {
-        // if (x>0) {
-        //     this.setAnimation("right");
-        // } else if (x<0) {
-        //     this.setAnimation("left");
-        // }
         this.velocity.set(x,y);
     }
 
@@ -99,15 +94,11 @@ export class Sprite {
 
     addAnimation(name:string) {
         this.animations[name]=new Animation();
-        console.log("adding in animation:",name);
-        //this.currAnimName=name;
-        //this.currAnimation=this.animations[name];
     }
 
     setAnimation(name:string) {
         this.currAnimName=name;
         this.currAnimation=this.animations[name];
-        //this.start();
     }
 
     addFrame(name:string, img:p5.Image, duration:number) {

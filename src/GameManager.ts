@@ -64,8 +64,6 @@ export class GameManager {
                 text(this.map.lives,45,70);
                 text(this.map.medallions,45,36);
                 text(this.map.player.getnumBullets(),45,53);
-                //Math.trunc(this.map.player.fuel/100)/10
-                //text("Fuel",26,65);
                 let from = color(255, 0, 0);
                 let to = color(0, 255, 0);
                 let fuelColor = lerpColor(from, to, Math.trunc(this.map.player.fuel)/Math.trunc(this.map.player.MAX_FUEL));
@@ -90,7 +88,6 @@ export class GameManager {
             }
             default: {
                 //should never happen
-                console.log("IMPOSSIBLE STATE IN GAME");
                 break;
             }
         }
@@ -112,8 +109,6 @@ export class GameManager {
                     //now setup the first map
                     this.map=new GameMap(this.level,this.resources,this.settings);
                     this.settings.setMusic(this.resources.getLoad("music"));
-                    //this.map.player.setVelocity(1,1);
-                    console.log("Everything is loaded!");
 
                     this.inputManager.setGameAction(this.moveRight,RIGHT_ARROW);
                     this.inputManager.setGameAction(this.moveRight,68);
@@ -140,7 +135,6 @@ export class GameManager {
             }
             default: {
                 //should never happen
-                console.log("IMPOSSIBLE STATE IN GAME");
                 break;
             }
         }
@@ -173,7 +167,6 @@ export class GameManager {
             let p=this.map.player;
             let pos=p.getPosition();
             let animName = p.getCurrAnimName();
-            //let mappings=this.resources.get('mappings');
             let bullet = this.resources.get("blast").clone();
             if (animName.toUpperCase().includes("RIGHT")) {
                 bullet.setPosition(pos.x+40,pos.y+25);
@@ -184,7 +177,6 @@ export class GameManager {
             }
             this.map.player.numBullets-=1;
             this.map.sprites.push(bullet);
-            console.log(this.map.player.numBullets);
         }
         if(this.restart.isBeginPress() && this.map.player.getState()==CreatureState.NORMAL){
             this.map.player.restartLevel();
