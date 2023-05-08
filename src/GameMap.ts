@@ -32,10 +32,7 @@ export class GameMap {
     medallions: number;
     ALPHALEVEL: number;
     lives: number;
-<<<<<<< HEAD
-=======
     numBullets: number;
->>>>>>> 7fef02fa592fc11014348c764256bf75c707218c
     boost: p5.SoundFile;
     ammo: p5.SoundFile;
 
@@ -259,11 +256,7 @@ export class GameMap {
             this.initialize();
         } else if (p instanceof AmmoBox){
             this.ammo.play();
-<<<<<<< HEAD
-            this.player.numBullets+=5;
-=======
             this.numBullets+=3;
->>>>>>> 7fef02fa592fc11014348c764256bf75c707218c
         } else if (p instanceof Power){
             this.boost.play();
             this.player.fuel+=2500;

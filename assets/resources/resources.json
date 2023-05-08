@@ -48,15 +48,7 @@
                 {"img": "jet_anim1", "operators":["mirror"],"duration":65}
             ],
             "deadLeft": [
-<<<<<<< HEAD
-                {"img":"player1_dead", "duration":64},
-                {"img":"player1", "duration":64}
-            ],
-            "deadRight": [
-                {"img":"player1_dead", "operators":["mirror"],"duration":64},
-		        {"img":"player1", "operators":["mirror"], "duration":64}
-=======
-<<<<<<< HEAD
+
                 {"img":"player1_dead", "duration":64},
                 {"img":"player1", "duration":64}
             ],
@@ -64,14 +56,6 @@
 
                 {"img":"player1_dead", "operators":["mirror"], "duration":64},
 		        {"img":"player1", "operators":["mirror"], "duration":64}
-
-=======
-                {"img":"player1", "operators":["flip"], "duration":650}
-            ],
-            "deadRight": [
-		        {"img":"player1", "operators":["mirror","flip"], "duration":650}
->>>>>>> oliphant_just_playing
->>>>>>> 7fef02fa592fc11014348c764256bf75c707218c
             ]
         },
         "blast": {
