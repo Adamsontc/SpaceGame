@@ -32,6 +32,8 @@ export class GameMap {
     medallions: number;
     ALPHALEVEL: number;
     lives: number;
+    boost: p5.SoundFile;
+    ammo: p5.SoundFile;
 
     constructor(level:number, resources:ResourceManager, settings:Settings) {
         this.ALPHALEVEL=20;
@@ -44,6 +46,8 @@ export class GameMap {
     }
 
     initialize() {
+        this.ammo=this.resources.getLoad("ammo");
+        this.boost=this.resources.getLoad("boost");
         this.prize=this.resources.getLoad("prize");
         this.music=this.resources.getLoad("music");
         this.boop=this.resources.getLoad("boop2");
@@ -247,8 +251,10 @@ export class GameMap {
             this.level+=1;
             this.initialize();
         } else if (p instanceof AmmoBox){
+            this.ammo.play();
             this.player.numBullets+=5;
         } else if (p instanceof Power){
+            this.boost.play();
             this.player.fuel+=2500;
             if(this.player.fuel>this.player.MAX_FUEL){
                 this.player.fuel=this.player.MAX_FUEL

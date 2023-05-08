@@ -48,10 +48,12 @@
                 {"img": "jet_anim1", "operators":["mirror"],"duration":65}
             ],
             "deadLeft": [
-                {"img":"player1", "operators":["flip"], "duration":650}
+                {"img":"player1_dead", "duration":64},
+                {"img":"player1", "duration":64}
             ],
             "deadRight": [
-		        {"img":"player1", "operators":["flip"], "duration":250}
+                {"img":"player1_dead", "operators":["mirror"],"duration":64},
+		        {"img":"player1", "operators":["mirror"], "duration":64}
             ]
         },
         "blast": {
