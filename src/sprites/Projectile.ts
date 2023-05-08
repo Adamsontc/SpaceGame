@@ -21,3 +21,7 @@ export class Projectile extends Sprite {
     }
 
 }
+
+export class EnemyProjectile extends Projectile {
+    
+}

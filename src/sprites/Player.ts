@@ -143,6 +143,7 @@ export class Player extends Creature {
         this.JUMP_SPEED=speed;
     }
     update(deltaTime:number) {
+<<<<<<< HEAD
         let newAnim=""
         if(this.state==CreatureState.NORMAL){
             this.useFuel();
@@ -161,15 +162,36 @@ export class Player extends Creature {
         } else {
             if (this.jetPackOn) {
                 if (this.currAnimName.toUpperCase().includes("LEFT")) {
+=======
+        let newAnim="";
+        if (this.state==CreatureState.NORMAL) {
+            this.useFuel();
+            if (this.velocity.x<0) {
+                if (this.jetPackOn) {
+>>>>>>> oliphant_just_playing
                     newAnim="jetLeft";
                 } else {
+                    newAnim="left";
+                }
+            } else if (this.velocity.x>0) {
+                if (this.jetPackOn) {
                     newAnim="jetRight";
+                } else {
+                    newAnim="right";
                 }
             } else {
-                if (this.currAnimName.toUpperCase().includes("LEFT")) {
-                    newAnim="stillLeft";
+                if (this.jetPackOn) {
+                    if (this.currAnimName.toUpperCase().includes("LEFT")) {
+                        newAnim="jetLeft";
+                    } else {
+                        newAnim="jetRight";
+                    }
                 } else {
-                    newAnim="stillRight";
+                    if (this.currAnimName.toUpperCase().includes("LEFT")) {
+                        newAnim="stillLeft";
+                    } else {
+                        newAnim="stillRight";
+                    }
                 }
             }
         }

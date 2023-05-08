@@ -4,7 +4,7 @@ import { Sprite } from "./sprites/Sprite.js";
 import { GRAVITY } from './GameManager.js';
 import { Creature, CreatureState, Grub } from "./sprites/Creature.js";
 import { Heart, Music, PowerUp, Star, AmmoBox, Power } from "./sprites/PowerUp.js";
-import { Projectile } from './sprites/Projectile.js';
+import { Projectile, EnemyProjectile } from './sprites/Projectile.js';
 import { Lava } from "./sprites/Lava.js"
 import { Fireball } from './sprites/Fireball.js';
 import { Settings } from "./Settings.js";
@@ -209,7 +209,7 @@ export class GameMap {
         if (p.getState()!=CreatureState.NORMAL) return;
         let s=this.getSpriteCollision(p);
         if (s && this.pp_collision(p,s)) {
-            if (s instanceof Creature) {
+            if (s instanceof Creature || s instanceof EnemyProjectile) {
                 if(this.lives==1){
                     p.setState(CreatureState.DYING)
                     this.full_death.play();
@@ -296,7 +296,9 @@ export class GameMap {
 
     updateProjectile(proj:Projectile) {
         let newPos = proj.getPosition().copy();
-        newPos.x += proj.getVelocity().x*deltaTime;
+        let vel = proj.getVelocity();
+        newPos.x += vel.x*deltaTime;
+        newPos.y += vel.y*deltaTime;
         //newPos.add(proj.getVelocity().mult(deltaTime));
         let point = this.getTileCollision(proj,newPos);
         if (point) {
@@ -304,7 +306,10 @@ export class GameMap {
         } else {
             let spriteCollided=this.getSpriteCollision(proj);
             if (spriteCollided) {
-                if (spriteCollided instanceof Creature && !(spriteCollided instanceof Lava) && !(spriteCollided instanceof Fireball)) {
+                if (spriteCollided instanceof Creature &&
+                    !(spriteCollided instanceof Lava) &&
+                    !(spriteCollided instanceof Fireball) &&
+                    ! (proj instanceof EnemyProjectile)) {
                     this.boop.play();
                     spriteCollided.setState(CreatureState.DYING);
                     this.removeSprite(proj);
@@ -388,6 +393,7 @@ export class GameMap {
                 } else {
                     this.updateSprite(sprite);
                     sprite.update(deltaTime);
+                    sprite.effectMap(this);
                 }
             } else if (sprite instanceof PowerUp) {
                 sprite.update(deltaTime);
