@@ -1,5 +1,8 @@
 {
         "image": {
+            "life1": "assets/images/life1.png",
+            "life2": "assets/images/life2.png",
+            "life3": "assets/images/life3.png",
             "blast": "assets/images/blast.png",
             "jet_anim": "assets/images/player1_jump.png",
             "jet_anim1": "assets/images/player1_jump1.png",
@@ -91,9 +94,10 @@
             "prize": "assets/sounds/medallion.wav",
             "boop2": "assets/sounds/dead.wav",
             "blackHole": "assets/sounds/Black hole sound.wav",
-            "dying": "assets/sounds/Dying.wav",
+            "dying": "assets/sounds/hurt.wav",
             "spit": "assets/sounds/alien_spit.wav",
-            "gun_blast": "assets/sounds/gun_blast.wav"
+            "gun_blast": "assets/sounds/gun_blast.wav",
+            "full_death": "assets/sounds/Dying.wav"
         },
         "json": {
             "resources": "assets/resources/resources.json"

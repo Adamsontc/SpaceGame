@@ -12,6 +12,7 @@ export class Player extends Creature {
     thrusterAmount:number;
     fuel:number;
     numBullets: number;
+    lives: number;
     
 
     constructor() {
@@ -22,6 +23,7 @@ export class Player extends Creature {
         this.thrusterAmount=0.003;
         this.fuel=7500;
         this.numBullets = 3;
+        this.lives = 3;
         this.onGround=false;
         this.jetPackOn=false;
     }
@@ -33,7 +35,10 @@ export class Player extends Creature {
         }
         return 0.0;
     }
-
+    
+    getLives():number{
+        return this.lives;
+    }
     isJetPackOn():boolean {
         return this.jetPackOn;
     }

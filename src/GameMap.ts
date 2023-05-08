@@ -27,13 +27,16 @@ export class GameMap {
     blast: p5.SoundFile;
     black_hole: p5.SoundFile;
     dying: p5.SoundFile;
+    full_death: p5.SoundFile;
     medallions: number;
+    lives: number;
 
     constructor(level:number, resources:ResourceManager, settings:Settings) {
         this.settings=settings;
         this.level=level;
         this.resources=resources;
         this.medallions=0;
+        this.lives=3;
         this.initialize();
     }
 
@@ -42,6 +45,7 @@ export class GameMap {
         this.music=this.resources.getLoad("music");
         this.boop=this.resources.getLoad("boop2");
         this.blast=this.resources.getLoad("gun_blast");
+        this.full_death=this.resources.getLoad("full_death");
         this.black_hole=this.resources.getLoad("blackHole");
         this.dying = this.resources.getLoad("dying");
         this.sprites=[];
@@ -196,10 +200,19 @@ export class GameMap {
         let s=this.getSpriteCollision(p);
         if (s) {
             if (s instanceof Creature) {
-                p.setState(CreatureState.DYING)
-                this.dying.play();
-                this.medallions=0;
-
+                if(this.lives==1){
+                    p.setState(CreatureState.DYING)
+                    this.full_death.play();
+                    this.level=0;
+                    this.medallions=0;
+                    this.lives+=3;
+                }
+                if(this.lives>1){
+                    p.setState(CreatureState.DYING);
+                    this.dying.play();
+                    this.lives-=1;
+                }
+                
             }   else if (s instanceof Lava) {
                 p.setState(CreatureState.DYING);
                 this.dying.play();
@@ -236,6 +249,10 @@ export class GameMap {
             if(this.player.fuel>this.player.MAX_FUEL){
                 this.player.fuel=this.player.MAX_FUEL
             } 
+        } else if (p instanceof PowerUp) {
+            if(this.lives>0){
+                this.lives+=1;
+            }
         }
     }
 

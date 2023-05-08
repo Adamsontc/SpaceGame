@@ -106,13 +106,13 @@
                 {"img":"fly3", "operators":["mirror","flip"], "duration":150}
             ]
         },
-        "powerup": {
+        "life": {
             "type": "PowerUp",
             "default": [
-                {"img":"powerup1", "duration":150},
-                {"img":"powerup2", "duration":150},
-                {"img":"powerup3", "duration":150},
-                {"img":"powerup4", "duration":150}
+                {"img":"life1", "duration":150},
+                {"img":"life3", "duration":150},
+                {"img":"life2", "duration":150},
+                {"img":"life3", "duration":150}
             ]
         },
         "heart": {
@@ -343,7 +343,7 @@
             "2": "fly",
             "3": "final_boss",
             "0": "player",
-            "^": "powerup",
+            "^": "life",
             "%": "end_portal",
             "-": "first_alien",
             "4": "fireball",
