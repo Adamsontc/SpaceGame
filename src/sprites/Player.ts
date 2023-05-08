@@ -143,8 +143,9 @@ export class Player extends Creature {
         this.JUMP_SPEED=speed;
     }
     update(deltaTime:number) {
-        this.useFuel();
         let newAnim=""
+        if(this.state==CreatureState.NORMAL){
+            this.useFuel();
         if (this.velocity.x<0) {
             if (this.jetPackOn) {
                 newAnim="jetLeft";
@@ -172,6 +173,7 @@ export class Player extends Creature {
                 }
             }
         }
+    }
         if (newAnim!="" && newAnim!=this.currAnimName) {
             this.setAnimation(newAnim);    
         } else {

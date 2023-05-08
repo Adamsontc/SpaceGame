@@ -36,11 +36,11 @@ export class Creature extends Sprite {
             this.state=st;
             if (this.state == CreatureState.DYING) {
                 this.setVelocity(0,0);
-                if (this.currAnimName=="left") {
+                if (this.currAnimName.toUpperCase().includes("LEFT")) {
                     console.log("deadLeft");
                     this.setAnimation("deadLeft");
                 }
-                if (this.currAnimName=="right") {
+                if (this.currAnimName.toUpperCase().includes("RIGHT")) {
                     console.log("deadRight");
                     this.setAnimation("deadRight");
                 }

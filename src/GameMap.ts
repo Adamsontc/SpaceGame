@@ -30,6 +30,9 @@ export class GameMap {
     full_death: p5.SoundFile;
     medallions: number;
     lives: number;
+    numBullets: number;
+    boost: p5.SoundFile;
+    ammo: p5.SoundFile;
 
     constructor(level:number, resources:ResourceManager, settings:Settings) {
         this.settings=settings;
@@ -37,10 +40,13 @@ export class GameMap {
         this.resources=resources;
         this.medallions=0;
         this.lives=3;
+        this.numBullets=3;
         this.initialize();
     }
 
     initialize() {
+        this.ammo=this.resources.getLoad("ammo");
+        this.boost=this.resources.getLoad("boost");
         this.prize=this.resources.getLoad("prize");
         this.music=this.resources.getLoad("music");
         this.boop=this.resources.getLoad("boop2");
@@ -240,11 +246,15 @@ export class GameMap {
 
         } else if (p instanceof Heart) {
             this.black_hole.play();
+            this.numBullets+=Math.trunc(this.medallions/10);
+            this.medallions=this.medallions%10;
             this.level+=1;
             this.initialize();
         } else if (p instanceof AmmoBox){
-            this.player.numBullets+=5;
+            this.ammo.play();
+            this.numBullets+=3;
         } else if (p instanceof Power){
+            this.boost.play();
             this.player.fuel+=2500;
             if(this.player.fuel>this.player.MAX_FUEL){
                 this.player.fuel=this.player.MAX_FUEL
