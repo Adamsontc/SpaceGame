@@ -24,4 +24,18 @@ export class Projectile extends Sprite {
 
 export class EnemyProjectile extends Projectile {
     
+    followPlayer:boolean;
+
+    constructor() {
+        super();
+        this.followPlayer=false;
+    }
+
+    clearFollowPlayer() {
+        this.followPlayer=false;
+    }
+
+    setFollowPlayer() {
+        this.followPlayer=true;
+    }
 }

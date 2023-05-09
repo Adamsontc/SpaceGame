@@ -1,5 +1,6 @@
 import { Sprite } from "./Sprite.js";
 import { GameMap } from "../GameMap.js";
+import { FinalBoss } from "./FinalBoss.js";
 
 /**
  * A Creature is a Sprite that is affected by gravity and can die.

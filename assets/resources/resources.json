@@ -87,22 +87,16 @@
                 {"img":"final_boss4" , "operators":["mirror"], "duration":150}
             ],
             "deadLeft": [
-                
-                {"img":"final_boss_dead1", "duration":150},
-               
-                {"img":"final_boss_dead2", "duration":150},
-               
-                {"img":"final_boss_dead3", "duration":150}
-                
+                {"img":"final_boss1", "duration":50},
+                {"img":"final_boss_dead1", "duration":50},
+                {"img":"final_boss_dead2", "duration":50},
+                {"img":"final_boss_dead3", "duration":50}
             ],
-            "deadRight": [
-                
-                {"img":"final_boss_dead1", "duration":150},
-                
-                {"img":"final_boss_dead2", "duration":150},
-                
-                {"img":"final_boss_dead3", "duration":150}
-                
+            "deadRight": [                
+                {"img":"final_boss1", "duration":50},
+                {"img":"final_boss_dead1", "duration":50},
+                {"img":"final_boss_dead2", "duration":50},
+                {"img":"final_boss_dead3", "duration":50}
             ]
         },
         "star": {
@@ -172,6 +166,22 @@
                 {"img":"alien1", "duration":150},
                 {"img":"alien2", "duration":150},
                 {"img":"alien1", "duration":150}
+            ]
+        },
+        "goo2": {
+            "type": "EnemyProjectile",
+            "left": [
+                {"img":"goo2", "duration":150}
+                
+            ],
+            "right": [
+                {"img":"goo2", "duration":150}
+            ],
+            "deadLeft": [
+                {"img":"goo2", "duration":150}
+            ],
+            "deadRight": [
+                {"img":"goo2", "duration":150}
             ]
         },
         "goo": {
