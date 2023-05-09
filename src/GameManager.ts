@@ -88,11 +88,6 @@ export class GameManager {
                 break;
             }
             case STATE.Finished: {
-                textStyle();
-                text("You Win!", 300,300);
-                fill(255,255,255);
-                textSize(24);
-                console.log("Game Finished");
                 break;
             }
             default: {
