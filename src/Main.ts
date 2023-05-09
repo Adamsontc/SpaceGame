@@ -19,7 +19,7 @@ import { Image, Renderer } from "p5";
 
 let game: GameManager;
 let canvas: Renderer;
-let img1,img2,img3: Image;
+
 
 console.log("**** Loading Script ****");
 
@@ -27,9 +27,6 @@ export function preload() {
 	console.log("**** Starting Preload ****");
 	game = new GameManager(); //all resources are loaded via the constructor of the GameManager
 	console.log("**** Done Preload ****");
-	img1 = loadImage("assets/images/medallion1.png");
-	img2 = loadImage("assets/images/blast.png");
-	img3 = loadImage("assets/images/life1.png");
 }
 
 export function setup() {
@@ -50,9 +47,6 @@ export function draw() {
 		game.update();
 	}
 	game.draw();
-	image(img1, 15, 15, 32, 32);
-	image(img2, 19, 46);
-	image(img3, 8, 41, 48, 48);
 	fill(255);
 	stroke(255);
 	rect(800,0,width*10,height*10); //a hack to make sure even with scaling only the correct portion of the game will be shown
@@ -62,8 +56,6 @@ export function draw() {
 export function windowResized() {
 	console.log("**** Window Resized ****");
 	resizeCanvas(windowWidth, windowHeight);
-	//canvas.elt.width=800;
-	//canvas.elt.height=600;
 }
 
 export function keyPressed() {

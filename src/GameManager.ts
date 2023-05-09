@@ -11,7 +11,7 @@ import { Image, Renderer } from "p5";
 export const GRAVITY: number =  0.002;
 const FONT_SIZE: number = 24;
 
-enum STATE {Loading, Menu, Running, Finished}
+export enum STATE {Loading, Menu, Running, Finished}
 
 export class GameManager {
 	
@@ -33,9 +33,16 @@ export class GameManager {
     shoot: GameAction;
     blast: p5.SoundFile;
     restart: GameAction;
+    img1: Image;
+    img2: Image;
+    img3: Image;
+
     
 
     constructor() {
+        this.img1 = loadImage("assets/images/medallion1.png");
+        this.img2 = loadImage("assets/images/blast.png");
+        this.img3 = loadImage("assets/images/life1.png");
         this.level=0;
         this.ammo = 10;
         this.oldState=STATE.Loading;
@@ -64,6 +71,9 @@ export class GameManager {
                 fill(150,150,200,150);
                 rect(10,10,55,185);
                 fill(255,255,255);
+                image(this.img1, 15, 15, 32, 32);
+	            image(this.img2, 19, 46);
+	            image(this.img3, 8, 41, 48, 48);
                 textSize(12);
                 text(this.map.lives,45,70);
                 text(this.map.medallions,45,36);
@@ -90,6 +100,22 @@ export class GameManager {
                 break;
             }
             case STATE.Finished: {
+                fill(255,0,0);
+                rect(0,0,800,600);
+                fill(0,0,255);
+                rect(30,30,740,540);
+                fill(0,0,0);
+                rect(60,60,680,480);
+                textSize(64);
+                fill(227,197,0);
+                text("You Win!",265,200);
+                textSize(32);
+                text("Creators",325,280);
+                textSize(16);
+                text("Henry Roeth",340,330);
+                text("Tristan Adamson",324,405);
+                text("Aidan Griffin",340,480);
+                text("Reload server to restart!",308,100);
                 break;
             }
             default: {
@@ -114,7 +140,7 @@ export class GameManager {
             case STATE.Loading: {
                 if (this.resources.isLoaded()) {
                     //now setup the first map
-                    this.map=new GameMap(this.level,this.resources,this.settings);
+                    this.map=new GameMap(this.level,this.resources,this.settings,this);
                     this.settings.setMusic(this.resources.getLoad("music"));
                     //this.map.player.setVelocity(1,1);
                     console.log("Everything is loaded!");
@@ -190,8 +216,11 @@ export class GameManager {
             this.map.sprites.push(bullet);
             console.log(this.map.numBullets);
         }
-        if(this.restart.isBeginPress() && this.map.player.getState()==CreatureState.NORMAL){
-            this.map.player.restartLevel();
+        if(this.restart.isBeginPress()){
+            this.level==0;
+            this.map.initialize();
+            this.map.medallions=0;
+            this.gameState=STATE.Running;
         }
 
     }
