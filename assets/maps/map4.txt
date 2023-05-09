@@ -1,28 +1,25 @@
 @parallax-layer bg1
 @parallax-layer bg2
 @music music
-
-
-
-KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
-                                     K
-                                 %   K
-            KKKKKKK                  K
-            KKKKKKK                  K
-     oo     KKKKKKK                  K
-    BBBB    KKKKKKK                  K
-            KKKKKKK                  K
-            KKKKKKK                  K
- p          KKKKKKK                  K
-BBBBB       KKKKKKK                  K
-          a KKKKKKK ooooooooooooooo  K
-        BBBBKKKKKKK ooooooooooooooo  K
-     o      KKKKKKK ooooooooooooooo  K
-   o        KKKKKKK ooooooooooooooo  K
-0        3  KKKKKKK ooooooooooooooo  K       
-BB     BBBB KKKKKKK ooooooooooooooo  K
-    4       KKKKKKK ooooooooooooooo  K
-            KKKKKKK ooooooooooooooo  K
-            KKKKKKK ooooooooooooooo  K
- oooooooooo KKKKKKK oooooppppoooooo  K   
-BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKAAAAAA
+                                     KAAAAAA
+                                 %   KAAAAAA
+            KKKKKKK           KKKKKKKKAAAAAA
+            KKKKKKK                  KAAAAAA
+     oo     KKKKKKK                  KAAAAAA
+    BBBB    KKKKKKK                  KAAAAAA
+            KKKKKKK                  KAAAAAA
+            KKKKKKK                  KAAAAAA
+ p          KKKKKKK                  KAAAAAA
+BBBBB       KKKKKKK                  KAAAAAA
+          a KKKKKKK ooooooooooooooo  KAAAAAA
+        BBBBKKKKKKK ooooooooooooooo  KAAAAAA
+     o      KKKKKKK ooooooooooooooo  KAAAAAA
+   o        KKKKKKK ooooooooooooooo  KAAAAAA
+0        3  KKKKKKK ooooooooooooooo  KAAAAAA
+BB     BBBB KKKKKKK ooooooooooooooo  KAAAAAA
+    4       KKKKKKK ooooooooooooooo  KAAAAAA
+            KKKKKKK ooooooooooooooo  KAAAAAA
+            KKKKKKK ooooooooooooooo  KAAAAAA
+ oooooooooo KKKKKKK oooooppppoooooo  KAAAAAA
+BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBAAAAAA
