@@ -1,7 +1,7 @@
 import { Player } from "./sprites/Player.js";
 import { ResourceManager } from "./ResourceManager.js";
 import { Sprite } from "./sprites/Sprite.js";
-import { GRAVITY } from './GameManager.js';
+import { GRAVITY, STATE, GameManager } from './GameManager.js';
 import { Creature, CreatureState, Grub } from "./sprites/Creature.js";
 import { Heart, Music, PowerUp, Star, AmmoBox, Power } from "./sprites/PowerUp.js";
 import { Projectile, EnemyProjectile } from './sprites/Projectile.js';
@@ -36,8 +36,9 @@ export class GameMap {
     boost: p5.SoundFile;
     ammo: p5.SoundFile;
     oneUp: p5.SoundFile;
+    game: GameManager;
 
-    constructor(level:number, resources:ResourceManager, settings:Settings) {
+    constructor(level:number, resources:ResourceManager, settings:Settings, game: GameManager) {
         this.ALPHALEVEL=20;
         this.settings=settings;
         this.level=level;
@@ -45,6 +46,7 @@ export class GameMap {
         this.medallions=0;
         this.lives=3;
         this.numBullets=3;
+        this.game=game;
         this.initialize();
     }
 
@@ -67,6 +69,7 @@ export class GameMap {
         console.log("map=",map);
         if (!map) {
             this.level=0;
+            this.game.gameState=STATE.Finished;
             map=this.resources.getLoad(this.resources.get("levels")[this.level]);
         }
         let lines=[];
