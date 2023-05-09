@@ -69,7 +69,8 @@
         "text": {
             "map1": "assets/maps/map1.txt",
             "map2": "assets/maps/map2.txt",
-            "map3": "assets/maps/map3.txt"
+            "map3": "assets/maps/map3.txt",
+            "map4": "assets/maps/map4.txt"
         },
         "sound": {
             "music": "assets/sounds/background_music.mp3",
@@ -81,7 +82,8 @@
             "gun_blast": "assets/sounds/gun_blast.wav",
             "full_death": "assets/sounds/Dying.wav",
             "ammo": "assets/sounds/ammo.wav",
-            "boost": "assets/sounds/boost.wav"
+            "boost": "assets/sounds/boost.wav",
+            "1up": "assets/sounds/1up.wav"
         },
         "json": {
             "resources": "assets/resources/resources.json"

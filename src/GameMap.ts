@@ -35,6 +35,7 @@ export class GameMap {
     numBullets: number;
     boost: p5.SoundFile;
     ammo: p5.SoundFile;
+    oneUp: p5.SoundFile;
 
     constructor(level:number, resources:ResourceManager, settings:Settings) {
         this.ALPHALEVEL=20;
@@ -48,6 +49,7 @@ export class GameMap {
     }
 
     initialize() {
+        this.oneUp=this.resources.getLoad("1up");
         this.ammo=this.resources.getLoad("ammo");
         this.boost=this.resources.getLoad("boost");
         this.prize=this.resources.getLoad("prize");
@@ -221,6 +223,7 @@ export class GameMap {
                 if(this.lives>1){
                     p.setState(CreatureState.DYING);
                     this.dying.play();
+                    this.medallions=0;
                     this.lives-=1;
                 }
                 
@@ -250,11 +253,30 @@ export class GameMap {
         } else if (p instanceof Music) {
 
         } else if (p instanceof Heart) {
+            if(this.level==0 && this.medallions==9) {
             this.black_hole.play();
-            //this.numBullets+=Math.trunc(this.medallions/10);
-            //this.medallions=this.medallions%10;
             this.level+=1;
+            this.medallions=0;
             this.initialize();
+            }
+            if(this.level==1 && this.medallions==20) {
+                this.black_hole.play();
+                this.level+=1;
+                this.medallions=0;
+                this.initialize();
+            }
+            if(this.level==2 && this.medallions==10) {
+                this.black_hole.play();
+                this.level+=1;
+                this.medallions=0;
+                this.initialize();
+            }
+            if(this.level==3 && this.medallions==160) {
+                this.black_hole.play();
+                this.level+=1;
+                this.medallions=0;
+                this.initialize();
+            }
         } else if (p instanceof AmmoBox){
             this.numBullets+=3;
             this.ammo.play();
@@ -266,6 +288,7 @@ export class GameMap {
             } 
         } else if (p instanceof PowerUp) {
             if(this.lives>0){
+                this.oneUp.play();
                 this.lives+=1;
             }
         }
