@@ -1,0 +1,25 @@
+@parallax-layer bg1
+@parallax-layer bg2
+@music music
+KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKAAAAAA
+                                     KAAAAAA
+                                 %   KAAAAAA
+            KKKKKKK           KKKKKKKKAAAAAA
+            KKKKKKK                  KAAAAAA
+     oo     KKKKKKK                  KAAAAAA
+    BBBB    KKKKKKK                  KAAAAAA
+            KKKKKKK                  KAAAAAA
+            KKKKKKK                  KAAAAAA
+ p          KKKKKKK                  KAAAAAA
+BBBBB       KKKKKKK                  KAAAAAA
+          a KKKKKKK ooooooooooooooo  KAAAAAA
+        BBBBKKKKKKK ooooooooooooooo  KAAAAAA
+     o      KKKKKKK ooooooooooooooo  KAAAAAA
+   o        KKKKKKK ooooooooooooooo  KAAAAAA
+0        3  KKKKKKK ooooooooooooooo  KAAAAAA
+BB     BBBB KKKKKKK ooooooooooooooo  KAAAAAA
+    4       KKKKKKK ooooooooooooooo  KAAAAAA
+            KKKKKKK ooooooooooooooo  KAAAAAA
+            KKKKKKK ooooooooooooooo  KAAAAAA
+ oooooooooo KKKKKKK oooooppppoooooo  KAAAAAA
+BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBAAAAAA

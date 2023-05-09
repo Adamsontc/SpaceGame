@@ -5,6 +5,8 @@ import { InputManager } from "./InputManager.js";
 import { ResourceManager } from "./ResourceManager.js";
 import { SoundManager } from "./SoundManager.js";
 import { CreatureState } from "./sprites/Creature.js";
+import { Overlay } from "./Overlay.js";
+import { Image, Renderer } from "p5";
 
 export const GRAVITY: number =  0.002;
 const FONT_SIZE: number = 24;
@@ -13,6 +15,7 @@ enum STATE {Loading, Menu, Running, Finished}
 
 export class GameManager {
 	
+    overlay: Overlay;
     resources: ResourceManager;  //the resovoir of all loaded resources
     map: GameMap; //the current state of the game
     inputManager: InputManager; //mappings between user events (keyboard, mouse, etc.) and game actions (run-left, jump, etc.)
@@ -37,6 +40,7 @@ export class GameManager {
         this.ammo = 10;
         this.oldState=STATE.Loading;
         this.gameState=STATE.Loading;
+        this.overlay = new Overlay();
         this.resources=new ResourceManager("assets/assets.json");
         this.inputManager = new InputManager();
         this.settings = new Settings();
@@ -63,7 +67,7 @@ export class GameManager {
                 textSize(12);
                 text(this.map.lives,45,70);
                 text(this.map.medallions,45,36);
-                text(this.map.player.getnumBullets(),45,53);
+                text(this.map.numBullets,45,53);
                 //Math.trunc(this.map.player.fuel/100)/10
                 //text("Fuel",26,65);
                 let from = color(255, 0, 0);
@@ -168,7 +172,7 @@ export class GameManager {
         if(this.propel.isEndPress() && this.map.player.getState()==CreatureState.NORMAL){
             this.map.player.turnOffJetPack();
         }
-        if(this.shoot.isBeginPress() && this.map.player.getState()==CreatureState.NORMAL && this.map.player.getnumBullets()>0){
+        if(this.shoot.isBeginPress() && this.map.player.getState()==CreatureState.NORMAL && this.map.numBullets>0){
             this.map.playShoot();
             let p=this.map.player;
             let pos=p.getPosition();
@@ -182,9 +186,9 @@ export class GameManager {
                 bullet.setPosition(pos.x-30,pos.y+25);
                 bullet.setRight(false);
             }
-            this.map.player.numBullets-=1;
+            this.map.numBullets-=1;
             this.map.sprites.push(bullet);
-            console.log(this.map.player.numBullets);
+            console.log(this.map.numBullets);
         }
         if(this.restart.isBeginPress() && this.map.player.getState()==CreatureState.NORMAL){
             this.map.player.restartLevel();

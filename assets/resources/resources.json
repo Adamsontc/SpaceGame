@@ -55,7 +55,6 @@
 
                 {"img":"player1_dead", "operators":["mirror"], "duration":64},
 		        {"img":"player1", "operators":["mirror"], "duration":64}
-
             ]
         },
         "blast": {
@@ -288,7 +287,8 @@
         "levels": [
             "map1",
             "map2",
-            "map3"
+            "map3",
+            "map4"
         ]
     }
     
