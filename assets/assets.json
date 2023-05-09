@@ -63,12 +63,14 @@
             "explosion2": "assets/images/explosion2.png",
             "ammoBox": "assets/images/Ammo.png",
             "power1": "assets/images/Power1.png",
-            "power2": "assets/images/Power2.png"
+            "power2": "assets/images/Power2.png",
+            "player1_dead": "assets/images/player1_dead.png"
         },
         "text": {
             "map1": "assets/maps/map1.txt",
             "map2": "assets/maps/map2.txt",
-            "map3": "assets/maps/map3.txt"
+            "map3": "assets/maps/map3.txt",
+            "map4": "assets/maps/map4.txt"
         },
         "sound": {
             "music": "assets/sounds/background_music.mp3",
@@ -78,7 +80,10 @@
             "dying": "assets/sounds/hurt.wav",
             "spit": "assets/sounds/alien_spit.wav",
             "gun_blast": "assets/sounds/gun_blast.wav",
-            "full_death": "assets/sounds/Dying.wav"
+            "full_death": "assets/sounds/Dying.wav",
+            "ammo": "assets/sounds/ammo.wav",
+            "boost": "assets/sounds/boost.wav",
+            "1up": "assets/sounds/1up.wav"
         },
         "json": {
             "resources": "assets/resources/resources.json"

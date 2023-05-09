@@ -4,7 +4,7 @@ import { Sprite } from "./sprites/Sprite.js";
 import { GRAVITY } from './GameManager.js';
 import { Creature, CreatureState, Grub } from "./sprites/Creature.js";
 import { Heart, Music, PowerUp, Star, AmmoBox, Power } from "./sprites/PowerUp.js";
-import { Projectile } from './sprites/Projectile.js';
+import { Projectile, EnemyProjectile } from './sprites/Projectile.js';
 import { Lava } from "./sprites/Lava.js"
 import { Fireball } from './sprites/Fireball.js';
 import { Settings } from "./Settings.js";
@@ -32,6 +32,10 @@ export class GameMap {
     medallions: number;
     ALPHALEVEL: number;
     lives: number;
+    numBullets: number;
+    boost: p5.SoundFile;
+    ammo: p5.SoundFile;
+    oneUp: p5.SoundFile;
 
     constructor(level:number, resources:ResourceManager, settings:Settings) {
         this.ALPHALEVEL=20;
@@ -40,10 +44,14 @@ export class GameMap {
         this.resources=resources;
         this.medallions=0;
         this.lives=3;
+        this.numBullets=3;
         this.initialize();
     }
 
     initialize() {
+        this.oneUp=this.resources.getLoad("1up");
+        this.ammo=this.resources.getLoad("ammo");
+        this.boost=this.resources.getLoad("boost");
         this.prize=this.resources.getLoad("prize");
         this.music=this.resources.getLoad("music");
         this.boop=this.resources.getLoad("boop2");
@@ -200,17 +208,19 @@ export class GameMap {
         if (p.getState()!=CreatureState.NORMAL) return;
         let s=this.getSpriteCollision(p);
         if (s && this.pp_collision(p,s)) {
-            if (s instanceof Creature) {
+            if (s instanceof Creature || s instanceof EnemyProjectile) {
                 if(this.lives==1){
                     p.setState(CreatureState.DYING)
                     this.full_death.play();
                     this.level=0;
                     this.medallions=0;
+                    this.numBullets=3;
                     this.lives+=3;
                 }
                 if(this.lives>1){
                     p.setState(CreatureState.DYING);
                     this.dying.play();
+                    this.medallions=0;
                     this.lives-=1;
                 }
                 
@@ -240,18 +250,42 @@ export class GameMap {
         } else if (p instanceof Music) {
 
         } else if (p instanceof Heart) {
+            if(this.level==0 && this.medallions==9) {
             this.black_hole.play();
             this.level+=1;
+            this.medallions=0;
             this.initialize();
+            }
+            if(this.level==1 && this.medallions==20) {
+                this.black_hole.play();
+                this.level+=1;
+                this.medallions=0;
+                this.initialize();
+            }
+            if(this.level==2 && this.medallions==10) {
+                this.black_hole.play();
+                this.level+=1;
+                this.medallions=0;
+                this.initialize();
+            }
+            if(this.level==3 && this.medallions==160) {
+                this.black_hole.play();
+                this.level+=1;
+                this.medallions=0;
+                this.initialize();
+            }
         } else if (p instanceof AmmoBox){
-            this.player.numBullets+=5;
+            this.numBullets+=3;
+            this.ammo.play();
         } else if (p instanceof Power){
+            this.boost.play();
             this.player.fuel+=2500;
             if(this.player.fuel>this.player.MAX_FUEL){
                 this.player.fuel=this.player.MAX_FUEL
             } 
         } else if (p instanceof PowerUp) {
             if(this.lives>0){
+                this.oneUp.play();
                 this.lives+=1;
             }
         }
@@ -283,14 +317,20 @@ export class GameMap {
 
     updateProjectile(proj:Projectile) {
         let newPos = proj.getPosition().copy();
-        newPos.x += proj.getVelocity().x*deltaTime;
+        let vel = proj.getVelocity();
+        newPos.x += vel.x*deltaTime;
+        newPos.y += vel.y*deltaTime;
+        //newPos.add(proj.getVelocity().mult(deltaTime));
         let point = this.getTileCollision(proj,newPos);
         if (point) {
             this.removeSprite(proj);
         } else {
             let spriteCollided=this.getSpriteCollision(proj);
             if (spriteCollided) {
-                if (spriteCollided instanceof Creature && !(spriteCollided instanceof Lava) && !(spriteCollided instanceof Fireball)) {
+                if (spriteCollided instanceof Creature &&
+                    !(spriteCollided instanceof Lava) &&
+                    !(spriteCollided instanceof Fireball) &&
+                    ! (proj instanceof EnemyProjectile)) {
                     this.boop.play();
                     spriteCollided.setState(CreatureState.DYING);
                     this.removeSprite(proj);
@@ -374,6 +414,7 @@ export class GameMap {
                 } else {
                     this.updateSprite(sprite);
                     sprite.update(deltaTime);
+                    sprite.effectMap(this);
                 }
             } else if (sprite instanceof PowerUp) {
                 sprite.update(deltaTime);

@@ -143,35 +143,37 @@ export class Player extends Creature {
         this.JUMP_SPEED=speed;
     }
     update(deltaTime:number) {
-        this.useFuel();
-        let newAnim=""
-        if (this.velocity.x<0) {
-            if (this.jetPackOn) {
-                newAnim="jetLeft";
-            } else {
-                newAnim="left";
-            }
-        } else if (this.velocity.x>0) {
-            if (this.jetPackOn) {
-                newAnim="jetRight";
-            } else {
-                newAnim="right";
-            }
-        } else {
-            if (this.jetPackOn) {
-                if (this.currAnimName.toUpperCase().includes("LEFT")) {
+        let newAnim="";
+        if (this.state==CreatureState.NORMAL) {
+            this.useFuel();
+            if (this.velocity.x<0) {
+                if (this.jetPackOn) {
                     newAnim="jetLeft";
                 } else {
+                    newAnim="left";
+                }
+            } else if (this.velocity.x>0) {
+                if (this.jetPackOn) {
                     newAnim="jetRight";
+                } else {
+                    newAnim="right";
                 }
             } else {
-                if (this.currAnimName.toUpperCase().includes("LEFT")) {
-                    newAnim="stillLeft";
+                if (this.jetPackOn) {
+                    if (this.currAnimName.toUpperCase().includes("LEFT")) {
+                        newAnim="jetLeft";
+                    } else {
+                        newAnim="jetRight";
+                    }
                 } else {
-                    newAnim="stillRight";
+                    if (this.currAnimName.toUpperCase().includes("LEFT")) {
+                        newAnim="stillLeft";
+                    } else {
+                        newAnim="stillRight";
+                    }
                 }
             }
-        }
+    }
         if (newAnim!="" && newAnim!=this.currAnimName) {
             this.setAnimation(newAnim);    
         } else {
