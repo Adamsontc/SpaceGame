@@ -11,7 +11,7 @@ import { Image, Renderer } from "p5";
 export const GRAVITY: number =  0.002;
 const FONT_SIZE: number = 24;
 
-enum STATE {Loading, Menu, Running, Finished}
+export enum STATE {Loading, Menu, Running, Finished}
 
 export class GameManager {
 	
@@ -88,6 +88,11 @@ export class GameManager {
                 break;
             }
             case STATE.Finished: {
+                textStyle();
+                text("You Win!", 300,300);
+                fill(255,255,255);
+                textSize(24);
+                console.log("Game Finished");
                 break;
             }
             default: {
@@ -111,7 +116,7 @@ export class GameManager {
             case STATE.Loading: {
                 if (this.resources.isLoaded()) {
                     //now setup the first map
-                    this.map=new GameMap(this.level,this.resources,this.settings);
+                    this.map=new GameMap(this.level,this.resources,this.settings,this);
                     this.settings.setMusic(this.resources.getLoad("music"));
 
                     this.inputManager.setGameAction(this.moveRight,RIGHT_ARROW);
