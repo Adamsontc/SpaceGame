@@ -67,13 +67,7 @@ export class GameManager {
                 textSize(12);
                 text(this.map.lives,45,70);
                 text(this.map.medallions,45,36);
-<<<<<<< HEAD
-                text(this.map.player.getnumBullets(),45,53);
-=======
                 text(this.map.numBullets,45,53);
-                //Math.trunc(this.map.player.fuel/100)/10
-                //text("Fuel",26,65);
->>>>>>> main
                 let from = color(255, 0, 0);
                 let to = color(0, 255, 0);
                 let fuelColor = lerpColor(from, to, Math.trunc(this.map.player.fuel)/Math.trunc(this.map.player.MAX_FUEL));
@@ -187,10 +181,7 @@ export class GameManager {
             }
             this.map.numBullets-=1;
             this.map.sprites.push(bullet);
-<<<<<<< HEAD
-=======
             console.log(this.map.numBullets);
->>>>>>> main
         }
         if(this.restart.isBeginPress() && this.map.player.getState()==CreatureState.NORMAL){
             this.map.player.restartLevel();
