@@ -7,12 +7,14 @@ export class FinalBoss extends Creature {
     spitFollows:boolean;
     spitInterval:number; //#maximum milliseconds between spits
     lastSpitTime:number;
+    numLives:number;
 
     constructor() {
         super();
         this.spitFollows=true;
         this.spitInterval=1000;
         this.lastSpitTime=0;
+        this.numLives=2;
     }
 
     changeSpitFollows(newVal:boolean) {
@@ -55,6 +57,20 @@ export class FinalBoss extends Creature {
                 this.lastSpitTime=this.stateTime;
             }
         }
+    }
+
+    update(deltaTime:number) {
+        console.log("IN FINALBOSS UPDATE");
+        super.update(deltaTime);
+        if (this.state==CreatureState.DEAD) {
+            console.log("DECREMENTING LIVES");
+            this.numLives--;
+            if (this.numLives>0) {
+                console.log("SETTING STATE BACK TO NORMAL");
+                this.state=CreatureState.NORMAL;
+                this.setAnimation("left");
+            }
+        }  
     }
 
 }

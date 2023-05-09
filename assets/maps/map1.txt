@@ -21,6 +21,6 @@
  0       K
 KK     KKK
 Ko       K
-Ko      3K
-K3      KK
+Ko      aK
+K3 aaaaaKK
 BBBBBBBBBB
