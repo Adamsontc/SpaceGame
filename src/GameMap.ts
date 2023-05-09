@@ -286,6 +286,15 @@ export class GameMap {
 
     updateProjectile(proj:Projectile) {
         let newPos = proj.getPosition().copy();
+        if (proj instanceof EnemyProjectile && proj.followPlayer) {
+            console.log("FOLLOWING PLAYER");
+            let pos=this.player.getPosition().copy();
+            pos.x+=this.player.getImage().width/2;
+            pos.y+=this.player.getImage().height/2;
+            let vec=p5.Vector.sub(pos,proj.getPosition());
+            vec.normalize().mult(0.05);
+            proj.setVelocity(vec.x,vec.y);
+        }
         let vel = proj.getVelocity();
         newPos.x += vel.x*deltaTime;
         newPos.y += vel.y*deltaTime;

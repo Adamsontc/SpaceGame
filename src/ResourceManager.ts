@@ -177,6 +177,9 @@ export class ResourceManager {
             }
             case 'EnemyProjectile': {
                 s = new EnemyProjectile();
+                if (spriteName=="goo2") {
+                    s.setFollowPlayer();
+                }
                 break;
             }
             case 'Bullet': {
