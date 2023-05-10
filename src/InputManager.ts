@@ -1,20 +1,34 @@
 import { GameAction } from "./GameAction";
-
+/**
+ * this class checks different inputs and game actions throughout the game
+ */
 export class InputManager {
     actions: {[key: string]: GameAction};
 
     constructor() {
+        /**
+         * this initializes the actions oobject
+         */
         this.actions={};
     }
-    
+    /**
+     * this sets certain keycodes to certain actions within the  game
+     * @param action 
+     * @param keyCode 
+     */
     setGameAction(action:GameAction, keyCode:number) {
         this.actions[keyCode]=action;
     }
-
+    /**
+     * this removes certain keycodes from certain actions within the game
+     * @param keyCode 
+     */
     clearGameAction(keyCode:number) {
         this.actions[keyCode]=null;
     }
-
+    /**
+     * this resets all the initial game actions to their original state
+     */
     reset() {
         for (const keyCode in this.actions) {
             if (Object.prototype.hasOwnProperty.call(this.actions, keyCode)) {
@@ -22,7 +36,10 @@ export class InputManager {
             }
         }
     }
-
+    /**
+     * this checks to see what key is pressed by the user, and it updates the game
+     * according to which key is pressed
+     */
     checkInput() {
         for (const keyCode in this.actions) {
             if (Object.prototype.hasOwnProperty.call(this.actions, keyCode)) {
