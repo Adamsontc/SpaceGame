@@ -30,12 +30,8 @@
             "final_boss3": "assets/images/final_boss/final_boss3.png",
             "final_boss4": "assets/images/final_boss/final_boss4.png",
             "tile_A": "assets/images/tile_A.png",
-            "music1": "assets/images/music1.png",
-            "music3": "assets/images/music3.png",
             "tile_B": "assets/images/tile_B.png",
             "tile_C": "assets/images/tile_C.png",
-            "music2": "assets/images/music2.png",
-            "fly2": "assets/images/fly2.png",
             "tile_G": "assets/images/tile_G.png",
             "tile_F": "assets/images/tile_F.png",
             "tile_J": "assets/images/tile_J.png",
@@ -45,27 +41,14 @@
             "tile_N": "assets/images/tile_N.png",
             "tile_O": "assets/images/tile_O.png",
             "tile_P": "assets/images/tile_P.png",
-            "fly3": "assets/images/fly3.png",
-            "fly1": "assets/images/fly1.png",
             "tile_D": "assets/images/tile_D.png",
             "tile_E": "assets/images/tile_E.png",
-            "player3": "assets/images/player3.png",
-            "player2": "assets/images/player2.png",
             "player1": "assets/images/player1.png",
             "player_run1": "assets/images/player1_run1.png",
             "player_run2": "assets/images/player1_run2.png",
             "background": "assets/images/background.png",
             "bg1": "assets/images/background.png",
             "bg2": "assets/images/background2.png",
-            "powerup4": "assets/images/powerup4.png",
-            "powerup2": "assets/images/powerup2.png",
-            "heart2": "assets/images/heart2.png",
-            "heart3": "assets/images/heart3.png",
-            "grub2": "assets/images/grub2.png",
-            "powerup3": "assets/images/powerup3.png",
-            "powerup1": "assets/images/powerup1.png",
-            "heart1": "assets/images/heart1.png",
-            "grub1": "assets/images/grub1.png",
             "tile_H": "assets/images/tile_H.png",
             "tile_I": "assets/images/tile_I.png",
             "surface2": "assets/images/surface2.png",
@@ -80,15 +63,14 @@
             "explosion2": "assets/images/explosion2.png",
             "ammoBox": "assets/images/Ammo.png",
             "power1": "assets/images/Power1.png",
-            "power2": "assets/images/Power2.png"
-        },
-        "spritesheet": {
-            "caveman": "assets/images/spritesheet_caveman.png"
+            "power2": "assets/images/Power2.png",
+            "player1_dead": "assets/images/player1_dead.png"
         },
         "text": {
             "map1": "assets/maps/map1.txt",
             "map2": "assets/maps/map2.txt",
-            "map3": "assets/maps/map3.txt"
+            "map3": "assets/maps/map3.txt",
+            "map4": "assets/maps/map4.txt"
         },
         "sound": {
             "music": "assets/sounds/background_music.mp3",
@@ -98,7 +80,10 @@
             "dying": "assets/sounds/hurt.wav",
             "spit": "assets/sounds/alien_spit.wav",
             "gun_blast": "assets/sounds/gun_blast.wav",
-            "full_death": "assets/sounds/Dying.wav"
+            "full_death": "assets/sounds/Dying.wav",
+            "ammo": "assets/sounds/ammo.wav",
+            "boost": "assets/sounds/boost.wav",
+            "1up": "assets/sounds/1up.wav"
         },
         "json": {
             "resources": "assets/resources/resources.json"

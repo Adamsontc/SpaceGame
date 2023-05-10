@@ -1,5 +1,9 @@
 import { SSL_OP_MICROSOFT_SESS_ID_BUG } from "constants";
-
+/**
+ * this is a class that controls what happens during the game
+ * and the settings or accessibility of the game so you can 
+ * change it if you want
+ */
 export class Settings {
 
     public playMusic: boolean;
@@ -12,6 +16,9 @@ export class Settings {
     full: p5.Element;
     
     constructor() {
+        /**
+         * all of these initialize certain things in our game to make it run smooth
+         */
         this.playMusic=false;
         this.playEvents=true;
         this.menu=createDiv();
@@ -19,11 +26,9 @@ export class Settings {
         this.menu.position(30,30);
         this.menu.style("color","#000000");
         let music=createCheckbox("Play Music",this.playMusic);
-        //music.changed(this.togglePlayMusic.bind(this));
         music.mousePressed(this.togglePlayMusic.bind(this));
         this.menu.child(music);
         let events=createCheckbox("Play Event Sounds",true);
-        //events.changed(this.toogleEventSounds.bind(this));
         events.mousePressed(this.toogleEventSounds.bind(this));
         this.menu.child(events);
         this.full = createCheckbox("Full Screen",false);
@@ -32,10 +37,6 @@ export class Settings {
         let myDiv2 = createDiv("D: Right");
         let myDiv3 = createDiv("SPACE: Shoot");
         let myDiv4 = createDiv("SHIFT: Thrusters");
-        //myDiv.style('font-size', '18px');
-        //myDiv.style('color', '#ff0000');
-        //myDiv.position(20, 65);
-        //this.full.changed(this.toggleFullScreen.bind(this));
         this.full.mousePressed(this.toggleFullScreen.bind(this));
         this.menu.child(this.full);
         this.menu.child(myDiv);
@@ -46,21 +47,34 @@ export class Settings {
         this.menu.hide();
         
     }
-
+    /**
+     * this shows the menu 
+     * it sets it to a certain width and height as well
+     */
     showMenu() {
         let scaleFactor=min(width/800,height/600);
         this.menu.size(800*scaleFactor-60,600*scaleFactor-60);
         this.menu.show();
     }
-
+    /**
+     * this is the hide menu, if the menu isn't shown, then this function 
+     * is called to hide the menu
+     */
     hideMenu() {
         this.menu.hide();
     }
-
+    /**
+     * this is the toggle full screen, it checks to see if the player
+     * wants to play in full screen or not
+     */
     toggleFullScreen() {
         fullscreen(!fullscreen());
     }
-
+    /**
+     * this method toggles the playing of our music
+     * if they have it on, it is on a loop and once the loop ends it restarts and plays again
+     * if they have it off, the music won't play
+     */
     togglePlayMusic() {
         this.playMusic=!this.playMusic;
         if (this.playMusic) {
@@ -71,11 +85,16 @@ export class Settings {
             this.music.stop();
         }
     }
-
+    /**
+     * this sets a certain soundfile to 'm' which is the music
+     * @param m 
+     */
     setMusic(m:p5.SoundFile) {
         this.music=m;
     }
-
+    /**
+     * this toggles event sounds, to see if they are played or not
+     */
     toogleEventSounds() {
         this.playEvents=!this.playEvents;
     }

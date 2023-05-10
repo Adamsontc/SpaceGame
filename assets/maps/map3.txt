@@ -17,14 +17,24 @@
 @parallax-layer bg1
 @parallax-layer bg2
 @music music
-
-KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
-                           -            oooooo    K 
-               III                      IIIIII    K 
-0          a         -             a              K
-IIII      III        p      -     III         -   K 
-                   KKKKKK              KKKKKK KKKKKK
-     ooo      -    K        III        K           K 
-    IIIII          K                   K     %     K 
-555555555555555555 K 55555555555555555 K 555555555 K
-BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
+OPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPNAAAAAA
+D            -   o          4  o        p            CAAAAAA
+D   p            EBF           EBF          ^    %   CAAAAAA
+D                CKD    ^      CKD                   CAAAAAA
+D                MPL      -    MPL           K555555 CAAAAAA 
+D  a     o       4      o             o      KKKKKKKKCAAAAAA 
+D        EBF            EBF           EBF            CAAAAAA 
+D    p   CKD     p      CKD     p     CKD       ^    CAAAAAA 
+D        MPL            MPL           MPL            CAAAAAA 
+D       ^            4         a               a     CAAAAAA 
+D    KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKCAAAAAA 
+D            o   +      ooo       p              a   CAAAAAA 
+D   -        II           4            o         II  CAAAAAA 
+D                      p              IIII           CAAAAAA 
+D       4              II    -                       CAAAAAA 
+D                                                    CAAAAAA 
+D555555555555555555555555555555555555555555555 K   - CAAAAAA 
+DKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK     CAAAAAA 
+D       K            4       K        4      4 K -   CAAAAAA 
+D 0   a         - K             4      K        + p  CAAAAAA
+HBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBGAAAAAA
