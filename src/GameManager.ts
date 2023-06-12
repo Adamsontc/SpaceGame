@@ -6,6 +6,7 @@ import { ResourceManager } from "./ResourceManager.js";
 import { SoundManager } from "./SoundManager.js";
 import { CreatureState } from "./sprites/Creature.js";
 import { Overlay } from "./Overlay.js";
+
 import { Image, Renderer } from "p5";
 
 export const GRAVITY: number =  0.002;
@@ -47,7 +48,8 @@ export class GameManager {
         this.ammo = 10;
         this.oldState=STATE.Loading;
         this.gameState=STATE.Loading;
-        this.overlay = new Overlay();
+        
+        this.overlay=new Overlay();
         this.resources=new ResourceManager("assets/assets.json");
         this.inputManager = new InputManager();
         this.settings = new Settings();
@@ -68,6 +70,7 @@ export class GameManager {
                 textStyle()
                 this.map.draw();
                 this.overlay.draw();
+                
                 break;
             }
             case STATE.Menu: {
