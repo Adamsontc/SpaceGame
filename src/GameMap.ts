@@ -249,18 +249,18 @@ export class GameMap {
     acquirePowerUp(p:PowerUp) {
         this.removeSprite(p);
         if (p instanceof Star) {
-            if (this.settings.playEvents) {
+            // if (this.settings.playEvents) {
                 this.prize.play();
                 this.medallions+=1;
-            }
+            // }
         } else if (p instanceof Music) {
 
         } else if (p instanceof Heart) {
             if(this.level==0 && this.medallions==9) {
-            this.black_hole.play();
-            this.level+=1;
-            this.medallions=0;
-            this.initialize();
+                this.level+=1;
+                this.medallions=0;
+                this.black_hole.play();
+                this.initialize();
             }
             if(this.level==1 && this.medallions==20) {
                 this.black_hole.play();

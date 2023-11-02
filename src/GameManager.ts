@@ -69,7 +69,25 @@ export class GameManager {
             case STATE.Running: {
                 textStyle()
                 this.map.draw();
-                this.overlay.draw();
+                this.map.draw();
+                text(this.map.lives,45,70);
+                fill(150,150,200,150);
+                rect(10,10,55,185);
+                fill(255,255,255);
+                image(this.img1, 15, 15, 32, 32);
+                image(this.img2, 19, 46);
+                image(this.img3, 8, 41, 48, 48);
+                textSize(12);
+                text(this.map.lives,45,70);
+                text(this.map.medallions,45,36);
+                text(this.map.numBullets,45,53);
+                let from = color(255, 0, 0);
+                let to = color(0, 255, 0);
+                let fuelColor = lerpColor(from, to, Math.trunc(this.map.player.fuel)/Math.trunc(this.map.player.MAX_FUEL));
+                fill(150,150,255);
+                rect(25,85,25,this.map.player.MAX_FUEL/75);
+                fill(fuelColor);
+                rect(25,85,25,this.map.player.fuel/75);
                 
                 break;
             }
